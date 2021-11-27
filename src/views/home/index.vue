@@ -35,13 +35,39 @@
       <div class="space-y-6 sm:px-6 lg:px-0 lg:col-span-9">
         <Form title="Initial Broker Questions" description=" ">
           <div class="form-full">
-            <RadioListSimple title="Mortgage Deal Type" :items="mortageTypes" />
+            <RadioListSimple
+              title="Mortgage Deal Type"
+              :items="mortgageTypes"
+            />
           </div>
         </Form>
 
         <Form title="Add to Ledgers Questions" description=" ">
           <div class="form-full">
-            <CheckListSimple title="Mortgage Deal Type" :items="mortageTypes" />
+            <CheckListSimple
+              title="Mortgage Deal Type"
+              :items="mortgageTypes"
+            />
+          </div>
+        </Form>
+
+        <Form title="Mortgage Lending Criteria < $3M" description=" ">
+          <div class="form-full w-2/3">
+            <TextInput label="Property Location(s)" />
+          </div>
+          <div
+            class="form-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6"
+          >
+            <div class="w-full space-y-6">
+              <CheckListSimple
+                title="Term Lengths"
+                :items="termLengths"
+                description="Select all that apply"
+              />
+            </div>
+            <div class="w-full">
+              <CheckListSimple title="Charges Offered" :items="chargeTypes" />
+            </div>
           </div>
         </Form>
 
@@ -754,6 +780,7 @@
 </template>
 
 <script>
+import TextInput from "../../components/base/inputs/TextInput.vue";
 import CheckListSimple from "../../components/base/inputs/CheckListSimple.vue";
 import RadioListSimple from "../../components/base/inputs/RadioListSimple.vue";
 import FileInput from "../../components/base/inputs/FileInput.vue";
@@ -775,7 +802,7 @@ const navigation = [
   { name: "Integrations", href: "#", icon: ViewGridAddIcon, current: false },
 ];
 
-const mortageTypes = [
+const mortgageTypes = [
   { id: "residential", title: "Residential" },
   {
     id: "commercial-less-3",
@@ -787,12 +814,91 @@ const mortageTypes = [
   },
 ];
 
+const chargeTypes = [
+  { id: "charge-1st", title: "1st" },
+  { id: "charge-2nd", title: "2nd" },
+  { id: "charge-3rd", title: "3rd" },
+  { id: "charge-bridge", title: "Bridge" },
+];
+
+const termLengths = [
+  { id: "term-1yr", title: "1 year" },
+  { id: "term-18m", title: "18 months" },
+  { id: "term-3yr", title: "3 years" },
+  { id: "term-5yr", title: "5 years" },
+  { id: "term-10yr", title: "10 years" },
+  { id: "term-25yr", title: "25 years" },
+  { id: "term-30yr", title: "30 years" },
+  { id: "term-other", title: "Other" },
+];
+
+const propertyStyles = [
+  {
+    id: "industrial-manufacturing-facility",
+    label: "Industrial - Manufacturing Facility",
+  },
+  {
+    id: "industrial-warehouse/distribution-facility",
+    label: "Industrial - Warehouse/Distribution Facility",
+  },
+  {
+    id: "industrial-flex/multi-purpose-facility",
+    label: "Industrial - Flex/Multi-Purpose Facility",
+  },
+  {
+    id: "retail-enclosed shopping mall",
+    label: "Retail - Enclosed Shopping Mall",
+  },
+  {
+    id: "retail-shopping plaza or strip mall",
+    label: "Retail - Shopping Plaza or Strip Mall",
+  },
+  {
+    id: "retail-pad/standalone building",
+    label: "Retail - Pad/Standalone Building",
+  },
+  { id: "office-office building", label: "Office - Office Building" },
+  { id: "office-suite or condominium", label: "Office - Suite or Condominium" },
+  {
+    id: "office-professional suites (dental, medical, legal, etc.)",
+    label: "Office - Professional Suites (Dental, Medical, Legal, etc.)",
+  },
+  {
+    id: "multi-family residential units (mfru) - condominiums,",
+    label: "Multi-Family Residential Units (MFRU) - Condominiums,",
+  },
+  {
+    id: "apartment buildings, commercial/offices",
+    label: "Apartment Buildings, Commercial/Offices",
+  },
+  {
+    id: "multi-dwelling unit (mdu) - townhomes, condominiums,",
+    label: "Multi-Dwelling Unit (MDU) - Townhomes, Condominiums,",
+  },
+  { id: "apartment buildings", label: "Apartment Buildings" },
+  { id: "residential homes/estates", label: "Residential Homes/Estates" },
+  { id: "hotel & lodging", label: "Hotel & Lodging" },
+  { id: "restaurant", label: "Restaurant" },
+  { id: "cottage", label: "Cottage" },
+  { id: "land", label: "Land" },
+];
+
 export default {
-  components: { Container, Form, FileInput, RadioListSimple, CheckListSimple },
+  components: {
+    Container,
+    Form,
+    FileInput,
+    RadioListSimple,
+    CheckListSimple,
+    TextInput,
+  },
   setup() {
     return {
       navigation,
-      mortageTypes,
+      mortgageTypes,
+      chargeTypes,
+      termLengths,
+      propertyStyles,
     };
   },
 };

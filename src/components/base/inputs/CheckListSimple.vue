@@ -11,7 +11,7 @@
           <div class="flex items-center h-5">
             <input
               :id="item.id"
-              :name="item.title"
+              :name="item.id"
               type="checkbox"
               class="
                 focus:ring-indigo-500
@@ -21,15 +21,16 @@
                 border-gray-300
                 rounded
               "
+              @change="onChange"
             />
           </div>
           <div class="ml-3 text-sm">
-            <label :for="item.title" class="font-medium text-gray-700">{{
+            <label :for="item.id" class="font-medium text-gray-700">{{
               item.title
             }}</label>
-            <!-- <p id="comments-description" class="text-gray-500">
-              Get notified when someones posts a comment on a posting.
-            </p> -->
+            <p id="comments-description" class="text-gray-500">
+              {{ item.description }}
+            </p>
           </div>
           <!-- <input
             :id="item.id"
@@ -84,6 +85,11 @@ export default {
     legend: {
       type: String,
       default: "Notification Method",
+    },
+  },
+  methods: {
+    onChange(event) {
+      this.$emit("change", event);
     },
   },
 };
