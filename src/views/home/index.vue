@@ -41,6 +41,7 @@
             <RadioListSimple
               title="Mortgage Deal Type"
               :items="mortgageTypes"
+              itemsName="mortgages"
             />
           </div>
         </Form>
@@ -61,7 +62,7 @@
             <TextInput label="Property Location(s)" />
           </div>
 
-          <div
+          <fieldset
             class="form-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6"
           >
             <div class="w-full space-y-6">
@@ -76,22 +77,42 @@
 
               <SelectInput label="Property Style" :items="propertyStyles" />
             </div>
-          </div>
+          </fieldset>
 
-          <div
+          <fieldset
             class="form-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6"
           >
             <div class="space-y-6">
               <TextInput type="number" label="Minimum Square Footage" />
               <TextInput type="number" label="Maximum Square Footage" />
-              <RadioListSimple title="Location" :items="locations" />
-              <RadioListSimple title="Air-Conditioning" :items="acOptions" />
-              <RadioListSimple title="Water" :items="waterOptions" />
-              <RadioListSimple title="Heating" :items="heatOptions" />
-              <RadioListSimple title="Sewage" :items="sewageOptions" />
+              <RadioListSimple
+                itemsName="location"
+                title="Location"
+                :items="locations"
+              />
+              <RadioListSimple
+                itemsName="air"
+                title="Air-Conditioning"
+                :items="acOptions"
+              />
+              <RadioListSimple
+                itemsName="water"
+                title="Water"
+                :items="waterOptions"
+              />
+              <RadioListSimple
+                itemsName="heating"
+                title="Heating"
+                :items="heatOptions"
+              />
+              <RadioListSimple
+                itemsName="sewage"
+                title="Sewage"
+                :items="sewageOptions"
+              />
             </div>
 
-            <div class="space-y-6">
+            <fieldset class="space-y-6">
               <CheckListSimple
                 title="Loan Types Offered"
                 :items="loanTypes"
@@ -116,13 +137,15 @@
 
               <TextInput type="number" label="Maximum GDS" />
               <TextInput type="number" label="Maximum TDS" />
-            </div>
-          </div>
+            </fieldset>
+          </fieldset>
 
-          <div class="form-full space-y-6">
+          <fieldset class="form-full space-y-6">
             <CheckListSimple title="Bankruptcy" :items="bankruptcyOptions" />
             <CheckListSimple title="Consumer" :items="consumerOptions" />
-          </div>
+          </fieldset>
+
+          <hr class="form-full relative top-4" />
 
           <div class="form-full mt-6">
             <h3 class="text-lg leading-6 font-medium text-gray-900">
@@ -130,7 +153,7 @@
             </h3>
           </div>
 
-          <div
+          <fieldset
             class="form-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6"
           >
             <div class="space-y-6">
@@ -161,7 +184,7 @@
                 itemsName="erl-review"
               />
             </div>
-          </div>
+          </fieldset>
 
           <!-- Geotechnical Report(s) & Peer Review(s) -->
           <div class="form-full mt-6">
@@ -170,7 +193,7 @@
             </h3>
           </div>
 
-          <div
+          <fieldset
             class="form-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6"
           >
             <div class="space-y-6">
@@ -202,7 +225,7 @@
                 itemsName="grl-review"
               />
             </div>
-          </div>
+          </fieldset>
 
           <!-- Appraisal Report(s) & Peer Review(s) -->
           <div class="form-full mt-6">
@@ -211,7 +234,7 @@
             </h3>
           </div>
 
-          <div
+          <fieldset
             class="form-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6"
           >
             <div class="space-y-6">
@@ -243,9 +266,9 @@
                 itemsName="arl-review"
               />
             </div>
-          </div>
+          </fieldset>
 
-          <div
+          <fieldset
             class="form-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6"
           >
             <div class="space-y-6">
@@ -271,19 +294,21 @@
                 itemsName="market"
               />
             </div>
-          </div>
+          </fieldset>
 
-          <!-- Insurance -->
-          <div class="form-full mt-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Insurance
-            </h3>
-          </div>
-
-          <div
-            class="form-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6"
+          <fieldset
+            class="
+              form-full
+              grid grid-cols-1
+              md:grid-cols-2
+              gap-x-12 gap-y-6
+              py-6
+            "
           >
             <div class="space-y-6">
+              <h3 class="text-lg leading-6 font-medium text-gray-900">
+                Insurance
+              </h3>
               <RadioListSimple
                 title="Insurance Policies for the Property"
                 :items="insuranceOptions"
@@ -292,11 +317,85 @@
             </div>
 
             <div class="space-y-6">
-              something else
-              <!-- <RadioListSimple
-                title="Insurance for the Property"
-                :items="insuranceOptions"
-              /> -->
+              <h3 class="text-lg leading-6 font-medium text-gray-900">
+                Project Drawings
+              </h3>
+              <RadioListSimple
+                title="Project Drawings for the Property"
+                :items="drawingOptions"
+                itemsName="drawing"
+              />
+            </div>
+          </fieldset>
+
+          <fieldset
+            class="
+              form-full
+              grid grid-cols-1
+              md:grid-cols-2
+              gap-x-12 gap-y-6
+              py-6
+            "
+          >
+            <div class="space-y-6">
+              <h3 class="text-lg leading-6 font-medium text-gray-900">
+                Property Taxes
+              </h3>
+              <RadioListSimple
+                title="Property Taxes current (paid) for the Property"
+                :items="propertyTaxOptions"
+                itemsName="property-tax"
+              />
+            </div>
+
+            <div class="space-y-6">
+              <h3 class="text-lg leading-6 font-medium text-gray-900">
+                Title Searches
+              </h3>
+              <RadioListSimple
+                title="Title Searches for the Property"
+                :items="titleSearchOptions"
+                itemsName="title-search"
+              />
+            </div>
+          </fieldset>
+
+          <fieldset
+            class="
+              form-full
+              grid grid-cols-1
+              md:grid-cols-2
+              gap-x-12 gap-y-6
+              py-6
+            "
+          >
+            <div class="space-y-6">
+              <h3 class="text-lg leading-6 font-medium text-gray-900">
+                Project Budget/Proforma
+              </h3>
+              <RadioListSimple
+                title="Budget or Financial Proforma for the Property"
+                :items="projectBudgetOptions"
+                itemsName="project-budget"
+              />
+            </div>
+
+            <div class="space-y-6">
+              <h3 class="text-lg leading-6 font-medium text-gray-900">
+                Title Insurance
+              </h3>
+              <RadioListSimple
+                title="Title Insurance for the Property"
+                :items="titleInsuranceOptions"
+                itemsName="title-insurance"
+              />
+            </div>
+          </fieldset>
+
+          <div class="form-full">
+            <div class="w-2/3 space-y-6">
+              <TextInput label="Any Brokers/Brokerages Not Allowed" />
+              <TextInput label="Any Preferred Brokers/Brokerages" />
             </div>
           </div>
         </Form>
@@ -476,20 +575,6 @@ const consumerOptions = [
   },
 ];
 
-/**
- * 
- * Debt Consolidation
- 		Investment
-Improvements (minor)
-Renovation (major)
-Purchase Land Only
-Purchase Land with Existing Structure
-Construction
-Purchase + Construction
-Mortgage Arrears 
-Other 
- */
-
 const allowableLoanPurposes = [
   { id: "loan-purpose-investment", label: "Investment" },
   { id: "loan-purpose-improvements", label: "Improvements (minor)" },
@@ -534,6 +619,11 @@ const arlReviewOptions = getProvidedOptions("arlReview");
 const surveyOptions = getProvidedOptions("survey");
 const marketOptions = getProvidedOptions("market");
 const insuranceOptions = getProvidedOptions("insurance");
+const drawingOptions = getProvidedOptions("project");
+const propertyTaxOptions = getProvidedOptions("propertyTax");
+const titleSearchOptions = getProvidedOptions("titleSearch");
+const projectBudgetOptions = getProvidedOptions("projectBudget");
+const titleInsuranceOptions = getProvidedOptions("titleInsurance");
 
 export default {
   components: {
@@ -578,6 +668,11 @@ export default {
       surveyOptions,
       marketOptions,
       insuranceOptions,
+      drawingOptions,
+      propertyTaxOptions,
+      titleSearchOptions,
+      projectBudgetOptions,
+      titleInsuranceOptions,
     };
   },
 };
