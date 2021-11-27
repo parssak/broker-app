@@ -53,7 +53,7 @@ export default {
     },
     description: {
       type: String,
-      default: "Lorem ipsum dolor sit amet, consectetur?",
+      default: " ",
     },
     items: {
       type: Array,

@@ -57,7 +57,6 @@ export default {
     },
     itemsName: {
       type: String,
-      default: "notification-method",
     },
     legend: {
       type: String,

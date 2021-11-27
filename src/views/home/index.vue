@@ -60,6 +60,7 @@
           <div class="form-full w-2/3">
             <TextInput label="Property Location(s)" />
           </div>
+
           <div
             class="form-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6"
           >
@@ -76,6 +77,7 @@
               <SelectInput label="Property Style" :items="propertyStyles" />
             </div>
           </div>
+
           <div
             class="form-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6"
           >
@@ -118,28 +120,183 @@
           </div>
 
           <div class="form-full space-y-6">
-            <SwitchWithLabel
-              label="Previous Bankruptcy"
-              secondaryLabel=" (Any Borrowers/Officers/Directors/Officers)"
-            />
-            <SwitchWithLabel
-              label="Current Bankruptcy"
-              secondaryLabel=" (Any Borrowers/Officers/Directors/Officers)"
-            />
-            <SwitchWithLabel
-              label="Previous Consumer Proposal"
-              secondaryLabel=" (Any
-            Borrowers/Officers/Directors/Officers)"
-            />
-            <SwitchWithLabel
-              label="Current Consumer Proposal"
-              secondaryLabel=" (Any
-            Borrowers/Officers/Directors/Officers)"
-            />
+            <CheckListSimple title="Bankruptcy" :items="bankruptcyOptions" />
+            <CheckListSimple title="Consumer" :items="consumerOptions" />
           </div>
-          <div class="form-full">
-            <div class="todo font-mono">
-              Environment + appraisal report, surveys, etc...
+
+          <div class="form-full mt-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Environmental Report(s), Reliance Letter(s) & Peer Review(s)
+            </h3>
+          </div>
+
+          <div
+            class="form-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6"
+          >
+            <div class="space-y-6">
+              <!-- Environmental Site Assessment (ESA) for the Property? -->
+              <RadioListSimple
+                title="Environmental Site Assessment (ESA) for the Property?"
+                :items="esaOptions"
+                itemsName="esa"
+              />
+              <!-- Peer Review of ESA -->
+              <RadioListSimple
+                title="Peer Review of ESA"
+                :items="esaReviewOptions"
+                itemsName="esa-review"
+              />
+            </div>
+            <div class="space-y-6">
+              <!-- Environmental Reliance Letter (ERL) for the Property? -->
+              <RadioListSimple
+                title="Environmental Reliance Letter (ERL) for the Property?"
+                :items="erlOptions"
+                itemsName="erl"
+              />
+              <!-- Peer Review of ERL -->
+              <RadioListSimple
+                title="Peer Review of ERL"
+                :items="erlReviewOptions"
+                itemsName="erl-review"
+              />
+            </div>
+          </div>
+
+          <!-- Geotechnical Report(s) & Peer Review(s) -->
+          <div class="form-full mt-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Geotechnical Report(s) & Peer Review(s)
+            </h3>
+          </div>
+
+          <div
+            class="form-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6"
+          >
+            <div class="space-y-6">
+              <!-- Geotechnical Report (GR) for the Property -->
+              <RadioListSimple
+                title="Geotechnical Report (GR) for the Property"
+                :items="grOptions"
+                itemsName="gr"
+              />
+              <!-- Peer Review of GR -->
+              <RadioListSimple
+                title="Peer Review of GR"
+                :items="grReviewOptions"
+                itemsName="gr-review"
+              />
+            </div>
+
+            <div class="space-y-6">
+              <!-- Geotechnical Reliance Letter (GRL) for the Property -->
+              <RadioListSimple
+                title="Geotechnical Reliance Letter (GRL) for the Property"
+                :items="grlOptions"
+                itemsName="grl"
+              />
+              <!-- Peer Review of GRL -->
+              <RadioListSimple
+                title="Peer Review of GRL"
+                :items="grlReviewOptions"
+                itemsName="grl-review"
+              />
+            </div>
+          </div>
+
+          <!-- Appraisal Report(s) & Peer Review(s) -->
+          <div class="form-full mt-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Appraisal Report(s) & Peer Review(s)
+            </h3>
+          </div>
+
+          <div
+            class="form-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6"
+          >
+            <div class="space-y-6">
+              <!-- Appraisal Report (AR) for the Property -->
+              <RadioListSimple
+                title="Appraisal Report (AR) for the Property"
+                :items="arOptions"
+                itemsName="ar"
+              />
+              <!-- Peer Review of AR -->
+              <RadioListSimple
+                title="Peer Review of AR"
+                :items="arReviewOptions"
+                itemsName="ar-review"
+              />
+            </div>
+
+            <div class="space-y-6">
+              <!-- Appraisal Reliance Letter (ARL) for the Property -->
+              <RadioListSimple
+                title="Appraisal Reliance Letter (ARL) for the Property"
+                :items="arlOptions"
+                itemsName="arl"
+              />
+              <!-- Peer Review of ARL -->
+              <RadioListSimple
+                title="Peer Review of ARL"
+                :items="arlReviewOptions"
+                itemsName="arl-review"
+              />
+            </div>
+          </div>
+
+          <div
+            class="form-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6"
+          >
+            <div class="space-y-6">
+              <h3 class="text-lg leading-6 font-medium text-gray-900">
+                Survey(s)
+              </h3>
+              <!-- Current Survey for the Property -->
+              <RadioListSimple
+                title="Current Survey for the Property"
+                :items="surveyOptions"
+                itemsName="survey"
+              />
+            </div>
+
+            <div class="space-y-6">
+              <h3 class="text-lg leading-6 font-medium text-gray-900">
+                Market Research & Analysis
+              </h3>
+              <!-- Market Research & Analysis of the Property -->
+              <RadioListSimple
+                title="Market Research & Analysis of the Property"
+                :items="marketOptions"
+                itemsName="market"
+              />
+            </div>
+          </div>
+
+          <!-- Insurance -->
+          <div class="form-full mt-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Insurance
+            </h3>
+          </div>
+
+          <div
+            class="form-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6"
+          >
+            <div class="space-y-6">
+              <RadioListSimple
+                title="Insurance Policies for the Property"
+                :items="insuranceOptions"
+                itemsName="insurance"
+              />
+            </div>
+
+            <div class="space-y-6">
+              something else
+              <!-- <RadioListSimple
+                title="Insurance for the Property"
+                :items="insuranceOptions"
+              /> -->
             </div>
           </div>
         </Form>
@@ -293,6 +450,32 @@ const loanTypes = [
   { id: "loan-open", label: "Open" },
 ];
 
+const bankruptcyOptions = [
+  {
+    id: "bankruptcy-previous",
+    label: "Previous Bankruptcy",
+    description: "(Any Borrowers/Officers/Directors/Officers)",
+  },
+  {
+    id: "bankruptcy-current",
+    label: "Current Bankruptcy",
+    description: "(Any Borrowers/Officers/Directors/Officers)",
+  },
+];
+
+const consumerOptions = [
+  {
+    id: "consumer-previous",
+    label: "Previous Consumer Proposal",
+    description: "(Any Borrowers/Officers/Directors/Officers)",
+  },
+  {
+    id: "consumer-current",
+    label: "Current Consumer Proposal",
+    description: "(Any Borrowers/Officers/Directors/Officers)",
+  },
+];
+
 /**
  * 
  * Debt Consolidation
@@ -325,6 +508,33 @@ const allowableLoanPurposes = [
   { id: "loan-purpose-other", label: "Other" },
 ];
 
+const getProvidedOptions = (identifier) => {
+  return [
+    { id: `${identifier}-must-be-provided`, label: "Must be provided" },
+    {
+      id: `${identifier}-needed-future`,
+      label: "Will need to be provided in the future",
+    },
+    { id: `${identifier}-either`, label: "Either" },
+  ];
+};
+
+const esaOptions = getProvidedOptions("esa");
+const esaReviewOptions = getProvidedOptions("esaReview");
+const erlOptions = getProvidedOptions("erl");
+const erlReviewOptions = getProvidedOptions("erlReview");
+const grOptions = getProvidedOptions("gr");
+const grReviewOptions = getProvidedOptions("grReview");
+const grlOptions = getProvidedOptions("grl");
+const grlReviewOptions = getProvidedOptions("grlReview");
+const arOptions = getProvidedOptions("ar");
+const arReviewOptions = getProvidedOptions("arReview");
+const arlOptions = getProvidedOptions("arl");
+const arlReviewOptions = getProvidedOptions("arlReview");
+const surveyOptions = getProvidedOptions("survey");
+const marketOptions = getProvidedOptions("market");
+const insuranceOptions = getProvidedOptions("insurance");
+
 export default {
   components: {
     Container,
@@ -351,6 +561,23 @@ export default {
       sewageOptions,
       loanTypes,
       allowableLoanPurposes,
+      bankruptcyOptions,
+      consumerOptions,
+      esaOptions,
+      esaReviewOptions,
+      erlOptions,
+      erlReviewOptions,
+      grOptions,
+      grReviewOptions,
+      grlOptions,
+      grlReviewOptions,
+      arOptions,
+      arReviewOptions,
+      arlOptions,
+      arlReviewOptions,
+      surveyOptions,
+      marketOptions,
+      insuranceOptions,
     };
   },
 };
