@@ -33,6 +33,18 @@
       </aside>
 
       <div class="space-y-6 sm:px-6 lg:px-0 lg:col-span-9">
+        <Form title="Initial Broker Questions" description=" ">
+          <div class="form-full">
+            <RadioListSimple title="Mortgage Deal Type" :items="mortageTypes" />
+          </div>
+        </Form>
+
+        <Form title="Add to Ledgers Questions" description=" ">
+          <div class="form-full">
+            <CheckListSimple title="Mortgage Deal Type" :items="mortageTypes" />
+          </div>
+        </Form>
+
         <form action="#" method="POST">
           <div class="shadow sm:rounded-md sm:overflow-hidden">
             <div class="bg-white py-6 px-4 space-y-6 sm:p-6">
@@ -742,6 +754,8 @@
 </template>
 
 <script>
+import CheckListSimple from "../../components/base/inputs/CheckListSimple.vue";
+import RadioListSimple from "../../components/base/inputs/RadioListSimple.vue";
 import FileInput from "../../components/base/inputs/FileInput.vue";
 import Form from "../../components/app/Form.vue";
 import Container from "../../components/layouts/Container.vue";
@@ -761,11 +775,24 @@ const navigation = [
   { name: "Integrations", href: "#", icon: ViewGridAddIcon, current: false },
 ];
 
+const mortageTypes = [
+  { id: "residential", title: "Residential" },
+  {
+    id: "commercial-less-3",
+    title: "Commercial &/or Construction (Less than $3 million total value)",
+  },
+  {
+    id: "commerial-more-3",
+    title: "Commercial &/or Construction (More than $3 million total value)",
+  },
+];
+
 export default {
-  components: { Container, Form, FileInput },
+  components: { Container, Form, FileInput, RadioListSimple, CheckListSimple },
   setup() {
     return {
       navigation,
+      mortageTypes,
     };
   },
 };
