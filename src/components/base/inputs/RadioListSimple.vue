@@ -26,7 +26,7 @@
             :for="item.id"
             class="ml-3 block text-sm font-medium text-gray-700"
           >
-            {{ item.title }}
+            {{ item.label }}
           </label>
         </div>
       </div>
@@ -36,9 +36,9 @@
 
 <script>
 const defaultItems = [
-  { id: "email", title: "Email" },
-  { id: "sms", title: "Phone (SMS)" },
-  { id: "push", title: "Push notification" },
+  { id: "email", label: "Email" },
+  { id: "sms", label: "Phone (SMS)" },
+  { id: "push", label: "Push notification" },
 ];
 
 export default {
@@ -49,7 +49,7 @@ export default {
     },
     description: {
       type: String,
-      default: "Lorem ipsum dolor sit amet, consectetur?",
+      default: " ",
     },
     items: {
       type: Array,

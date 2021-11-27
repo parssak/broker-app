@@ -26,31 +26,12 @@
           </div>
           <div class="ml-3 text-sm">
             <label :for="item.id" class="font-medium text-gray-700">{{
-              item.title
+              item.label
             }}</label>
             <p id="comments-description" class="text-gray-500">
               {{ item.description }}
             </p>
           </div>
-          <!-- <input
-            :id="item.id"
-            :name="itemsName"
-            type="radio"
-            :checked="item.id === 'email'"
-            class="
-              focus:ring-indigo-500
-              h-4
-              w-4
-              text-indigo-600
-              border-gray-300
-            "
-          />
-          <label
-            :for="item.id"
-            class="ml-3 block text-sm font-medium text-gray-700"
-          >
-            {{ item.title }}
-          </label> -->
         </div>
       </div>
     </fieldset>
@@ -59,9 +40,9 @@
 
 <script>
 const defaultItems = [
-  { id: "email", title: "Email" },
-  { id: "sms", title: "Phone (SMS)" },
-  { id: "push", title: "Push notification" },
+  { id: "email", label: "Email" },
+  { id: "sms", label: "Phone (SMS)" },
+  { id: "push", label: "Push notification" },
 ];
 
 export default {

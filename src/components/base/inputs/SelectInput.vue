@@ -61,6 +61,7 @@
             overflow-auto
             focus:outline-none
             sm:text-sm
+            unstyled
           "
         >
           <ListboxOption
@@ -148,7 +149,6 @@ export default {
   },
   setup(props) {
     const selected = ref(props.items[0]);
-
     return {
       selected,
     };

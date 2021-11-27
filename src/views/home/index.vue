@@ -1,8 +1,10 @@
 <template>
-  <Container>
+  <Container class="bg-gray-100">
     <div class="lg:grid lg:grid-cols-12 lg:gap-x-5">
-      <aside class="py-6 px-2 sm:px-6 lg:py-0 lg:px-0 lg:col-span-3">
-        <nav class="space-y-1">
+      <aside
+        class="py-6 px-2 sm:px-6 lg:py-0 lg:px-0 lg:col-span-3 relative w-full"
+      >
+        <nav class="space-y-1 top-10 w-full sticky">
           <a
             v-for="item in navigation"
             :key="item.name"
@@ -33,6 +35,7 @@
       </aside>
 
       <div class="space-y-6 sm:px-6 lg:px-0 lg:col-span-9">
+        <!-- Initial Broker Questions -->
         <Form title="Initial Broker Questions" description=" ">
           <div class="form-full">
             <RadioListSimple
@@ -42,6 +45,7 @@
           </div>
         </Form>
 
+        <!-- Add to Ledgers Questions -->
         <Form title="Add to Ledgers Questions" description=" ">
           <div class="form-full">
             <CheckListSimple
@@ -51,6 +55,7 @@
           </div>
         </Form>
 
+        <!-- Mortgage Lending Criteria < $3M -->
         <Form title="Mortgage Lending Criteria < $3M" description=" ">
           <div class="form-full w-2/3">
             <TextInput label="Property Location(s)" />
@@ -65,15 +70,60 @@
                 description="Select all that apply"
               />
             </div>
-            <div class="w-full">
+            <div class="w-full space-y-6">
               <CheckListSimple title="Charges Offered" :items="chargeTypes" />
 
-              <SelectInput />
+              <SelectInput label="Property Style" :items="propertyStyles" />
             </div>
           </div>
+          <div
+            class="form-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6"
+          >
+            <div class="space-y-6">
+              <TextInput type="number" label="Minimum Square Footage" />
+              <TextInput type="number" label="Maximum Square Footage" />
+              <RadioListSimple title="Location" :items="locations" />
+              <RadioListSimple title="Air-Conditioning" :items="acOptions" />
+              <RadioListSimple title="Water" :items="waterOptions" />
+              <RadioListSimple title="Heating" :items="heatOptions" />
+              <RadioListSimple title="Sewage" :items="sewageOptions" />
+            </div>
+
+            <div class="space-y-6">
+              <CheckListSimple
+                title="Loan Types Offered"
+                :items="loanTypes"
+                description="Select all that apply"
+              />
+              <CheckListSimple
+                title="Allowable Loan Purposes"
+                :items="loanPurposes"
+                description="Select all that apply"
+              />
+              <MoneyInput label="Minimum Loan Amount" />
+              <MoneyInput label="Maximum Loan Amount" />
+              <TextInput type="number" label="Maximum LTV (Loan-To-Value)" />
+
+              <div>Collateral/Blanket Charges</div>
+              <div>Non-Resident Corporation - Borrowers(s)</div>
+              <div>Maximum GDS</div>
+            </div>
+          </div>
+          <div class="form-full space-y-6">
+            <SwitchWithLabel
+              label="Previous Bankruptcy"
+              secondaryLabel=" (Any Borrowers/Officers/Directors/Officers)"
+            />
+            <SwitchWithLabel
+              label="Previous Consumer Proposal"
+              secondaryLabel=" (Any
+            Borrowers/Officers/Directors/Officers)"
+            />
+          </div>
+          <div>Previous Consumer Proposal :</div>
         </Form>
 
-        <form action="#" method="POST">
+        <!-- <form action="#" method="POST">
           <div class="shadow sm:rounded-md sm:overflow-hidden">
             <div class="bg-white py-6 px-4 space-y-6 sm:p-6">
               <div>
@@ -302,12 +352,6 @@
             </div>
           </div>
         </form>
-
-        <Form title="Profile">
-          <div class="col-span-3">
-            <FileInput />
-          </div>
-        </Form>
 
         <form action="#" method="POST">
           <div class="shadow sm:rounded-md sm:overflow-hidden">
@@ -775,13 +819,15 @@
               </button>
             </div>
           </div>
-        </form>
+        </form> -->
       </div>
     </div>
   </Container>
 </template>
 
 <script>
+import SwitchWithLabel from "../../components/base/inputs/SwitchWithLabel.vue";
+import MoneyInput from "../../components/base/inputs/MoneyInput.vue";
 import SelectInput from "../../components/base/inputs/SelectInput.vue";
 import TextInput from "../../components/base/inputs/TextInput.vue";
 import CheckListSimple from "../../components/base/inputs/CheckListSimple.vue";
@@ -806,33 +852,33 @@ const navigation = [
 ];
 
 const mortgageTypes = [
-  { id: "residential", title: "Residential" },
+  { id: "residential", label: "Residential" },
   {
     id: "commercial-less-3",
-    title: "Commercial &/or Construction (Less than $3 million total value)",
+    label: "Commercial &/or Construction (Less than $3 million total value)",
   },
   {
     id: "commerial-more-3",
-    title: "Commercial &/or Construction (More than $3 million total value)",
+    label: "Commercial &/or Construction (More than $3 million total value)",
   },
 ];
 
 const chargeTypes = [
-  { id: "charge-1st", title: "1st" },
-  { id: "charge-2nd", title: "2nd" },
-  { id: "charge-3rd", title: "3rd" },
-  { id: "charge-bridge", title: "Bridge" },
+  { id: "charge-1st", label: "1st" },
+  { id: "charge-2nd", label: "2nd" },
+  { id: "charge-3rd", label: "3rd" },
+  { id: "charge-bridge", label: "Bridge" },
 ];
 
 const termLengths = [
-  { id: "term-1yr", title: "1 year" },
-  { id: "term-18m", title: "18 months" },
-  { id: "term-3yr", title: "3 years" },
-  { id: "term-5yr", title: "5 years" },
-  { id: "term-10yr", title: "10 years" },
-  { id: "term-25yr", title: "25 years" },
-  { id: "term-30yr", title: "30 years" },
-  { id: "term-other", title: "Other" },
+  { id: "term-1yr", label: "1 year" },
+  { id: "term-18m", label: "18 months" },
+  { id: "term-3yr", label: "3 years" },
+  { id: "term-5yr", label: "5 years" },
+  { id: "term-10yr", label: "10 years" },
+  { id: "term-25yr", label: "25 years" },
+  { id: "term-30yr", label: "30 years" },
+  { id: "term-other", label: "Other" },
 ];
 
 const propertyStyles = [
@@ -886,6 +932,76 @@ const propertyStyles = [
   { id: "land", label: "Land" },
 ];
 
+const locations = [
+  { id: "urban", label: "Urban" },
+  { id: "rural", label: "Rural" },
+  { id: "either", label: "Either" },
+];
+
+const acOptions = [
+  { id: "ac-yes", label: "Yes" },
+  { id: "ac-no", label: "No" },
+  { id: "ac-not-relevant", label: "Not relevant" },
+];
+
+const waterOptions = [
+  { id: "water-municipal", label: "Municipal" },
+  { id: "water-well", label: "Well Water" },
+  { id: "water-either", label: "Either" },
+];
+
+const heatOptions = [
+  { id: "heat-forced-air", label: "Forced Air/Furnace" },
+  { id: "heat-oil", label: "Heating Oil" },
+  { id: "heat-propane", label: "Propane" },
+  { id: "heat-any", label: "Any" },
+];
+
+const sewageOptions = [
+  { id: "sewage-municipal", label: "Municipal" },
+  { id: "sewage-septic", label: "Septic" },
+  { id: "sewage-either", label: "Either" },
+];
+
+const loanTypes = [
+  { id: "loan-interest-only", label: "Interest Only" },
+  { id: "loan-amortized", label: "Amortized" },
+  { id: "loan-closed", label: "Closed" },
+  { id: "loan-open", label: "Open" },
+];
+
+/**
+ * 
+ * Debt Consolidation
+ 		Investment
+Improvements (minor)
+Renovation (major)
+Purchase Land Only
+Purchase Land with Existing Structure
+Construction
+Purchase + Construction
+Mortgage Arrears 
+Other 
+ */
+
+const allowableLoanPurposes = [
+  { id: "loan-purpose-investment", label: "Investment" },
+  { id: "loan-purpose-improvements", label: "Improvements (minor)" },
+  { id: "loan-purpose-renovation", label: "Renovation (major)" },
+  { id: "loan-purpose-purchase-land-only", label: "Purchase Land Only" },
+  {
+    id: "loan-purpose-purchase-land-with-existing-structure",
+    label: "Purchase Land with Existing Structure",
+  },
+  { id: "loan-purpose-construction", label: "Construction" },
+  {
+    id: "loan-purpose-purchase-plus-construction",
+    label: "Purchase + Construction",
+  },
+  { id: "loan-purpose-mortgage-arrears", label: "Mortgage Arrears" },
+  { id: "loan-purpose-other", label: "Other" },
+];
+
 export default {
   components: {
     Container,
@@ -895,6 +1011,8 @@ export default {
     CheckListSimple,
     TextInput,
     SelectInput,
+    MoneyInput,
+    SwitchWithLabel,
   },
   setup() {
     return {
@@ -903,6 +1021,13 @@ export default {
       chargeTypes,
       termLengths,
       propertyStyles,
+      locations,
+      acOptions,
+      waterOptions,
+      heatOptions,
+      sewageOptions,
+      loanTypes,
+      allowableLoanPurposes,
     };
   },
 };
