@@ -166,7 +166,7 @@
 </template>
 
 <script>
-import NumberInput from "../../base/NumberInput.vue";
+import NumberInput from "../../base/inputs/NumberInput.vue";
 import Container from "@/components/layouts/Container.vue";
 import { CheckIcon, ClockIcon } from "@heroicons/vue/solid";
 

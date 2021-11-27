@@ -1,19 +1,3 @@
-<!--
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
 <template>
   <Container>
     <div class="lg:grid lg:grid-cols-12 lg:gap-x-5">
@@ -278,6 +262,12 @@
             </div>
           </div>
         </form>
+
+        <Form title="Profile">
+          <div class="col-span-3">
+            <FileInput />
+          </div>
+        </Form>
 
         <form action="#" method="POST">
           <div class="shadow sm:rounded-md sm:overflow-hidden">
@@ -752,6 +742,8 @@
 </template>
 
 <script>
+import FileInput from "../../components/base/inputs/FileInput.vue";
+import Form from "../../components/app/Form.vue";
 import Container from "../../components/layouts/Container.vue";
 import {
   CreditCardIcon,
@@ -770,7 +762,7 @@ const navigation = [
 ];
 
 export default {
-  components: { Container },
+  components: { Container, Form, FileInput },
   setup() {
     return {
       navigation,
