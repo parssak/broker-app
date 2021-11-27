@@ -67,6 +67,8 @@
             </div>
             <div class="w-full">
               <CheckListSimple title="Charges Offered" :items="chargeTypes" />
+
+              <SelectInput />
             </div>
           </div>
         </Form>
@@ -780,6 +782,7 @@
 </template>
 
 <script>
+import SelectInput from "../../components/base/inputs/SelectInput.vue";
 import TextInput from "../../components/base/inputs/TextInput.vue";
 import CheckListSimple from "../../components/base/inputs/CheckListSimple.vue";
 import RadioListSimple from "../../components/base/inputs/RadioListSimple.vue";
@@ -891,6 +894,7 @@ export default {
     RadioListSimple,
     CheckListSimple,
     TextInput,
+    SelectInput,
   },
   setup() {
     return {
