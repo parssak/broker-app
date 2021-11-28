@@ -5,14 +5,14 @@
       <aside
         class="py-6 px-2 sm:px-6 lg:py-0 lg:px-0 lg:col-span-3 relative w-full"
       >
-        <nav class="space-y-1 top-30 w-full md:w-64 md:fixed">
+        <nav class="space-y-1 top-30 w-full lg:w-64 lg:fixed">
           <a
             v-for="item in navigation"
             :key="item.name"
             :href="item.href"
             :class="[
               item.current
-                ? 'bg-gray-50 text-indigo-700 hover:text-indigo-700 hover:bg-white'
+                ? 'bg-gray-50 text-accent hover:text-accent hover:bg-white'
                 : 'text-gray-900 hover:text-gray-900 hover:bg-gray-50',
               'group rounded-md px-3 py-2 flex items-center text-sm font-medium',
             ]"
@@ -22,7 +22,7 @@
               :is="item.icon"
               :class="[
                 item.current
-                  ? 'text-indigo-500 group-hover:text-indigo-500'
+                  ? 'text-accent group-hover:text-accent'
                   : 'text-gray-400 group-hover:text-gray-500',
                 'flex-shrink-0 -ml-1 mr-3 h-6 w-6',
               ]"
@@ -68,9 +68,21 @@
             />
           </fieldset>
 
-          <SelectInput label="Property Style" :items="propertyStyles" />
-          <Input type="number" label="Minimum Square Footage" />
-          <Input type="number" label="Maximum Square Footage" />
+          <SelectInput
+            label="Property Style"
+            :items="propertyStyles"
+            class="md:w-2/3"
+          />
+          <Input
+            type="number"
+            label="Minimum Square Footage"
+            class="md:w-2/3"
+          />
+          <Input
+            type="number"
+            label="Maximum Square Footage"
+            class="md:w-2/3"
+          />
           <div class="grid md:grid-cols-2 gap-6">
             <RadioListSimple
               itemsName="location"
@@ -106,16 +118,21 @@
             :items="loanTypes"
             description="Select all that apply"
           />
+
           <CheckListSimple
             title="Allowable Loan Purposes"
             :items="allowableLoanPurposes"
             description="Select all that apply"
           />
 
-          <MoneyInput label="Minimum Loan Amount" />
-          <MoneyInput label="Maximum Loan Amount" />
+          <MoneyInput label="Minimum Loan Amount" class="md:w-2/3" />
+          <MoneyInput label="Maximum Loan Amount" class="md:w-2/3" />
 
-          <Input type="number" label="Maximum LTV (Loan-To-Value)" />
+          <Input
+            type="number"
+            label="Maximum LTV (Loan-To-Value)"
+            class="md:w-2/3"
+          />
 
           <SwitchWithLabel label="Collateral/Blanket Charges" />
           <SwitchWithLabel label="Non-Resident Corporation - Borrowers(s)" />
@@ -123,8 +140,8 @@
             label="Non-Citizen/Permanent Resident - Any Directors & Officers:"
           />
 
-          <Input type="number" label="Maximum GDS" />
-          <Input type="number" label="Maximum TDS" />
+          <Input type="number" label="Maximum GDS" class="md:w-2/3" />
+          <Input type="number" label="Maximum TDS" class="md:w-2/3" />
 
           <CheckListSimple title="Bankruptcy" :items="bankruptcyOptions" />
           <CheckListSimple title="Consumer" :items="consumerOptions" />
