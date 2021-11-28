@@ -6,7 +6,13 @@
     </p>
     <fieldset class="mt-4">
       <legend class="sr-only">{{ legend }}</legend>
-      <div :class="horizontal ? 'md:flex items-center md:space-x-8 space-y-4 md:space-y-0' : 'space-y-4'">
+      <div
+        :class="
+          horizontal
+            ? 'md:flex items-center md:space-x-8 space-y-4 md:space-y-0'
+            : 'space-y-4'
+        "
+      >
         <div v-for="item in items" :key="item.id" class="flex items-center">
           <input
             :id="item.id"

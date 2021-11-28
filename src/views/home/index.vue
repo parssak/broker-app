@@ -390,108 +390,333 @@
               class="md:w-2/3"
             />
           </div>
+
           <!-- Borrowers -->
           <div class="form-full">
             <h3 class="text-lg leading-6 font-medium text-gray-900">
               Borrowers
             </h3>
-          </div>
-
-          <fieldset class="form-full space-y-6">
-            <legend class="sr-only">Borrowers</legend>
-            <SwitchWithLabel
-              label="Is there more than 1 borrower?"
-              @change="onMultiBorrowerChange"
-            />
-            <Input
-              label="Number of borrowers"
-              class="md:w-2/3"
-              type="number"
-              v-if="multiBorrower"
-              :min="1"
-              :defaultValue="1"
-              @change="onBorrowerCountChange"
-            />
-            <div
-              :class="`space-y-6 ${b.hidden && 'hidden'}`"
-              v-for="(b, index) in borrowers"
-              :key="b"
-            >
-              <h3 class="text-lg leading-6">Borrower {{ index + 1 }}</h3>
-              <Input
-                label="Name"
-                class="md:w-2/3"
-                @change="
-                  (event) =>
-                    this.onBorrowerFieldChange(
-                      event.target.value,
-                      'name',
-                      index
-                    )
-                "
+            <fieldset class="space-y-6">
+              <legend class="sr-only">Borrowers</legend>
+              <SwitchWithLabel
+                label="Is there more than 1 borrower?"
+                @change="onMultiBorrowerChange"
               />
               <Input
-                label="Incorporation Jurisdiction of Borrower"
-                class="md:w-2/3"
-                placeholder="TODO: Make this Country & Province/State dropdowns"
-              />
-              <Input label="Address of Borrower" class="md:w-2/3" />
-              <Input
-                label="Name of Primary Contact with Borrower"
-                class="md:w-2/3"
-              />
-              <Input
-                label="Primary Contact's Email Address"
-                type="email"
-                class="md:w-2/3"
-              />
-              <Input
-                label="Primary Contact's Mobile Telephone Number"
-                type="email"
-                class="md:w-2/3"
-              />
-              <Input
-                label="Credit Score of Borrower"
+                label="Number of borrowers"
                 class="md:w-2/3"
                 type="number"
+                v-if="multiBorrower"
+                :min="1"
+                :defaultValue="1"
+                @change="onBorrowerCountChange"
               />
-              <RadioListSimple
-                title="Source of Credit Score of Borrower"
-                :items="creditScoreOptions"
-                itemsName="credit-score"
-              />
-              <RadioListSimple
-                title="Preferred Method of Contacting the Primary Contact for Borrower"
-                :items="contactMethodOptions"
-                itemsName="contact-method"
-              />
+              <div
+                :class="`space-y-6 ${b.hidden && 'hidden'}`"
+                v-for="(b, index) in borrowers"
+                :key="b"
+              >
+                <h3 class="text-lg leading-6">Borrower {{ index + 1 }}</h3>
+                <Input
+                  label="Name"
+                  class="md:w-2/3"
+                  @change="
+                    (event) =>
+                      this.onBorrowerFieldChange(
+                        event.target.value,
+                        'name',
+                        index
+                      )
+                  "
+                />
+                <Input
+                  label="Incorporation Jurisdiction of Borrower"
+                  class="md:w-2/3"
+                  placeholder="TODO: Make this Country & Province/State dropdowns"
+                />
+                <Input label="Address of Borrower" class="md:w-2/3" />
+                <Input
+                  label="Name of Primary Contact with Borrower"
+                  class="md:w-2/3"
+                />
+                <Input
+                  label="Primary Contact's Email Address"
+                  type="email"
+                  class="md:w-2/3"
+                />
+                <Input
+                  label="Primary Contact's Mobile Telephone Number"
+                  type="email"
+                  class="md:w-2/3"
+                />
+                <Input
+                  label="Credit Score of Borrower"
+                  class="md:w-2/3"
+                  type="number"
+                />
+                <RadioListSimple
+                  title="Source of Credit Score of Borrower"
+                  :items="creditScoreOptions"
+                  itemsName="credit-score"
+                />
+                <RadioListSimple
+                  title="Preferred Method of Contacting the Primary Contact for Borrower"
+                  :items="contactMethodOptions"
+                  itemsName="contact-method"
+                />
 
-              <FileInput label="Copy of Borrower's Incorporation Certificate" />
-              <FileInput
-                label="Copy of Borrower's Incorporation Articles & Bylaws"
-              />
-              <FileInput
-                label="Copy of Borrower's Incorporation Certification of Status"
-              />
-            </div>
-          </fieldset>
+                <FileInput
+                  label="Copy of Borrower's Incorporation Certificate"
+                />
+                <FileInput
+                  label="Copy of Borrower's Incorporation Articles & Bylaws"
+                />
+                <FileInput
+                  label="Copy of Borrower's Incorporation Certification of Status"
+                />
+              </div>
+            </fieldset>
+          </div>
 
           <!-- Banking Information -->
           <div class="form-full">
             <h3 class="text-lg leading-6 font-medium text-gray-900">
               Banking Information
             </h3>
-          </div>
+            <fieldset class="form-full space-y-6">
+              <legend class="sr-only">Banking Information</legend>
+              <div
+                v-for="(b, index) in borrowers"
+                :key="index"
+                class="space-y-6"
+              >
+                <h3 class="text-lg leading-6">
+                  Banking Information for
+                  {{ b.name || `Borrower ${index + 1}` }}
+                </h3>
+                <Input
+                  label="Bank Name"
+                  class="md:w-2/3"
+                  @change="
+                    (event) =>
+                      this.onBorrowerFieldChange(
+                        event.target.value,
+                        'bankName',
+                        index
+                      )
+                  "
+                />
+                <Input
+                  label="Bank Address"
+                  class="md:w-2/3"
+                  @change="
+                    (event) =>
+                      this.onBorrowerFieldChange(
+                        event.target.value,
+                        'bankAddress',
+                        index
+                      )
+                  "
+                />
+                <!-- Number of years with bank -->
+                <Input
+                  label="Number of years with bank"
+                  class="md:w-2/3"
+                  type="number"
+                  @change="
+                    (event) =>
+                      this.onBorrowerFieldChange(
+                        event.target.value,
+                        'bankYears',
+                        index
+                      )
+                  "
+                />
+                <!-- Primary Contact with Bank -->
+                <Input
+                  label="Name of Primary Contact with Bank"
+                  class="md:w-2/3"
+                  @change="
+                    (event) =>
+                      this.onBorrowerFieldChange(
+                        event.target.value,
+                        'bankContact',
+                        index
+                      )
+                  "
+                />
+                <Input
+                  label="Primary Contact's Email Address"
+                  type="email"
+                  class="md:w-2/3"
+                  @change="
+                    (event) =>
+                      this.onBorrowerFieldChange(
+                        event.target.value,
+                        'bankEmail',
+                        index
+                      )
+                  "
+                />
+                <Input
+                  label="Primary Contact's Mobile Telephone Number"
+                  type="email"
+                  class="md:w-2/3"
+                  @change="
+                    (event) =>
+                      this.onBorrowerFieldChange(
+                        event.target.value,
+                        'bankPhone',
+                        index
+                      )
+                  "
+                />
+                <Input
+                  label="Bank Account Number"
+                  class="md:w-2/3"
+                  @change="
+                    (event) =>
+                      this.onBorrowerFieldChange(
+                        event.target.value,
+                        'bankAccount',
+                        index
+                      )
+                  "
+                />
 
-          <fieldset class="form-full space-y-6">
-            <legend class="sr-only">Banking Information</legend>
-          </fieldset>
+                <RadioListSimple
+                  title="Preferred Method of Contacting the Primary Contact"
+                  :items="bankContactMethods"
+                  itemsName="bank-contact-method"
+                />
+
+                <div class="todo">Additional Bank Account</div>
+              </div>
+            </fieldset>
+          </div>
 
           <!-- Officers, Directors, & Shareholders -->
           <div class="form-full">
             <h3 class="text-lg leading-6 font-medium text-gray-900">
               Officers, Directors, & Shareholders
             </h3>
+            <fieldset class="form-full space-y-6">
+              <legend class="sr-only">
+                Officers, Directors, & Shareholders
+              </legend>
+              <div
+                v-for="(b, index) in borrowers"
+                :key="index"
+                class="space-y-6"
+              >
+                <h3 class="text-lg leading-6">
+                  Officers, Directors, & Shareholders for
+                  {{ b.name || `Borrower ${index + 1}` }}
+                </h3>
+
+                <RadioListSimple
+                  title="Individual Role"
+                  :items="roles"
+                  itemsName="role"
+                  @change="
+                    (event) =>
+                      this.onIndividualFieldChange(
+                        event.target.value,
+                        'role',
+                        index
+                      )
+                  "
+                />
+
+                <Input
+                  label="Name"
+                  class="md:w-2/3"
+                  @change="
+                    (event) =>
+                      this.onIndividualFieldChange(
+                        event.target.value,
+                        'name',
+                        index
+                      )
+                  "
+                />
+
+                <!-- Residency -->
+                <RadioListSimple
+                  title="Residency"
+                  :items="residencyOptions"
+                  itemsName="residency"
+                  @change="
+                    (event) =>
+                      this.onIndividualFieldChange(
+                        event.target.value,
+                        'residency',
+                        index
+                      )
+                  "
+                />
+
+                <!-- Salutations -->
+                <RadioListSimple
+                  title="Salutations"
+                  :items="salutations"
+                  itemsName="salutation"
+                  @change="
+                    (event) =>
+                      this.onIndividualFieldChange(
+                        event.target.value,
+                        'salutation',
+                        index
+                      )
+                  "
+                />
+
+                <!-- dob -->
+                <Input
+                  label="Date of Birth"
+                  class="md:w-2/3"
+                  type="date"
+                  @change="
+                    (event) =>
+                      this.onIndividualFieldChange(
+                        event.target.value,
+                        'dob',
+                        index
+                      )
+                  "
+                />
+
+                <!-- Credit Score -->
+                <Input
+                  label="Credit Score"
+                  class="md:w-2/3"
+                  type="number"
+                  @change="
+                    (event) =>
+                      this.onIndividualFieldChange(
+                        event.target.value,
+                        'creditScore',
+                        index
+                      )
+                  "
+                />
+
+                <!-- Source of Credit Score -->
+                <RadioListSimple
+                  title="Source of Credit Score"
+                  :items="creditScoreSources"
+                  itemsName="credit-score-source"
+                  @change="
+                    (event) =>
+                      this.onIndividualFieldChange(
+                        event.target.value,
+                        'creditScoreSource',
+                        index
+                      )
+                  "
+                />
+              </div>
+            </fieldset>
           </div>
 
           <!-- Employment Information -->
@@ -859,6 +1084,18 @@ const titleInsuranceOptions = getProvidedOptions("titleInsurance");
 
 // Commercial Broker Options
 
+const defaultBorrower = {
+  name: "",
+  hidden: false,
+  bankName: "",
+  bankAddress: "",
+  bankYears: "",
+  bankContact: "",
+  bankEmail: "",
+  bankPhone: "",
+  bankAccount: "",
+};
+
 const creditScoreOptions = [
   { id: "equifax", label: "Equifax" },
   { id: "transunion", label: "Transunion" },
@@ -872,6 +1109,45 @@ const contactMethodOptions = [
   { id: "text", label: "Text Message" },
   { id: "email", label: "Email" },
 ];
+
+const bankContactMethods = [
+  { id: "bank-business-phone", label: "Home/Business Phone" },
+  { id: "bank-cell-phone", label: "Cell Phone" },
+  { id: "bank-text", label: "Text Message" },
+  { id: "bank-email", label: "Email" },
+];
+
+const roles = [
+  { id: "role-officer", label: "Officer" },
+  { id: "role-director", label: "Director" },
+  { id: "role-officer-director", label: "Officer/Director" },
+  { id: "role-shareholder", label: "Shareholder" },
+];
+
+const residencyTypes = [
+  { id: "residency-citizen", label: "Citizen" },
+  { id: "residency-permanent-resident", label: "Permanent Resident" },
+  { id: "residency-non-resident", label: "Non-Resident" },
+];
+
+const salutationTypes = [
+  { id: "salutation-mr", label: "Mr" },
+  { id: "salutation-mrs", label: "Mrs" },
+  { id: "salutation-ms", label: "Ms" },
+  { id: "salutation-dr", label: "Dr" },
+];
+
+const defaultIndividual = {
+  name: "",
+  hidden: false,
+  role: "role-officer",
+  salutation: "salutation-mr",
+  residency: "residency-citizen",
+  dob: "",
+  creditScore: "",
+  creditScoreSource: "",
+  creditScoreSourceOther: "",
+};
 
 export default {
   components: {
@@ -922,20 +1198,21 @@ export default {
       titleSearchOptions,
       projectBudgetOptions,
       titleInsuranceOptions,
+
       // Commercial Broker Options
       creditScoreOptions,
       contactMethodOptions,
+      bankContactMethods,
+      roles,
+      residencyTypes,
+      salutationTypes,
     };
   },
   data() {
     return {
       multiBorrower: false,
-      borrowers: [
-        {
-          name: "",
-          hidden: false,
-        },
-      ],
+      borrowers: [{ ...defaultBorrower }],
+      individuals: [{ ...defaultIndividual }],
     };
   },
   methods: {
@@ -944,6 +1221,12 @@ export default {
         return;
       }
       this.borrowers[index][field] = value;
+    },
+    onIndividualFieldChange(value, field, index) {
+      if (this.individuals.length <= index) {
+        return;
+      }
+      this.individuals[index][field] = value;
     },
     onMultiBorrowerChange(value) {
       this.multiBorrower = value;
@@ -958,10 +1241,7 @@ export default {
     handleBorrowerCountChange(count) {
       if (count > this.borrowers.length) {
         for (let i = this.borrowers.length; i < count; i++) {
-          this.borrowers.push({
-            name: "",
-            hidden: false,
-          });
+          this.borrowers.push({ ...defaultBorrower });
         }
       } else if (count < this.borrowers.length) {
         // Hide all borrowers instead of splicing in case we
