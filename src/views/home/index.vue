@@ -391,92 +391,84 @@
             />
           </div>
 
-          <!-- Borrowers -->
-          <div class="form-full">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Borrowers
-            </h3>
-            <fieldset class="space-y-6">
-              <legend class="sr-only">Borrowers</legend>
-              <SwitchWithLabel
-                label="Is there more than 1 borrower?"
-                @change="onMultiBorrowerChange"
+          <Fieldset title="Borrowers" class="form-full">
+            <SwitchWithLabel
+              label="Is there more than 1 borrower?"
+              @change="onMultiBorrowerChange"
+            />
+            <Input
+              label="Number of borrowers"
+              class="md:w-2/3"
+              type="number"
+              v-if="multiBorrower"
+              :min="1"
+              :defaultValue="1"
+              @change="onBorrowerCountChange"
+            />
+
+            <div
+              :class="`space-y-6 ${b.hidden && 'hidden'}`"
+              v-for="(b, index) in borrowers"
+              :key="b"
+            >
+              <h3 class="text-lg leading-6">Borrower {{ index + 1 }}</h3>
+              <Input
+                label="Name"
+                class="md:w-2/3"
+                @change="
+                  (event) =>
+                    this.onBorrowerFieldChange(
+                      event.target.value,
+                      'name',
+                      index
+                    )
+                "
               />
               <Input
-                label="Number of borrowers"
+                label="Incorporation Jurisdiction of Borrower"
+                class="md:w-2/3"
+                placeholder="TODO: Make this Country & Province/State dropdowns"
+              />
+              <Input label="Address of Borrower" class="md:w-2/3" />
+              <Input
+                label="Name of Primary Contact with Borrower"
+                class="md:w-2/3"
+              />
+              <Input
+                label="Primary Contact's Email Address"
+                type="email"
+                class="md:w-2/3"
+              />
+              <Input
+                label="Primary Contact's Mobile Telephone Number"
+                type="email"
+                class="md:w-2/3"
+              />
+              <Input
+                label="Credit Score of Borrower"
                 class="md:w-2/3"
                 type="number"
-                v-if="multiBorrower"
-                :min="1"
-                :defaultValue="1"
-                @change="onBorrowerCountChange"
               />
-              <div
-                :class="`space-y-6 ${b.hidden && 'hidden'}`"
-                v-for="(b, index) in borrowers"
-                :key="b"
-              >
-                <h3 class="text-lg leading-6">Borrower {{ index + 1 }}</h3>
-                <Input
-                  label="Name"
-                  class="md:w-2/3"
-                  @change="
-                    (event) =>
-                      this.onBorrowerFieldChange(
-                        event.target.value,
-                        'name',
-                        index
-                      )
-                  "
-                />
-                <Input
-                  label="Incorporation Jurisdiction of Borrower"
-                  class="md:w-2/3"
-                  placeholder="TODO: Make this Country & Province/State dropdowns"
-                />
-                <Input label="Address of Borrower" class="md:w-2/3" />
-                <Input
-                  label="Name of Primary Contact with Borrower"
-                  class="md:w-2/3"
-                />
-                <Input
-                  label="Primary Contact's Email Address"
-                  type="email"
-                  class="md:w-2/3"
-                />
-                <Input
-                  label="Primary Contact's Mobile Telephone Number"
-                  type="email"
-                  class="md:w-2/3"
-                />
-                <Input
-                  label="Credit Score of Borrower"
-                  class="md:w-2/3"
-                  type="number"
-                />
-                <RadioListSimple
-                  title="Source of Credit Score of Borrower"
-                  :items="creditScoreOptions"
-                  itemsName="credit-score"
-                />
-                <RadioListSimple
-                  title="Preferred Method of Contacting the Primary Contact for Borrower"
-                  :items="contactMethodOptions"
-                  itemsName="contact-method"
-                />
+              <RadioListSimple
+                title="Source of Credit Score of Borrower"
+                :items="creditScoreOptions"
+                itemsName="credit-score"
+              />
+              <RadioListSimple
+                title="Preferred Method of Contacting the Primary Contact for Borrower"
+                :items="contactMethodOptions"
+                itemsName="contact-method"
+              />
 
-                <FileInput
-                  label="Copy of Borrower's Incorporation Certificate"
-                />
-                <FileInput
-                  label="Copy of Borrower's Incorporation Articles & Bylaws"
-                />
-                <FileInput
-                  label="Copy of Borrower's Incorporation Certification of Status"
-                />
-              </div>
-            </fieldset>
-          </div>
+              <FileInput label="Copy of Borrower's Incorporation Certificate" />
+              <FileInput
+                label="Copy of Borrower's Incorporation Articles & Bylaws"
+              />
+              <FileInput
+                label="Copy of Borrower's Incorporation Certification of Status"
+              />
+            </div>
+          </Fieldset>
 
           <!-- Banking Information -->
           <div class="form-full">
