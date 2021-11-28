@@ -826,7 +826,7 @@
 
           <Fieldset
             title="Net Worth Statements"
-            description="All Parties (Borrowers, Officers, Directors and Other Persons) Named Above MUST complete a Personal Financial Net Worth Statement"
+            description="All Parties (Borrowers, Officers, Directors and Other Persons) named above must complete a Personal Financial Net Worth Statement."
           >
             <div class="todo">Net Worth Statements</div>
           </Fieldset>
@@ -1195,7 +1195,7 @@ const frequencyOptions = [
   { id: "frequency-bi-weekly", label: "Bi-Weekly" },
   { id: "frequency-monthly", label: "Monthly" },
   { id: "frequency-annually", label: "Annually" },
-  { id: "frequency-per-job", label: "Annually" },
+  { id: "frequency-per-job", label: "Per job" },
   { id: "other", label: "Other" },
 ];
 

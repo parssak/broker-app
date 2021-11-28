@@ -7,7 +7,7 @@
     >
       {{ title }}
     </h3>
-    <p v-if="description" class="leading-5 text-sm text-gray-500">
+    <p v-if="description" class="max-w-xl mt-2 text-sm text-gray-500">
       {{ description }}
     </p>
     <fieldset class="space-y-6">
