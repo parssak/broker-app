@@ -5,7 +5,7 @@
       <aside
         class="py-6 px-2 sm:px-6 lg:py-0 lg:px-0 lg:col-span-3 relative w-full"
       >
-        <nav class="space-y-1 top-10 w-full sticky">
+        <nav class="space-y-1 top-30 w-full md:w-64 md:fixed">
           <a
             v-for="item in navigation"
             :key="item.name"
@@ -36,6 +36,7 @@
       </aside>
 
       <div class="space-y-6 sm:px-6 lg:px-0 lg:col-span-9">
+        <Steps />
         <!-- Initial Broker Questions -->
         <Form title="Initial Broker Questions" description=" ">
           <RadioListSimple
@@ -1157,7 +1158,8 @@
 </template>
 
 <script>
-import Header from '../../components/base/Header.vue'
+import Steps from "../../components/app/Steps.vue";
+import Header from "../../components/base/Header.vue";
 import Fieldset from "../../components/app/Fieldset.vue";
 import NumberInput from "../../components/base/inputs/NumberInput.vue";
 import SwitchWithLabel from "../../components/base/inputs/SwitchWithLabel.vue";
@@ -1664,7 +1666,9 @@ export default {
     MoneyInput,
     SwitchWithLabel,
     NumberInput,
-    Fieldset, Header
+    Fieldset,
+    Header,
+    Steps,
   },
   setup() {
     return {

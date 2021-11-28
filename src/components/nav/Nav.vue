@@ -1,5 +1,5 @@
 <template>
-  <Popover class="fixed left-0 w-full top-0 z-20 bg-white shadow">
+  <Popover class="fixed left-0 w-full top-0 z-20 bg-accent-red shadow">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div
         class="
