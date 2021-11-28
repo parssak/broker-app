@@ -148,126 +148,89 @@
             <CheckListSimple title="Consumer" :items="consumerOptions" />
           </fieldset>
 
-          <hr class="form-full relative top-4" />
+          <Fieldset
+            title="Environmental Report(s), Reliance Letter(s) & Peer Review(s)"
+          >
+            <RadioListSimple
+              title="Environmental Site Assessment (ESA) for the Property?"
+              :items="esaOptions"
+              itemsName="esa"
+            />
+            <!-- Peer Review of ESA -->
+            <RadioListSimple
+              title="Peer Review of ESA"
+              :items="esaReviewOptions"
+              itemsName="esa-review"
+            />
+            <!-- Environmental Reliance Letter (ERL) for the Property? -->
+            <RadioListSimple
+              title="Environmental Reliance Letter (ERL) for the Property?"
+              :items="erlOptions"
+              itemsName="erl"
+            />
+            <!-- Peer Review of ERL -->
+            <RadioListSimple
+              title="Peer Review of ERL"
+              :items="erlReviewOptions"
+              itemsName="erl-review"
+            />
+          </Fieldset>
 
-          <div class="form-full mt-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Environmental Report(s), Reliance Letter(s) & Peer Review(s)
-            </h3>
-          </div>
+          <Fieldset title="Geotechnical Report(s) & Peer Review(s)">
+            <RadioListSimple
+              title="Geotechnical Report (GR) for the Property"
+              :items="grOptions"
+              itemsName="gr"
+            />
 
-          <fieldset class="form-full grid gap-y-6">
-            <div class="space-y-6">
-              <!-- Environmental Site Assessment (ESA) for the Property? -->
-              <RadioListSimple
-                title="Environmental Site Assessment (ESA) for the Property?"
-                :items="esaOptions"
-                itemsName="esa"
-              />
-              <!-- Peer Review of ESA -->
-              <RadioListSimple
-                title="Peer Review of ESA"
-                :items="esaReviewOptions"
-                itemsName="esa-review"
-              />
-            </div>
-            <div class="space-y-6">
-              <!-- Environmental Reliance Letter (ERL) for the Property? -->
-              <RadioListSimple
-                title="Environmental Reliance Letter (ERL) for the Property?"
-                :items="erlOptions"
-                itemsName="erl"
-              />
-              <!-- Peer Review of ERL -->
-              <RadioListSimple
-                title="Peer Review of ERL"
-                :items="erlReviewOptions"
-                itemsName="erl-review"
-              />
-            </div>
-          </fieldset>
+            <!-- Peer Review of GR -->
+            <RadioListSimple
+              title="Peer Review of GR"
+              :items="grReviewOptions"
+              itemsName="gr-review"
+            />
 
-          <hr class="form-full relative top-4" />
+            <!-- Geotechnical Reliance Letter (GRL) for the Property -->
+            <RadioListSimple
+              title="Geotechnical Reliance Letter (GRL) for the Property"
+              :items="grlOptions"
+              itemsName="grl"
+            />
 
-          <!-- Geotechnical Report(s) & Peer Review(s) -->
-          <div class="form-full mt-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Geotechnical Report(s) & Peer Review(s)
-            </h3>
-          </div>
+            <!-- Peer Review of GRL -->
+            <RadioListSimple
+              title="Peer Review of GRL"
+              :items="grlReviewOptions"
+              itemsName="grl-review"
+            />
+          </Fieldset>
 
-          <fieldset class="form-full grid gap-y-6">
-            <div class="space-y-6">
-              <!-- Geotechnical Report (GR) for the Property -->
-              <RadioListSimple
-                title="Geotechnical Report (GR) for the Property"
-                :items="grOptions"
-                itemsName="gr"
-              />
-              <!-- Peer Review of GR -->
-              <RadioListSimple
-                title="Peer Review of GR"
-                :items="grReviewOptions"
-                itemsName="gr-review"
-              />
-            </div>
-
-            <div class="space-y-6">
-              <!-- Geotechnical Reliance Letter (GRL) for the Property -->
-              <RadioListSimple
-                title="Geotechnical Reliance Letter (GRL) for the Property"
-                :items="grlOptions"
-                itemsName="grl"
-              />
-              <!-- Peer Review of GRL -->
-              <RadioListSimple
-                title="Peer Review of GRL"
-                :items="grlReviewOptions"
-                itemsName="grl-review"
-              />
-            </div>
-          </fieldset>
-
-          <hr class="form-full relative top-4" />
-
-          <!-- Appraisal Report(s) & Peer Review(s) -->
-          <div class="form-full mt-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Appraisal Report(s) & Peer Review(s)
-            </h3>
-          </div>
-
-          <fieldset class="form-full grid gap-y-6">
-            <div class="space-y-6">
-              <!-- Appraisal Report (AR) for the Property -->
-              <RadioListSimple
-                title="Appraisal Report (AR) for the Property"
-                :items="arOptions"
-                itemsName="ar"
-              />
-              <!-- Peer Review of AR -->
-              <RadioListSimple
-                title="Peer Review of AR"
-                :items="arReviewOptions"
-                itemsName="ar-review"
-              />
-            </div>
-
-            <div class="space-y-6">
-              <!-- Appraisal Reliance Letter (ARL) for the Property -->
-              <RadioListSimple
-                title="Appraisal Reliance Letter (ARL) for the Property"
-                :items="arlOptions"
-                itemsName="arl"
-              />
-              <!-- Peer Review of ARL -->
-              <RadioListSimple
-                title="Peer Review of ARL"
-                :items="arlReviewOptions"
-                itemsName="arl-review"
-              />
-            </div>
-          </fieldset>
+          <Fieldset title="Appraisal Report(s) & Peer Review(s)">
+            <!-- Appraisal Report (AR) for the Property -->
+            <RadioListSimple
+              title="Appraisal Report (AR) for the Property"
+              :items="arOptions"
+              itemsName="ar"
+            />
+            <!-- Peer Review of AR -->
+            <RadioListSimple
+              title="Peer Review of AR"
+              :items="arReviewOptions"
+              itemsName="ar-review"
+            />
+            <!-- Appraisal Reliance Letter (ARL) for the Property -->
+            <RadioListSimple
+              title="Appraisal Reliance Letter (ARL) for the Property"
+              :items="arlOptions"
+              itemsName="arl"
+            />
+            <!-- Peer Review of ARL -->
+            <RadioListSimple
+              title="Peer Review of ARL"
+              :items="arlReviewOptions"
+              itemsName="arl-review"
+            />
+          </Fieldset>
 
           <hr class="form-full relative top-4" />
 
@@ -853,6 +816,7 @@
 </template>
 
 <script>
+import Fieldset from "../../components/app/Fieldset.vue";
 import NumberInput from "../../components/base/inputs/NumberInput.vue";
 import SwitchWithLabel from "../../components/base/inputs/SwitchWithLabel.vue";
 import MoneyInput from "../../components/base/inputs/MoneyInput.vue";
@@ -1153,6 +1117,7 @@ export default {
     MoneyInput,
     SwitchWithLabel,
     NumberInput,
+    Fieldset,
   },
   setup() {
     return {

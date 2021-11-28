@@ -1,4 +1,5 @@
 <template>
+  <hr :class="`form-full relative ${withoutHr && 'hidden'}`" />
   <div class="form-full">
     <h3 class="text-lg leading-6 font-medium text-gray-900">{{ title }}</h3>
     <fieldset class="space-y-6">
@@ -7,3 +8,19 @@
     </fieldset>
   </div>
 </template>
+
+<script>
+export default {
+  name: "Fieldset",
+  props: {
+    title: {
+      type: String,
+      default: "",
+    },
+    withoutHr: {
+      type: Boolean,
+      default: false,
+    },
+  },
+};
+</script>
