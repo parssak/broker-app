@@ -417,9 +417,7 @@
               v-for="(b, index) in borrowers"
               :key="b"
             >
-              <h3 class="text-lg leading-6">
-                Borrower {{ index + 1 }} {{ b.name }}
-              </h3>
+              <h3 class="text-lg leading-6">Borrower {{ index + 1 }}</h3>
               <Input
                 label="Name"
                 class="md:w-2/3"
