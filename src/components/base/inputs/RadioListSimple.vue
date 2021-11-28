@@ -26,7 +26,6 @@
               text-indigo-600
               border-gray-300
             "
-            @change="onChange"
           />
           <label
             :for="item.id"
@@ -73,10 +72,10 @@ export default {
       default: false,
     },
   },
-  methods: {
-    onChange(event) {
-      this.$emit("change", event);
-    },
-  },
+  // methods: {
+  //   onChange(event) {
+  //     this.$emit("change", event);
+  //   },
+  // },
 };
 </script>

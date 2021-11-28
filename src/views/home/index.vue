@@ -479,11 +479,7 @@
                 itemsName="role"
                 @change="
                   (event) =>
-                    this.onIndividualFieldChange(
-                      event.target.value,
-                      'role',
-                      index
-                    )
+                    this.onIndividualFieldChange(event.target.id, 'role', index)
                 "
               />
 
@@ -508,7 +504,7 @@
                 @change="
                   (event) =>
                     this.onIndividualFieldChange(
-                      event.target.value,
+                      event.target.id,
                       'residency',
                       index
                     )
@@ -523,7 +519,7 @@
                 @change="
                   (event) =>
                     this.onIndividualFieldChange(
-                      event.target.value,
+                      event.target.id,
                       'salutation',
                       index
                     )
@@ -568,7 +564,7 @@
                 @change="
                   (event) =>
                     this.onIndividualFieldChange(
-                      event.target.value,
+                      event.target.id,
                       'creditScoreSource',
                       index
                     )
@@ -599,7 +595,7 @@
                 @change="
                   (event) =>
                     this.onIndividualFieldChange(
-                      event.target.value,
+                      event.target.id,
                       'mailingAddress',
                       index
                     )
@@ -644,7 +640,7 @@
                 @change="
                   (event) =>
                     this.onIndividualFieldChange(
-                      event.target.value,
+                      event.target.id,
                       'contactMethod',
                       index
                     )
@@ -667,6 +663,7 @@
 
           <Fieldset title="Employment Information">
             <div class="todo">Employment Information</div>
+
             <div
               v-for="(person, index) in individuals"
               :key="index"
@@ -695,19 +692,20 @@
                 title="Employment Status"
                 :items="employmentStatusOptions"
                 itemsName="employment-status"
-                @change="
+                @input="
                   (event) =>
                     this.onEmploymentFieldChange(
-                      event.target.value,
-                      'employmentStatus',
+                      event.target.id,
+                      'status',
                       index
                     )
                 "
               />
+
               <div
                 v-if="
-                  b.employmentStatus === 'employment-full-time' ||
-                  b.employmentStatus === 'employment-part-time'
+                  person.employment.status === 'employment-full-time' ||
+                  person.employment.status === 'employment-part-time'
                 "
                 class="space-y-6"
               >
@@ -758,17 +756,18 @@
                   @change="
                     (event) =>
                       this.onEmploymentFieldChange(
-                        event.target.value,
+                        event.target.id,
                         'frequency',
                         index
                       )
                   "
                 />
               </div>
+
               <div
                 class="space-y-6"
                 v-else-if="
-                  person.employmentStatus === 'employment-self-employed'
+                  person.employment.status === 'employment-self-employed'
                 "
               >
                 <Input
@@ -798,6 +797,7 @@
                   "
                 />
               </div>
+
               <div v-else>
                 <!-- Other income type -->
                 <CheckboxListSimple
@@ -819,7 +819,6 @@
                   "
                 />
               </div>
-              <!--  -->
             </div>
 
             <MoneyInput label="Total Monthly Income" class="md:w-2/3" />
@@ -1227,6 +1226,9 @@ const defaultIndividual = {
   creditScore: "",
   creditScoreSource: "",
   creditScoreSourceOther: "",
+  employment: {
+    status: "employment-full-time",
+  },
 };
 
 const otherIncomeTypes = [
@@ -1321,6 +1323,14 @@ export default {
         return;
       }
       this.individuals[index][field] = value;
+    },
+    onEmploymentFieldChange(value, field, index) {
+      console.debug(value);
+      if (this.individuals.length <= index) {
+        return;
+      }
+      this.individuals[index].employment[field] = value;
+      console.debug(this.individuals[index].employment);
     },
     onMultiBorrowerChange(value) {
       this.multiBorrower = value;
