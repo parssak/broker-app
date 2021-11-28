@@ -62,6 +62,313 @@
             <TextInput label="Property Location(s)" />
           </div>
 
+          <fieldset class="form-full grid grid-cols-1 gap-x-12 gap-y-6">
+            <div class="w-full space-y-6">
+              <CheckListSimple
+                title="Term Lengths"
+                :items="termLengths"
+                description="Select all that apply"
+              />
+            </div>
+            <div class="w-full space-y-6">
+              <CheckListSimple title="Charges Offered" :items="chargeTypes" />
+
+              <SelectInput label="Property Style" :items="propertyStyles" />
+            </div>
+          </fieldset>
+
+          <fieldset class="form-full grid grid-cols-1 gap-x-12 gap-y-6">
+            <div class="space-y-6">
+              <TextInput type="number" label="Minimum Square Footage" />
+              <TextInput type="number" label="Maximum Square Footage" />
+              <RadioListSimple
+                itemsName="location"
+                title="Location"
+                :items="locations"
+              />
+              <RadioListSimple
+                itemsName="air"
+                title="Air-Conditioning"
+                :items="acOptions"
+              />
+              <RadioListSimple
+                itemsName="water"
+                title="Water"
+                :items="waterOptions"
+              />
+              <RadioListSimple
+                itemsName="heating"
+                title="Heating"
+                :items="heatOptions"
+              />
+              <RadioListSimple
+                itemsName="sewage"
+                title="Sewage"
+                :items="sewageOptions"
+              />
+            </div>
+
+            <fieldset class="space-y-6">
+              <CheckListSimple
+                title="Loan Types Offered"
+                :items="loanTypes"
+                description="Select all that apply"
+              />
+              <CheckListSimple
+                title="Allowable Loan Purposes"
+                :items="loanPurposes"
+                description="Select all that apply"
+              />
+              <MoneyInput label="Minimum Loan Amount" />
+              <MoneyInput label="Maximum Loan Amount" />
+              <TextInput type="number" label="Maximum LTV (Loan-To-Value)" />
+
+              <SwitchWithLabel label="Collateral/Blanket Charges" />
+              <SwitchWithLabel
+                label="Non-Resident Corporation - Borrowers(s)"
+              />
+              <SwitchWithLabel
+                label="Non-Citizen/Permanent Resident - Any Directors & Officers:"
+              />
+
+              <TextInput type="number" label="Maximum GDS" />
+              <TextInput type="number" label="Maximum TDS" />
+            </fieldset>
+          </fieldset>
+
+          <fieldset class="form-full space-y-6">
+            <CheckListSimple title="Bankruptcy" :items="bankruptcyOptions" />
+            <CheckListSimple title="Consumer" :items="consumerOptions" />
+          </fieldset>
+
+          <hr class="form-full relative top-4" />
+
+          <div class="form-full mt-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Environmental Report(s), Reliance Letter(s) & Peer Review(s)
+            </h3>
+          </div>
+
+          <fieldset class="form-full grid grid-cols-1 gap-x-12 gap-y-6">
+            <div class="space-y-6">
+              <!-- Environmental Site Assessment (ESA) for the Property? -->
+              <RadioListSimple
+                title="Environmental Site Assessment (ESA) for the Property?"
+                :items="esaOptions"
+                itemsName="esa"
+              />
+              <!-- Peer Review of ESA -->
+              <RadioListSimple
+                title="Peer Review of ESA"
+                :items="esaReviewOptions"
+                itemsName="esa-review"
+              />
+            </div>
+            <div class="space-y-6">
+              <!-- Environmental Reliance Letter (ERL) for the Property? -->
+              <RadioListSimple
+                title="Environmental Reliance Letter (ERL) for the Property?"
+                :items="erlOptions"
+                itemsName="erl"
+              />
+              <!-- Peer Review of ERL -->
+              <RadioListSimple
+                title="Peer Review of ERL"
+                :items="erlReviewOptions"
+                itemsName="erl-review"
+              />
+            </div>
+          </fieldset>
+
+          <!-- Geotechnical Report(s) & Peer Review(s) -->
+          <div class="form-full mt-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Geotechnical Report(s) & Peer Review(s)
+            </h3>
+          </div>
+
+          <fieldset class="form-full grid grid-cols-1 gap-x-12 gap-y-6">
+            <div class="space-y-6">
+              <!-- Geotechnical Report (GR) for the Property -->
+              <RadioListSimple
+                title="Geotechnical Report (GR) for the Property"
+                :items="grOptions"
+                itemsName="gr"
+              />
+              <!-- Peer Review of GR -->
+              <RadioListSimple
+                title="Peer Review of GR"
+                :items="grReviewOptions"
+                itemsName="gr-review"
+              />
+            </div>
+
+            <div class="space-y-6">
+              <!-- Geotechnical Reliance Letter (GRL) for the Property -->
+              <RadioListSimple
+                title="Geotechnical Reliance Letter (GRL) for the Property"
+                :items="grlOptions"
+                itemsName="grl"
+              />
+              <!-- Peer Review of GRL -->
+              <RadioListSimple
+                title="Peer Review of GRL"
+                :items="grlReviewOptions"
+                itemsName="grl-review"
+              />
+            </div>
+          </fieldset>
+
+          <!-- Appraisal Report(s) & Peer Review(s) -->
+          <div class="form-full mt-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Appraisal Report(s) & Peer Review(s)
+            </h3>
+          </div>
+
+          <fieldset class="form-full grid grid-cols-1 gap-x-12 gap-y-6">
+            <div class="space-y-6">
+              <!-- Appraisal Report (AR) for the Property -->
+              <RadioListSimple
+                title="Appraisal Report (AR) for the Property"
+                :items="arOptions"
+                itemsName="ar"
+              />
+              <!-- Peer Review of AR -->
+              <RadioListSimple
+                title="Peer Review of AR"
+                :items="arReviewOptions"
+                itemsName="ar-review"
+              />
+            </div>
+
+            <div class="space-y-6">
+              <!-- Appraisal Reliance Letter (ARL) for the Property -->
+              <RadioListSimple
+                title="Appraisal Reliance Letter (ARL) for the Property"
+                :items="arlOptions"
+                itemsName="arl"
+              />
+              <!-- Peer Review of ARL -->
+              <RadioListSimple
+                title="Peer Review of ARL"
+                :items="arlReviewOptions"
+                itemsName="arl-review"
+              />
+            </div>
+          </fieldset>
+
+          <fieldset class="form-full grid grid-cols-1 gap-x-12 gap-y-6">
+            <div class="space-y-6">
+              <h3 class="text-lg leading-6 font-medium text-gray-900">
+                Survey(s)
+              </h3>
+              <!-- Current Survey for the Property -->
+              <RadioListSimple
+                title="Current Survey for the Property"
+                :items="surveyOptions"
+                itemsName="survey"
+              />
+            </div>
+
+            <div class="space-y-6">
+              <h3 class="text-lg leading-6 font-medium text-gray-900">
+                Market Research & Analysis
+              </h3>
+              <!-- Market Research & Analysis of the Property -->
+              <RadioListSimple
+                title="Market Research & Analysis of the Property"
+                :items="marketOptions"
+                itemsName="market"
+              />
+            </div>
+          </fieldset>
+
+          <fieldset class="form-full grid grid-cols-1 gap-x-12 gap-y-6 py-6">
+            <div class="space-y-6">
+              <h3 class="text-lg leading-6 font-medium text-gray-900">
+                Insurance
+              </h3>
+              <RadioListSimple
+                title="Insurance Policies for the Property"
+                :items="insuranceOptions"
+                itemsName="insurance"
+              />
+            </div>
+
+            <div class="space-y-6">
+              <h3 class="text-lg leading-6 font-medium text-gray-900">
+                Project Drawings
+              </h3>
+              <RadioListSimple
+                title="Project Drawings for the Property"
+                :items="drawingOptions"
+                itemsName="drawing"
+              />
+            </div>
+          </fieldset>
+
+          <fieldset class="form-full grid grid-cols-1 gap-x-12 gap-y-6 py-6">
+            <div class="space-y-6">
+              <h3 class="text-lg leading-6 font-medium text-gray-900">
+                Property Taxes
+              </h3>
+              <RadioListSimple
+                title="Property Taxes current (paid) for the Property"
+                :items="propertyTaxOptions"
+                itemsName="property-tax"
+              />
+            </div>
+
+            <div class="space-y-6">
+              <h3 class="text-lg leading-6 font-medium text-gray-900">
+                Title Searches
+              </h3>
+              <RadioListSimple
+                title="Title Searches for the Property"
+                :items="titleSearchOptions"
+                itemsName="title-search"
+              />
+            </div>
+          </fieldset>
+
+          <fieldset class="form-full grid grid-cols-1 gap-x-12 gap-y-6 py-6">
+            <div class="space-y-6">
+              <h3 class="text-lg leading-6 font-medium text-gray-900">
+                Project Budget/Proforma
+              </h3>
+              <RadioListSimple
+                title="Budget or Financial Proforma for the Property"
+                :items="projectBudgetOptions"
+                itemsName="project-budget"
+              />
+            </div>
+
+            <div class="space-y-6">
+              <h3 class="text-lg leading-6 font-medium text-gray-900">
+                Title Insurance
+              </h3>
+              <RadioListSimple
+                title="Title Insurance for the Property"
+                :items="titleInsuranceOptions"
+                itemsName="title-insurance"
+              />
+            </div>
+          </fieldset>
+
+          <div class="form-full">
+            <div class="w-2/3 space-y-6">
+              <TextInput label="Any Brokers/Brokerages Not Allowed" />
+              <TextInput label="Any Preferred Brokers/Brokerages" />
+            </div>
+          </div>
+        </Form>
+
+        <Form title="Mortgage Lending Criteria < $3M" description=" ">
+          <div class="form-full w-2/3">
+            <TextInput label="Property Location(s)" />
+          </div>
+
           <fieldset
             class="form-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6"
           >
