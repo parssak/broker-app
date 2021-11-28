@@ -574,11 +574,255 @@
                     )
                 "
               />
+
+              <!-- If shareholder, what percentage of shares of Borrower 1 are held? -->
+              <Input
+                label="What percentage of shares of Borrower are held?"
+                v-if="b.role === 'role-shareholder'"
+                class="md:w-2/3"
+                type="number"
+                @change="
+                  (event) =>
+                    this.onIndividualFieldChange(
+                      event.target.value,
+                      'sharePercentage',
+                      index
+                    )
+                "
+              />
+
+              <!-- Is Individual Current Address also their Mailing Address?  -->
+              <RadioListSimple
+                title="Is Individual Current Address also their Mailing Address?"
+                :items="yesNoOptions"
+                itemsName="mailing-address"
+                @change="
+                  (event) =>
+                    this.onIndividualFieldChange(
+                      event.target.value,
+                      'mailingAddress',
+                      index
+                    )
+                "
+              />
+
+              <div v-if="b.mailingAddress === 'no'">
+                <Input
+                  label="Mailing Address"
+                  class="md:w-2/3"
+                  @change="
+                    (event) =>
+                      this.onIndividualFieldChange(
+                        event.target.value,
+                        'mailingAddress',
+                        index
+                      )
+                  "
+                />
+              </div>
+
+              <!-- Email Address -->
+              <Input
+                label="Email Address"
+                type="email"
+                class="md:w-2/3"
+                @change="
+                  (event) =>
+                    this.onIndividualFieldChange(
+                      event.target.value,
+                      'email',
+                      index
+                    )
+                "
+              />
+
+              <!-- Preferred Method of Contacting Individual -->
+              <RadioListSimple
+                title="Preferred Method of Contacting Individual"
+                :items="individualContactMethods"
+                itemsName="individual-contact-method"
+                @change="
+                  (event) =>
+                    this.onIndividualFieldChange(
+                      event.target.value,
+                      'contactMethod',
+                      index
+                    )
+                "
+              />
+
+              <div>
+                Is [insert name of Individual] prepared to guarantee the loan?
+                YES/NO If YES - Percentage of the loan to be guaranteed? Insert
+                %
+                <br /><br />
+                Are there any other Officers, Directors or Significant
+                Shareholders ? YES/NO [Ask this after the completion of the
+                information on each Individual until they say NO]
+                <br /><br />
+                If YES, include same section for Individual 2 & 3 etc.
+              </div>
             </div>
           </Fieldset>
 
           <Fieldset title="Employment Information">
             <div class="todo">Employment Information</div>
+            <div
+              v-for="(person, index) in individuals"
+              :key="index"
+              class="space-y-6"
+            >
+              <h3 class="text-lg leading-6">
+                Employment Information for {{ person.name }}
+              </h3>
+
+              <!-- Current Employer -->
+              <Input
+                label="Current Employer"
+                class="md:w-2/3"
+                @change="
+                  (event) =>
+                    this.onEmploymentFieldChange(
+                      event.target.value,
+                      'currentEmployer',
+                      index
+                    )
+                "
+              />
+
+              <!-- Employment Status -->
+              <RadioListSimple
+                title="Employment Status"
+                :items="employmentStatusOptions"
+                itemsName="employment-status"
+                @change="
+                  (event) =>
+                    this.onEmploymentFieldChange(
+                      event.target.value,
+                      'employmentStatus',
+                      index
+                    )
+                "
+              />
+              <div
+                v-if="
+                  b.employmentStatus === 'employment-full-time' ||
+                  b.employmentStatus === 'employment-part-time'
+                "
+                class="space-y-6"
+              >
+                <Input
+                  label="Employment Start Date"
+                  class="md:w-2/3"
+                  type="date"
+                  @change="
+                    (event) =>
+                      this.onEmploymentFieldChange(
+                        event.target.value,
+                        'employmentStartDate',
+                        index
+                      )
+                  "
+                />
+                <!-- Type of Business -->
+                <Input
+                  label="Type of Business"
+                  class="md:w-2/3"
+                  @change="
+                    (event) =>
+                      this.onEmploymentFieldChange(
+                        event.target.value,
+                        'typeOfBusiness',
+                        index
+                      )
+                  "
+                />
+
+                <MoneyInput
+                  label="Annual Income"
+                  class="md:w-2/3"
+                  @change="
+                    (event) =>
+                      this.onEmploymentFieldChange(
+                        event.target.value,
+                        'annualIncome',
+                        index
+                      )
+                  "
+                />
+
+                <RadioListSimple
+                  title="How Often is Individual Paid?"
+                  :items="frequencyOptions"
+                  itemsName="frequency"
+                  @change="
+                    (event) =>
+                      this.onEmploymentFieldChange(
+                        event.target.value,
+                        'frequency',
+                        index
+                      )
+                  "
+                />
+              </div>
+              <div
+                class="space-y-6"
+                v-else-if="
+                  person.employmentStatus === 'employment-self-employed'
+                "
+              >
+                <Input
+                  label="Type of Self-Employed Business"
+                  class="md:w-2/3"
+                  @change="
+                    (event) =>
+                      this.onEmploymentFieldChange(
+                        event.target.value,
+                        'typeOfSelfEmployedBusiness',
+                        index
+                      )
+                  "
+                />
+                <!-- num years in self employed business -->
+                <Input
+                  label="Number of Years in Self-Employed Business"
+                  class="md:w-2/3"
+                  type="number"
+                  @change="
+                    (event) =>
+                      this.onEmploymentFieldChange(
+                        event.target.value,
+                        'numYearsInSelfEmployedBusiness',
+                        index
+                      )
+                  "
+                />
+              </div>
+              <div v-else>
+                <!-- Other income type -->
+                <CheckboxListSimple
+                  title="Other Income Types"
+                  :items="otherIncomeTypes"
+                />
+
+                <!-- total monthly -->
+                <MoneyInput
+                  label="Total Monthly Income"
+                  class="md:w-2/3"
+                  @change="
+                    (event) =>
+                      this.onEmploymentFieldChange(
+                        event.target.value,
+                        'totalMonthlyIncome',
+                        index
+                      )
+                  "
+                />
+              </div>
+              <!--  -->
+            </div>
+
+            <MoneyInput label="Total Monthly Income" class="md:w-2/3" />
           </Fieldset>
 
           <Fieldset title="Net Worth Statements">
@@ -892,6 +1136,11 @@ const titleInsuranceOptions = getProvidedOptions("titleInsurance");
 
 // Commercial Broker Options
 
+const yesNoOptions = [
+  { id: "yes", label: "Yes" },
+  { id: "no", label: "No" },
+];
+
 const defaultBorrower = {
   name: "",
   hidden: false,
@@ -925,6 +1174,29 @@ const bankContactMethods = [
   { id: "bank-email", label: "Email" },
 ];
 
+const individualContactMethods = [
+  { id: "individual-business-phone", label: "Home/Business Phone" },
+  { id: "individual-cell-phone", label: "Cell Phone" },
+  { id: "individual-text", label: "Text Message" },
+  { id: "individual-email", label: "Email" },
+];
+
+const employmentStatusOptions = [
+  { id: "employment-full-time", label: "Full Time" },
+  { id: "employment-part-time", label: "Part Time" },
+  { id: "employment-self-employed", label: "Self Employed" },
+  { id: "employment-unemployed", label: "Unemployed" },
+];
+
+const frequencyOptions = [
+  { id: "frequency-weekly", label: "Weekly" },
+  { id: "frequency-bi-weekly", label: "Bi-Weekly" },
+  { id: "frequency-monthly", label: "Monthly" },
+  { id: "frequency-annually", label: "Annually" },
+  { id: "frequency-per-job", label: "Annually" },
+  { id: "other", label: "Other" },
+];
+
 const roles = [
   { id: "role-officer", label: "Officer" },
   { id: "role-director", label: "Director" },
@@ -956,6 +1228,14 @@ const defaultIndividual = {
   creditScoreSource: "",
   creditScoreSourceOther: "",
 };
+
+const otherIncomeTypes = [
+  { id: "investment-income", label: "Investment Income" },
+  { id: "pension-income", label: "Pension Income" },
+  { id: "dividend-income", label: "Dividend Income" },
+  { id: "child-support", label: "Child Support" },
+  { id: "other", label: "Other" },
+];
 
 export default {
   components: {
@@ -1009,12 +1289,17 @@ export default {
       titleInsuranceOptions,
 
       // Commercial Broker Options
+      yesNoOptions,
       creditScoreOptions,
       contactMethodOptions,
       bankContactMethods,
+      individualContactMethods,
+      employmentStatusOptions,
+      frequencyOptions,
       roles,
       residencyTypes,
       salutationTypes,
+      otherIncomeTypes,
     };
   },
   data() {

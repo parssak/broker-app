@@ -220,7 +220,7 @@ nav .router-link-active:not(.no-show-active):not(.nav-item-mobile)::before {
 
 .todo {
   @apply bg-yellow-500 text-white font-semibold text-lg p-2 rounded-md;
-  animation: pulse 2s infinite;
+  /* animation: pulse 2s infinite; */
 }
 
 .todo::before {
