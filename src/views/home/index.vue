@@ -397,6 +397,54 @@
             </h3>
           </div>
 
+          <div class="form-full space-y-6">
+            <p>
+              Is there more than 1 borrower? YES/NO If YES, how many [numerical
+              input]
+            </p>
+
+            <h3 class="text-lg leading-6">Borrower</h3>
+            <Input label="Name" class="w-2/3" />
+            <Input
+              label="Incorporation Jurisdiction of Borrower"
+              class="w-2/3"
+              placeholder="TODO: Make this Country & Province/State dropdowns"
+            />
+            <Input label="Address of Borrower" class="w-2/3" />
+            <Input
+              label="Name of Primary Contact with Borrower"
+              class="w-2/3"
+            />
+            <Input
+              label="Primary Contact's Email Address"
+              type="email"
+              class="w-2/3"
+            />
+            <Input
+              label="Primary Contact's Mobile Telephone Number"
+              type="email"
+              class="w-2/3"
+            />
+            <Input
+              label="Credit Score of Borrower"
+              class="w-2/3"
+              type="number"
+            />
+            <RadioListSimple
+              title="Source of Credit Score of Borrower"
+              :items="creditScoreOptions"
+              itemsName="credit-score"
+            />
+
+            <FileInput label="Copy of Borrower's Incorporation Certificate" />
+            <FileInput
+              label="Copy of Borrower's Incorporation Articles & Bylaws"
+            />
+            <FileInput
+              label="Copy of Borrower's Incorporation Certification of Status"
+            />
+          </div>
+
           <!-- Banking Information -->
           <div class="form-full">
             <h3 class="text-lg leading-6 font-medium text-gray-900">
@@ -773,6 +821,15 @@ const titleSearchOptions = getProvidedOptions("titleSearch");
 const projectBudgetOptions = getProvidedOptions("projectBudget");
 const titleInsuranceOptions = getProvidedOptions("titleInsurance");
 
+// Commercial Broker Options
+
+const creditScoreOptions = [
+  { id: "equifax", label: "Equifax" },
+  { id: "transunion", label: "Transunion" },
+  { id: "transperion, transunion", label: "Transperion" },
+  { id: "other", label: "Other" },
+];
+
 export default {
   components: {
     Container,
@@ -821,6 +878,8 @@ export default {
       titleSearchOptions,
       projectBudgetOptions,
       titleInsuranceOptions,
+      // Commercial Broker Options
+      creditScoreOptions,
     };
   },
 };
