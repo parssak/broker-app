@@ -1,4 +1,5 @@
 <template>
+  <!-- <Header title="Broker App" /> -->
   <Container class="bg-gray-100">
     <div class="lg:grid lg:grid-cols-12 lg:gap-x-5">
       <aside
@@ -662,8 +663,6 @@
           </Fieldset>
 
           <Fieldset title="Employment Information">
-            <div class="todo">Employment Information</div>
-
             <div
               v-for="(person, index) in individuals"
               :key="index"
@@ -836,11 +835,15 @@
             <SwitchInput
               label="Do you have a copy of the NOA for each Borrower for the past 2 years?"
             />
-            <Input label="If NO, please provide an explanation" />
+            <Input
+              label="If NO, please provide an explanation"
+              class="md:w-2/3"
+            />
             <FileInput
               label="Upload the Most Recent NOA Received from CRA for each Borrower"
             />
             <MoneyInput
+              class="md:w-2/3"
               label="According to the most recent NOA, what was the net income/loss shown?"
             />
           </Fieldset>
@@ -849,7 +852,7 @@
             title="Information Regarding the Property Requiring a Mortgage"
           >
             <!-- Value of Property -->
-            <MoneyInput label="Value of Property" />
+            <MoneyInput label="Value of Property" class="md:w-2/3" />
 
             <!-- How was Value of Property Determined -->
             <RadioListSimple
@@ -895,10 +898,20 @@
               />
             </div>
             <SwitchInput label="Does the Property have any rental income?" />
-            <MoneyInput label="Total Current Monthly Rental Income" />
-            <MoneyInput label="Total Current Monthly Expenses" />
-            <Input type="number" label="Age of Property" />
-            <Input type="number" label="Lot Size (Square Footage)" />
+            <MoneyInput
+              label="Total Current Monthly Rental Income"
+              class="md:w-2/3"
+            />
+            <MoneyInput
+              label="Total Current Monthly Expenses"
+              class="md:w-2/3"
+            />
+            <Input type="number" label="Age of Property" class="md:w-2/3" />
+            <Input
+              type="number"
+              label="Lot Size (Square Footage)"
+              class="md:w-2/3"
+            />
             <RadioListSimple
               title="Property Tenure"
               :items="propertyTenureOptions"
@@ -919,15 +932,19 @@
               :items="mortgageDealTypeOptions"
               itemsName="mortgage-deal-type"
             />
-            <Input type="number" label="Number of Parking Spots" />
+            <Input
+              type="number"
+              label="Number of Parking Spots"
+              class="md:w-2/3"
+            />
           </Fieldset>
 
           <Fieldset title="Taxes and Expenses">
             <div class="grid md:grid-cols-2 gap-6">
-              <div class="md:h-20 flex flex-col justify-end">
+              <div class="flex flex-col justify-end">
                 <MoneyInput label="Annual Property Taxes" />
               </div>
-              <div class="md:h-20 flex flex-col justify-end">
+              <div class="flex flex-col justify-end">
                 <MoneyInput label="Monthly Property Taxes" />
               </div>
               <div class="md:h-20 flex flex-col justify-end">
@@ -970,14 +987,16 @@
           </Fieldset>
 
           <Fieldset title="Mortgage Requested">
-            <div class="todo">Mortgage Requested</div>
-            <MoneyInput label="Amount of Mortgage Loan Requested" />
+            <MoneyInput
+              label="Amount of Mortgage Loan Requested"
+              class="md:w-2/3"
+            />
             <RadioListSimple
               title="Mortgage Charge"
               :items="mortgageChargeOptions"
               itemsName="mortgage-charge"
             />
-            <Input type="date" label="Closing Date" />
+            <Input type="date" label="Closing Date" class="md:w-2/3" />
             <RadioListSimple
               title="Mortgage Type"
               :items="mortgageRequestTypes"
@@ -1000,7 +1019,6 @@
               :items="yesNoOptions"
               itemsName="existing-mortgage-or-mortgages-to-be-paid-from-proceeds"
             />
-            <!-- Is Property Insured?  yes no -->
             <RadioListSimple
               title="Is Property Insured?"
               :items="yesNoOptions"
@@ -1011,32 +1029,25 @@
           <Fieldset
             title="Down Payment and/or Capital Previously Contributed to Property"
           >
-            <div class="todo">
-              Down Payment and/or Capital Previously Contributed to Property
-            </div>
-            <!-- Is Borrower providing a Down Payment and/or Capital Previously Contributed to Property	 yes no -->
             <RadioListSimple
               title="Is Borrower providing a Down Payment and/or Capital Previously Contributed to Property?"
               :items="yesNoOptions"
               itemsName="borrower-providing-down-payment-and-or-capital-previously-contributed-to-property"
             />
-            <!-- Amount of Down Payment and/or Capital Previously Contributed to Property -->
             <MoneyInput
               label="Amount of Down Payment and/or Capital Previously Contributed to Property"
+              class="md:w-2/3"
             />
-            <!-- Description of Down Payment and/or Capital Previously Contributed to Property (previousDownPaymentOptions)	 -->
             <RadioListSimple
               title="Description of Down Payment and/or Capital Previously Contributed to Property"
               :items="previousDownPaymentOptions"
               itemsName="description-of-down-payment-and-or-capital-previously-contributed-to-property"
             />
-            <!-- If No - Has Borrower already committed cash to Property (yes/no) -->
             <RadioListSimple
               title="If No - Has Borrower already committed cash to Property"
               :items="yesNoOptions"
               itemsName="borrower-already-committed-cash-to-property"
             />
-            <!-- Availability of Down Payment and/or Capital Previously Contributed to Property (downPaymentAvailabilityOptions) -->
             <RadioListSimple
               title="Availability of Down Payment and/or Capital Previously Contributed to Property"
               :items="downPaymentAvailabilityOptions"
@@ -1046,8 +1057,50 @@
 
           <Fieldset title="Current Mortgage(s)">
             <div class="todo">Current Mortgage(s)</div>
-            <!-- LEFT -->
+            <RadioListSimple
+              title="Are there any Existing Mortgage(s) over the Property?"
+              :items="yesNoOptions"
+              itemsName="existing-mortgage-over-property"
+            />
+            <CheckListSimple
+              title="If yes, identify existing mortgages with respect to the Property (choose all that apply)"
+              :items="existingMortgageOptions"
+            />
+            <!-- Anticipated Improvement Value -->
+            <MoneyInput
+              label="Anticipated Improvement Value"
+              class="md:w-2/3"
+            />
+            <!--  Anticipated Property Value Post-Improvements-->
+            <MoneyInput
+              label="Anticipated Property Value Post-Improvements"
+              class="md:w-2/3"
+            />
+            <!-- Down Payment or Capital Contributed to Property -->
+            <MoneyInput
+              label="Down Payment or Capital Contributed to Property"
+              class="md:w-2/3"
+            />
+            <p>Use information from above to populate these cells</p>
+            <MoneyInput label="1st Mortgage Amount" class="md:w-2/3" />
+            <!-- 1st is insured -->
+            <RadioListSimple
+              title="1st Mortgage is Insured?"
+              :items="yesNoOptions"
+              itemsName="1st-mortgage-is-insured"
+            />
+            <p>If existing 1st mortgage</p>
+            <!-- 1st Mortgage as a % of Property Value -->
+            <Input
+              label="1st Mortgage as a % of Property Value"
+              class="md:w-2/3"
+            />
+            <!-- name of insurer -->
+            <Input label="Name of Insurer" class="md:w-2/3" />
+            <!-- insurance policy # -->
+            <Input label="Insurance Policy #" type="number" class="md:w-2/3" />
           </Fieldset>
+          <!-- LEFT -->
 
           <Fieldset title="Environmental Report(s)">
             <div class="todo">Environmental Report(s)</div>
@@ -1104,6 +1157,7 @@
 </template>
 
 <script>
+import Header from '../../components/base/Header.vue'
 import Fieldset from "../../components/app/Fieldset.vue";
 import NumberInput from "../../components/base/inputs/NumberInput.vue";
 import SwitchWithLabel from "../../components/base/inputs/SwitchWithLabel.vue";
@@ -1124,6 +1178,7 @@ import {
 } from "@heroicons/vue/outline";
 
 // #region
+
 const navigation = [
   { name: "Account", href: "#", icon: UserCircleIcon, current: true },
   { name: "Password", href: "#", icon: KeyIcon, current: false },
@@ -1544,10 +1599,10 @@ const mortgageDealTypeOptions = [
 ];
 
 const mortgageChargeOptions = [
-  { id: "mortgage-charge-first", value: "1st" },
-  { id: "mortgage-charge-second", value: "2nd" },
-  { id: "mortgage-charge-third", value: "3rd" },
-  { id: "mortgage-charge-heloc", value: "HELOC" },
+  { id: "mortgage-charge-first", label: "1st" },
+  { id: "mortgage-charge-second", label: "2nd" },
+  { id: "mortgage-charge-third", label: "3rd" },
+  { id: "mortgage-charge-heloc", label: "HELOC" },
 ];
 
 const mortgageRequestTypes = [
@@ -1565,7 +1620,6 @@ const mortgageTermTypes = [
   { id: "mortgage-term-type-120m", label: "120 month" },
   { id: "mortgage-term-type-other", label: "Other" },
 ];
-// #endregion
 
 const previousDownPaymentOptions = [
   { id: "previous-down-payment-cash", label: "Cash" },
@@ -1588,6 +1642,15 @@ const downPaymentAvailabilityOptions = [
   },
   { id: "down-payment-other", label: "Other" },
 ];
+// #endregion
+
+const existingMortgageOptions = [
+  { id: "existing-mortgage-1st", label: "1st" },
+  { id: "existing-mortgage-2nd", label: "2nd" },
+  { id: "existing-mortgage-3rd", label: "3rd" },
+  { id: "existing-mortgage-heloc", label: "HELOC" },
+  { id: "existing-mortgage-other", label: "Other" },
+];
 
 export default {
   components: {
@@ -1601,7 +1664,7 @@ export default {
     MoneyInput,
     SwitchWithLabel,
     NumberInput,
-    Fieldset,
+    Fieldset, Header
   },
   setup() {
     return {
@@ -1662,6 +1725,9 @@ export default {
       mortgageTermTypes,
       previousDownPaymentOptions,
       downPaymentAvailabilityOptions,
+
+      //
+      existingMortgageOptions,
     };
   },
   data() {

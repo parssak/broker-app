@@ -219,12 +219,12 @@ nav .router-link-active:not(.no-show-active):not(.nav-item-mobile)::before {
 }
 
 .todo {
-  @apply bg-yellow-500 text-white font-semibold text-lg p-2 rounded-md;
+  @apply hidden bg-yellow-500 bg-opacity-30 border border-yellow-500 font-mono text-yellow-700 text-sm p-2 rounded-md;
   /* animation: pulse 2s infinite; */
 }
 
 .todo::before {
-  content: "TODO: ";
+  content: "[TODO]: ";
 }
 
 

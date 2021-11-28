@@ -59,10 +59,6 @@ export default {
       type: Array,
       default: () => defaultItems,
     },
-    itemsName: {
-      type: String,
-      default: "notification-method",
-    },
     legend: {
       type: String,
       default: "Notification Method",
