@@ -397,7 +397,8 @@
             </h3>
           </div>
 
-          <div class="form-full space-y-6">
+          <fieldset class="form-full space-y-6">
+            <legend class="sr-only">Borrowers</legend>
             <SwitchWithLabel
               label="Is there more than 1 borrower?"
               @change="onMultiBorrowerChange"
@@ -416,8 +417,21 @@
               v-for="(b, index) in borrowers"
               :key="b"
             >
-              <h3 class="text-lg leading-6">Borrower {{ index + 1 }}</h3>
-              <Input label="Name" class="md:w-2/3" />
+              <h3 class="text-lg leading-6">
+                Borrower {{ index + 1 }} {{ b.name }}
+              </h3>
+              <Input
+                label="Name"
+                class="md:w-2/3"
+                @change="
+                  (event) =>
+                    this.onBorrowerFieldChange(
+                      event.target.value,
+                      'name',
+                      index
+                    )
+                "
+              />
               <Input
                 label="Incorporation Jurisdiction of Borrower"
                 class="md:w-2/3"
@@ -462,7 +476,7 @@
                 label="Copy of Borrower's Incorporation Certification of Status"
               />
             </div>
-          </div>
+          </fieldset>
 
           <!-- Banking Information -->
           <div class="form-full">
@@ -470,6 +484,10 @@
               Banking Information
             </h3>
           </div>
+
+          <fieldset class="form-full space-y-6">
+            <legend class="sr-only">Banking Information</legend>
+          </fieldset>
 
           <!-- Officers, Directors, & Shareholders -->
           <div class="form-full">
@@ -923,6 +941,12 @@ export default {
     };
   },
   methods: {
+    onBorrowerFieldChange(value, field, index) {
+      if (this.borrowers.length <= index) {
+        return;
+      }
+      this.borrowers[index][field] = value;
+    },
     onMultiBorrowerChange(value) {
       this.multiBorrower = value;
       if (!value) {
