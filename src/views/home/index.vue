@@ -59,7 +59,7 @@
         <!-- Mortgage Lending Criteria < $3M -->
         <Form title="Mortgage Lending Criteria < $3M" description=" ">
           <div class="form-full w-2/3">
-            <TextInput label="Property Location(s)" />
+            <Input label="Property Location(s)" />
           </div>
 
           <fieldset class="form-full grid grid-cols-2 gap-y-6">
@@ -82,8 +82,8 @@
           <fieldset class="form-full grid gap-y-6">
             <div class="space-y-6">
               <SelectInput label="Property Style" :items="propertyStyles" />
-              <TextInput type="number" label="Minimum Square Footage" />
-              <TextInput type="number" label="Maximum Square Footage" />
+              <Input type="number" label="Minimum Square Footage" />
+              <Input type="number" label="Maximum Square Footage" />
               <div class="grid md:grid-cols-2 gap-6">
                 <RadioListSimple
                   itemsName="location"
@@ -128,7 +128,7 @@
               />
               <MoneyInput label="Minimum Loan Amount" />
               <MoneyInput label="Maximum Loan Amount" />
-              <TextInput type="number" label="Maximum LTV (Loan-To-Value)" />
+              <Input type="number" label="Maximum LTV (Loan-To-Value)" />
 
               <SwitchWithLabel label="Collateral/Blanket Charges" />
               <SwitchWithLabel
@@ -138,8 +138,8 @@
                 label="Non-Citizen/Permanent Resident - Any Directors & Officers:"
               />
 
-              <TextInput type="number" label="Maximum GDS" />
-              <TextInput type="number" label="Maximum TDS" />
+              <Input type="number" label="Maximum GDS" />
+              <Input type="number" label="Maximum TDS" />
             </fieldset>
           </fieldset>
 
@@ -374,15 +374,35 @@
 
           <div class="form-full">
             <div class="w-2/3 space-y-6">
-              <TextInput label="Any Brokers/Brokerages Not Allowed" />
-              <TextInput label="Any Preferred Brokers/Brokerages" />
+              <Input label="Any Brokers/Brokerages Not Allowed" />
+              <Input label="Any Preferred Brokers/Brokerages" />
             </div>
           </div>
         </Form>
 
         <!-- Commercial Mortgage App < $3M -->
         <Form title="Commercial Mortgage App < $3M" description=" ">
-          <!--  -->
+          <div class="grid grid-cols-2 form-full gap-12">
+            <Input label="Name of Project" class="w-2/3" />
+            <Input
+              label="Date of Mortgage Application"
+              type="date"
+              class="w-2/3"
+            />
+          </div>
+          <!-- Borrowers -->
+          <div class="form-full">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Borrowers
+            </h3>
+          </div>
+
+          <!-- Banking Information -->
+          <div class="form-full">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Banking Information
+            </h3>
+          </div>
         </Form>
       </div>
     </div>
@@ -393,7 +413,7 @@
 import SwitchWithLabel from "../../components/base/inputs/SwitchWithLabel.vue";
 import MoneyInput from "../../components/base/inputs/MoneyInput.vue";
 import SelectInput from "../../components/base/inputs/SelectInput.vue";
-import TextInput from "../../components/base/inputs/TextInput.vue";
+import Input from "../../components/base/inputs/Input.vue";
 import CheckListSimple from "../../components/base/inputs/CheckListSimple.vue";
 import RadioListSimple from "../../components/base/inputs/RadioListSimple.vue";
 import FileInput from "../../components/base/inputs/FileInput.vue";
@@ -617,7 +637,7 @@ export default {
     FileInput,
     RadioListSimple,
     CheckListSimple,
-    TextInput,
+    Input,
     SelectInput,
     MoneyInput,
     SwitchWithLabel,
