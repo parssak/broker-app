@@ -923,11 +923,89 @@
           </Fieldset>
 
           <Fieldset title="Taxes and Expenses">
-            <div class="todo">Taxes and Expenses</div>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="md:h-20 flex flex-col justify-end">
+                <MoneyInput label="Annual Property Taxes" />
+              </div>
+              <div class="md:h-20 flex flex-col justify-end">
+                <MoneyInput label="Monthly Property Taxes" />
+              </div>
+              <div class="md:h-20 flex flex-col justify-end">
+                <MoneyInput
+                  label="Monthly Heating, Ventilation and Humidity Control Expense"
+                />
+              </div>
+              <div class="md:h-20 flex flex-col justify-end">
+                <MoneyInput label="Monthly Hydro Expenses" />
+              </div>
+              <div class="md:h-20 flex flex-col justify-end">
+                <MoneyInput label="Monthly Management Expense" />
+              </div>
+              <div class="md:h-20 flex flex-col justify-end">
+                <MoneyInput label="Monthly Interest Expenses" />
+              </div>
+              <div class="md:h-20 flex flex-col justify-end">
+                <MoneyInput label="Monthly Repair Expense" />
+              </div>
+              <div class="md:h-20 flex flex-col justify-end">
+                <MoneyInput
+                  label="Monthly Expenses for Janitorial, Elevators, Window Cleaning, Waste Removal & Pest Control"
+                />
+              </div>
+              <div class="md:h-20 flex flex-col justify-end">
+                <MoneyInput label="Monthly Insurance Expense" />
+              </div>
+              <div class="md:h-20 flex flex-col justify-end">
+                <MoneyInput label="Other Monthly Expenses" />
+              </div>
+              <div class="md:h-20 flex flex-col justify-end">
+                <MoneyInput
+                  label="Monthly Sprinklers, Maintenance & Monitoring Expense"
+                />
+              </div>
+              <div class="md:h-20 flex flex-col justify-end">
+                <MoneyInput label="Total Monthly Expenses" />
+              </div>
+            </div>
           </Fieldset>
 
           <Fieldset title="Mortgage Requested">
             <div class="todo">Mortgage Requested</div>
+            <MoneyInput label="Amount of Mortgage Loan Requested" />
+            <RadioListSimple
+              title="Mortgage Charge"
+              :items="mortgageChargeOptions"
+              itemsName="mortgage-charge"
+            />
+            <Input type="date" label="Closing Date" />
+            <RadioListSimple
+              title="Mortgage Type"
+              :items="mortgageRequestTypes"
+              itemsName="mortgage-request-type"
+            />
+            <RadioListSimple
+              title="Mortgage Term Type"
+              :items="mortgageTermTypes"
+              itemsName="mortgage-request-type"
+            />
+            <!-- blended amortization yes no -->
+            <RadioListSimple
+              title="Blended Amortization"
+              :items="yesNoOptions"
+              itemsName="blended-amortization"
+            />
+            <!-- Existing  Mortgage or Mortgages To Be Paid From Proceeds yes no -->
+            <RadioListSimple
+              title="Existing Mortgage or Mortgages To Be Paid From Proceeds"
+              :items="yesNoOptions"
+              itemsName="existing-mortgage-or-mortgages-to-be-paid-from-proceeds"
+            />
+            <!-- Is Property Insured?  yes no -->
+            <RadioListSimple
+              title="Is Property Insured?"
+              :items="yesNoOptions"
+              itemsName="property-insured"
+            />
           </Fieldset>
 
           <Fieldset
@@ -936,6 +1014,7 @@
             <div class="todo">
               Down Payment and/or Capital Previously Contributed to Property
             </div>
+            <!-- LEFT -->
           </Fieldset>
 
           <Fieldset title="Current Mortgage(s)">
@@ -1016,6 +1095,7 @@ import {
   ViewGridAddIcon,
 } from "@heroicons/vue/outline";
 
+// #region
 const navigation = [
   { name: "Account", href: "#", icon: UserCircleIcon, current: true },
   { name: "Password", href: "#", icon: KeyIcon, current: false },
@@ -1421,15 +1501,7 @@ const propertyTenureOptions = [
     label: "Leasehold with a Share of Freehold",
   },
 ];
-/**
- * Purchase
-Construction   		 	 	
-Purchase + Construction		 	 	
-Renovations			 	
-Re-finance			 	
-Switch			 	
-Bridge
- */
+
 const mortgageDealTypeOptions = [
   { id: "mortgage-deal-purchase", label: "Purchase" },
   { id: "mortgage-deal-tyoe-construction", label: "Construction" },
@@ -1442,6 +1514,31 @@ const mortgageDealTypeOptions = [
   { id: "mortgage-deal-tyoe-switch", label: "Switch" },
   { id: "mortgage-deal-tyoe-bridge", label: "Bridge" },
 ];
+
+// #endregion
+
+const mortgageChargeOptions = [
+  { id: "mortgage-charge-first", value: "1st" },
+  { id: "mortgage-charge-second", value: "2nd" },
+  { id: "mortgage-charge-third", value: "3rd" },
+  { id: "mortgage-charge-heloc", value: "HELOC" },
+];
+
+const mortgageRequestTypes = [
+  { id: "mortgage-request-type-open", label: "Open" },
+  { id: "mortgage-request-type-closed", label: "Closed" },
+  { id: "mortgage-request-type-other", label: "Other" },
+];
+
+const mortgageTermTypes = [
+  { id: "mortgage-term-type-12m", label: "12 month" },
+  { id: "mortgage-term-type-18m", label: "18 month" },
+  { id: "mortgage-term-type-24m", label: "24 month" },
+  { id: "mortgage-term-type-36m", label: "36 month" },
+  { id: "mortgage-term-type-60m", label: "60 month" },
+  { id: "mortgage-term-type-120m", label: "120 month" },
+  { id: "mortgage-term-type-other", label: "Other" },
+]
 
 export default {
   components: {
@@ -1511,6 +1608,9 @@ export default {
       propertyStyleOptions,
       propertyTenureOptions,
       mortgageDealTypeOptions,
+      mortgageChargeOptions,
+      mortgageRequestTypes,
+      mortgageTermTypes,
     };
   },
   data() {
