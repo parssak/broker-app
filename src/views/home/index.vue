@@ -864,6 +864,62 @@
               :items="mortgageLoanPurposeOptions"
               itemsName="mortgage-loan-purpose"
             />
+
+            <!-- Property Style -->
+            <RadioListSimple
+              title="Property Style"
+              :items="propertyStyleOptions"
+              itemsName="property-style"
+            />
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <RadioListSimple
+                itemsName="air"
+                title="Air-Conditioning"
+                :items="acOptions"
+              />
+              <RadioListSimple
+                itemsName="water"
+                title="Water"
+                :items="waterOptions"
+              />
+              <RadioListSimple
+                itemsName="heating"
+                title="Heating"
+                :items="heatOptions"
+              />
+              <RadioListSimple
+                itemsName="sewage"
+                title="Sewage"
+                :items="sewageOptions"
+              />
+            </div>
+            <SwitchInput label="Does the Property have any rental income?" />
+            <MoneyInput label="Total Current Monthly Rental Income" />
+            <MoneyInput label="Total Current Monthly Expenses" />
+            <Input type="number" label="Age of Property" />
+            <Input type="number" label="Lot Size (Square Footage)" />
+            <RadioListSimple
+              title="Property Tenure"
+              :items="propertyTenureOptions"
+              itemsName="property-tenure"
+            />
+            <RadioListSimple
+              title="Garage"
+              :items="yesNoOptions"
+              itemsName="garage"
+            />
+            <RadioListSimple
+              title="Is the Garage Attached to the Building?"
+              :items="yesNoOptions"
+              itemsName="garage-attached"
+            />
+            <RadioListSimple
+              title="Mortgage Deal Type"
+              :items="mortgageDealTypeOptions"
+              itemsName="mortgage-deal-type"
+            />
+            <Input type="number" label="Number of Parking Spots" />
           </Fieldset>
 
           <Fieldset title="Taxes and Expenses">
@@ -1279,16 +1335,6 @@ const valueOfPropertyDeterminedOptions = [
   { id: "value-of-property-determined-estimate", label: "Estimate" },
 ];
 
-/**
- * Debt Consolidation	
-Investment	
-Improvements (minor)
-Renovation (major)	
-Construction     	
-Mortgage Arrears 
-Bridge Loan	
-Other
- */
 const mortgageLoanPurposeOptions = [
   {
     id: "mortgage-loan-purpose-debt-consolidation",
@@ -1301,6 +1347,100 @@ const mortgageLoanPurposeOptions = [
   { id: "mortgage-loan-purpose-mortgage-arrears", label: "Mortgage Arrears" },
   { id: "mortgage-loan-purpose-bridge-loan", label: "Bridge Loan" },
   { id: "mortgage-loan-purpose-other", label: "Other" },
+];
+
+const propertyStyleOptions = [
+  {
+    id: "property-style-industrial-manufacturing-facility",
+    label: "Industrial - Manufacturing Facility",
+  },
+  {
+    id: "property-style-industrial-warehouse-distribution-facility",
+    label: "Industrial - Warehouse/Distribution Facility",
+  },
+  {
+    id: "property-style-industrial-flex-multi-purpose-facility",
+    label: "Industrial - Flex/Multi-Purpose Facility",
+  },
+  {
+    id: "property-style-industrial-condominium",
+    label: "Industrial Condominium",
+  },
+  {
+    id: "property-style-retail-enclosed-shopping-mall",
+    label: "Retail - Enclosed Shopping Mall",
+  },
+  {
+    id: "property-style-retail-shopping-plaza-or-strip-mall",
+    label: "Retail - Shopping Plaza or Strip Mall",
+  },
+  {
+    id: "property-style-retail-pad-standalone-building",
+    label: "Retail - Pad/Standalone Building",
+  },
+  {
+    id: "property-style-office-office-building",
+    label: "Office - Office Building",
+  },
+  {
+    id: "property-style-office-suite-or-condominium",
+    label: "Office - Suite or Condominium",
+  },
+  {
+    id: "property-style-office-professional-suites-dental-medical-etc",
+    label: "Office - Professional Suites (Dental, Medical, Legal, etc.)",
+  },
+  {
+    id: "property-style-multi-family-residential-units-condominiums-apartment-buildings-commercial-offices-retail",
+    label:
+      "Multi-Family Residential Units (MFRU) - Condominiums, Apartment Buildings, Commercial/Offices/Retail",
+  },
+  {
+    id: "property-style-multi-dwelling-unit-townhomes-condominiums-apartment-buildings",
+    label:
+      "Multi-Dwelling Unit (MDU) - Townhomes, Condominiums, Apartment Buildings)",
+  },
+  {
+    id: "property-style-residential-homes-estates",
+    label: "Residential Homes/Estates",
+  },
+  { id: "property-style-hotel-motel-lodging", label: "Hotel, Motel & Lodging" },
+  { id: "property-style-restaurant", label: "Restaurant" },
+  {
+    id: "property-style-recreation-properties",
+    label: "Recreation Properties",
+  },
+  { id: "property-style-land", label: "Land" },
+];
+
+const propertyTenureOptions = [
+  { id: "property-tenure-freehold", label: "Freehold" },
+  { id: "property-tenure-leasehold", label: "Leasehold" },
+  {
+    id: "property-tenure-leasehold-with-share-freehold",
+    label: "Leasehold with a Share of Freehold",
+  },
+];
+/**
+ * Purchase
+Construction   		 	 	
+Purchase + Construction		 	 	
+Renovations			 	
+Re-finance			 	
+Switch			 	
+Bridge
+ */
+const mortgageDealTypeOptions = [
+  { id: "mortgage-deal-purchase", label: "Purchase" },
+  { id: "mortgage-deal-tyoe-construction", label: "Construction" },
+  {
+    id: "mortgage-deal-tyoe-purchase-construction",
+    label: "Purchase + Construction",
+  },
+  { id: "mortgage-deal-tyoe-renovations", label: "Renovations" },
+  { id: "mortgage-deal-tyoe-refinance", label: "Re-finance" },
+  { id: "mortgage-deal-tyoe-switch", label: "Switch" },
+  { id: "mortgage-deal-tyoe-bridge", label: "Bridge" },
 ];
 
 export default {
@@ -1368,6 +1508,9 @@ export default {
       otherIncomeTypes,
       valueOfPropertyDeterminedOptions,
       mortgageLoanPurposeOptions,
+      propertyStyleOptions,
+      propertyTenureOptions,
+      mortgageDealTypeOptions,
     };
   },
   data() {
