@@ -926,11 +926,14 @@ export default {
     onMultiBorrowerChange(value) {
       this.multiBorrower = value;
       if (!value) {
-        this.borrowerCount = 1;
+        this.handleBorrowerCountChange(1);
       }
     },
     onBorrowerCountChange(event) {
       const count = event.target.value;
+      this.handleBorrowerCountChange(count);
+    },
+    handleBorrowerCountChange(count) {
       if (count > this.borrowers.length) {
         for (let i = this.borrowers.length; i < count; i++) {
           this.borrowers.push({
@@ -939,7 +942,13 @@ export default {
           });
         }
       } else if (count < this.borrowers.length) {
-        // hide all borrowers
+        // Hide all borrowers instead of splicing in case we
+        // want to keep the information.
+        //
+        // If we opt to have the information removed, we can
+        // just splice the array instead.
+        //
+        // e.g. this.borrowers.splice(count, this.borrowers.length - count);
         this.borrowers.forEach((borrower, index) => {
           if (index >= count) {
             borrower.hidden = true;
