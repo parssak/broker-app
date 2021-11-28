@@ -52,8 +52,8 @@
             rounded-md
           "
         >
-          <option>USD</option>
           <option>CAD</option>
+          <option>USD</option>
           <option>EUR</option>
         </select>
       </div>

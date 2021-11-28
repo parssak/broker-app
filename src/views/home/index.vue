@@ -848,9 +848,22 @@
           <Fieldset
             title="Information Regarding the Property Requiring a Mortgage"
           >
-            <div class="todo">
-              Information Regarding the Property Requiring a Mortgage
-            </div>
+            <!-- Value of Property -->
+            <MoneyInput label="Value of Property" />
+
+            <!-- How was Value of Property Determined -->
+            <RadioListSimple
+              title="How was Value of Property Determined"
+              :items="valueOfPropertyDeterminedOptions"
+              itemsName="value-of-property-determined"
+            />
+
+            <!-- Mortgage Loan Purpose -->
+            <RadioListSimple
+              title="Mortgage Loan Purpose"
+              :items="mortgageLoanPurposeOptions"
+              itemsName="mortgage-loan-purpose"
+            />
           </Fieldset>
 
           <Fieldset title="Taxes and Expenses">
@@ -1256,6 +1269,40 @@ const otherIncomeTypes = [
   { id: "other", label: "Other" },
 ];
 
+const valueOfPropertyDeterminedOptions = [
+  { id: "value-of-property-determined-appraisal", label: "Appraisal" },
+  {
+    id: "value-of-property-determined-valuation-report",
+    label: "Valuation Report",
+  },
+  { id: "value-of-property-determined-purchase", label: "Purchase" },
+  { id: "value-of-property-determined-estimate", label: "Estimate" },
+];
+
+/**
+ * Debt Consolidation	
+Investment	
+Improvements (minor)
+Renovation (major)	
+Construction     	
+Mortgage Arrears 
+Bridge Loan	
+Other
+ */
+const mortgageLoanPurposeOptions = [
+  {
+    id: "mortgage-loan-purpose-debt-consolidation",
+    label: "Debt Consolidation",
+  },
+  { id: "mortgage-loan-purpose-investment", label: "Investment" },
+  { id: "mortgage-loan-purpose-improvements", label: "Improvements (minor)" },
+  { id: "mortgage-loan-purpose-renovation", label: "Renovation (major)" },
+  { id: "mortgage-loan-purpose-construction", label: "Construction" },
+  { id: "mortgage-loan-purpose-mortgage-arrears", label: "Mortgage Arrears" },
+  { id: "mortgage-loan-purpose-bridge-loan", label: "Bridge Loan" },
+  { id: "mortgage-loan-purpose-other", label: "Other" },
+];
+
 export default {
   components: {
     Container,
@@ -1319,6 +1366,8 @@ export default {
       residencyTypes,
       salutationTypes,
       otherIncomeTypes,
+      valueOfPropertyDeterminedOptions,
+      mortgageLoanPurposeOptions,
     };
   },
   data() {
