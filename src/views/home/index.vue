@@ -828,7 +828,21 @@
             title="Net Worth Statements"
             description="All Parties (Borrowers, Officers, Directors and Other Persons) named above must complete a Personal Financial Net Worth Statement."
           >
-            <div class="todo">Net Worth Statements</div>
+            <FileInput label="Net Worth Statement" />
+          </Fieldset>
+
+          <Fieldset title="Financial Statements">
+            <FileInput label="Financial Statements" />
+            <SwitchInput
+              label="Do you have a copy of the NOA for each Borrower for the past 2 years?"
+            />
+            <Input label="If NO, please provide an explanation" />
+            <FileInput
+              label="Upload the Most Recent NOA Received from CRA for each Borrower"
+            />
+            <MoneyInput
+              label="According to the most recent NOA, what was the net income/loss shown?"
+            />
           </Fieldset>
 
           <Fieldset
