@@ -90,5 +90,10 @@ export default {
       enabled,
     };
   },
+  watch: {
+    enabled(newValue) {
+      this.$emit("change", newValue);
+    },
+  },
 };
 </script>

@@ -8,6 +8,8 @@
         :type="type"
         :name="label"
         :id="label"
+        :min="min"
+        :value="value"
         class="
           shadow-sm
           focus:ring-indigo-500 focus:border-indigo-500
@@ -39,10 +41,24 @@ export default {
       type: String,
       default: "",
     },
+    min: {
+      type: Number,
+      default: null,
+    },
+    defaultValue: {
+      type: String,
+      default: "",
+    },
+  },
+  data() {
+    return {
+      value: this.defaultValue,
+    };
   },
   methods: {
     onChange(e) {
       this.$emit("input", e.target.value);
+      this.value = e.target.value;
     },
   },
 };

@@ -382,12 +382,12 @@
 
         <!-- Commercial Mortgage App < $3M -->
         <Form title="Commercial Mortgage App < $3M" description=" ">
-          <div class="grid grid-cols-2 form-full gap-12">
-            <Input label="Name of Project" class="w-2/3" />
+          <div class="grid md:grid-cols-2 form-full gap-y-6 gap-x-12">
+            <Input label="Name of Project" class="md:w-2/3" />
             <Input
               label="Date of Mortgage Application"
               type="date"
-              class="w-2/3"
+              class="md:w-2/3"
             />
           </div>
           <!-- Borrowers -->
@@ -398,51 +398,70 @@
           </div>
 
           <div class="form-full space-y-6">
-            <p>
-              Is there more than 1 borrower? YES/NO If YES, how many [numerical
-              input]
-            </p>
-
-            <h3 class="text-lg leading-6">Borrower</h3>
-            <Input label="Name" class="w-2/3" />
-            <Input
-              label="Incorporation Jurisdiction of Borrower"
-              class="w-2/3"
-              placeholder="TODO: Make this Country & Province/State dropdowns"
-            />
-            <Input label="Address of Borrower" class="w-2/3" />
-            <Input
-              label="Name of Primary Contact with Borrower"
-              class="w-2/3"
+            <SwitchWithLabel
+              label="Is there more than 1 borrower?"
+              @change="onMultiBorrowerChange"
             />
             <Input
-              label="Primary Contact's Email Address"
-              type="email"
-              class="w-2/3"
-            />
-            <Input
-              label="Primary Contact's Mobile Telephone Number"
-              type="email"
-              class="w-2/3"
-            />
-            <Input
-              label="Credit Score of Borrower"
-              class="w-2/3"
+              label="Number of borrowers"
+              class="md:w-2/3"
               type="number"
+              v-if="multiBorrower"
+              :min="1"
+              :defaultValue="1"
+              @change="onBorrowerCountChange"
             />
-            <RadioListSimple
-              title="Source of Credit Score of Borrower"
-              :items="creditScoreOptions"
-              itemsName="credit-score"
-            />
+            <div
+              :class="`space-y-6 ${b.hidden && 'hidden'}`"
+              v-for="(b, index) in borrowers"
+              :key="b"
+            >
+              <h3 class="text-lg leading-6">Borrower {{ index + 1 }}</h3>
+              <Input label="Name" class="md:w-2/3" />
+              <Input
+                label="Incorporation Jurisdiction of Borrower"
+                class="md:w-2/3"
+                placeholder="TODO: Make this Country & Province/State dropdowns"
+              />
+              <Input label="Address of Borrower" class="md:w-2/3" />
+              <Input
+                label="Name of Primary Contact with Borrower"
+                class="md:w-2/3"
+              />
+              <Input
+                label="Primary Contact's Email Address"
+                type="email"
+                class="md:w-2/3"
+              />
+              <Input
+                label="Primary Contact's Mobile Telephone Number"
+                type="email"
+                class="md:w-2/3"
+              />
+              <Input
+                label="Credit Score of Borrower"
+                class="md:w-2/3"
+                type="number"
+              />
+              <RadioListSimple
+                title="Source of Credit Score of Borrower"
+                :items="creditScoreOptions"
+                itemsName="credit-score"
+              />
+              <RadioListSimple
+                title="Preferred Method of Contacting the Primary Contact for Borrower"
+                :items="contactMethodOptions"
+                itemsName="contact-method"
+              />
 
-            <FileInput label="Copy of Borrower's Incorporation Certificate" />
-            <FileInput
-              label="Copy of Borrower's Incorporation Articles & Bylaws"
-            />
-            <FileInput
-              label="Copy of Borrower's Incorporation Certification of Status"
-            />
+              <FileInput label="Copy of Borrower's Incorporation Certificate" />
+              <FileInput
+                label="Copy of Borrower's Incorporation Articles & Bylaws"
+              />
+              <FileInput
+                label="Copy of Borrower's Incorporation Certification of Status"
+              />
+            </div>
           </div>
 
           <!-- Banking Information -->
@@ -601,6 +620,7 @@
 </template>
 
 <script>
+import NumberInput from "../../components/base/inputs/NumberInput.vue";
 import SwitchWithLabel from "../../components/base/inputs/SwitchWithLabel.vue";
 import MoneyInput from "../../components/base/inputs/MoneyInput.vue";
 import SelectInput from "../../components/base/inputs/SelectInput.vue";
@@ -830,6 +850,13 @@ const creditScoreOptions = [
   { id: "other", label: "Other" },
 ];
 
+const contactMethodOptions = [
+  { id: "home-business-phone", label: "Home/Business Phone" },
+  { id: "cell-phone", label: "Cell Phone" },
+  { id: "text", label: "Text Message" },
+  { id: "email", label: "Email" },
+];
+
 export default {
   components: {
     Container,
@@ -841,6 +868,7 @@ export default {
     SelectInput,
     MoneyInput,
     SwitchWithLabel,
+    NumberInput,
   },
   setup() {
     return {
@@ -880,7 +908,45 @@ export default {
       titleInsuranceOptions,
       // Commercial Broker Options
       creditScoreOptions,
+      contactMethodOptions,
     };
+  },
+  data() {
+    return {
+      multiBorrower: false,
+      borrowers: [
+        {
+          name: "",
+          hidden: false,
+        },
+      ],
+    };
+  },
+  methods: {
+    onMultiBorrowerChange(value) {
+      this.multiBorrower = value;
+      if (!value) {
+        this.borrowerCount = 1;
+      }
+    },
+    onBorrowerCountChange(event) {
+      const count = event.target.value;
+      if (count > this.borrowers.length) {
+        for (let i = this.borrowers.length; i < count; i++) {
+          this.borrowers.push({
+            name: "",
+            hidden: false,
+          });
+        }
+      } else if (count < this.borrowers.length) {
+        // hide all borrowers
+        this.borrowers.forEach((borrower, index) => {
+          if (index >= count) {
+            borrower.hidden = true;
+          }
+        });
+      }
+    },
   },
 };
 </script>
