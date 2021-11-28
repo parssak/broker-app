@@ -62,7 +62,7 @@
             <TextInput label="Property Location(s)" />
           </div>
 
-          <fieldset class="form-full grid grid-cols-1 gap-x-12 gap-y-6">
+          <fieldset class="form-full grid grid-cols-2 gap-y-6">
             <div class="w-full space-y-6">
               <CheckListSimple
                 title="Term Lengths"
@@ -71,41 +71,48 @@
               />
             </div>
             <div class="w-full space-y-6">
-              <CheckListSimple title="Charges Offered" :items="chargeTypes" />
-
-              <SelectInput label="Property Style" :items="propertyStyles" />
+              <CheckListSimple
+                title="Charges Offered"
+                :items="chargeTypes"
+                description="Select all that apply"
+              />
             </div>
           </fieldset>
 
-          <fieldset class="form-full grid grid-cols-1 gap-x-12 gap-y-6">
+          <fieldset class="form-full grid gap-y-6">
             <div class="space-y-6">
+              <SelectInput label="Property Style" :items="propertyStyles" />
               <TextInput type="number" label="Minimum Square Footage" />
               <TextInput type="number" label="Maximum Square Footage" />
-              <RadioListSimple
-                itemsName="location"
-                title="Location"
-                :items="locations"
-              />
-              <RadioListSimple
-                itemsName="air"
-                title="Air-Conditioning"
-                :items="acOptions"
-              />
-              <RadioListSimple
-                itemsName="water"
-                title="Water"
-                :items="waterOptions"
-              />
-              <RadioListSimple
-                itemsName="heating"
-                title="Heating"
-                :items="heatOptions"
-              />
-              <RadioListSimple
-                itemsName="sewage"
-                title="Sewage"
-                :items="sewageOptions"
-              />
+              <div class="grid md:grid-cols-2 gap-6">
+                <RadioListSimple
+                  itemsName="location"
+                  title="Location"
+                  :items="locations"
+                />
+                <RadioListSimple
+                  itemsName="air"
+                  title="Air-Conditioning"
+                  :items="acOptions"
+                />
+                <div class="space-y-6">
+                  <RadioListSimple
+                    itemsName="water"
+                    title="Water"
+                    :items="waterOptions"
+                  />
+                  <RadioListSimple
+                    itemsName="sewage"
+                    title="Sewage"
+                    :items="sewageOptions"
+                  />
+                </div>
+                <RadioListSimple
+                  itemsName="heating"
+                  title="Heating"
+                  :items="heatOptions"
+                />
+              </div>
             </div>
 
             <fieldset class="space-y-6">
@@ -149,7 +156,7 @@
             </h3>
           </div>
 
-          <fieldset class="form-full grid grid-cols-1 gap-x-12 gap-y-6">
+          <fieldset class="form-full grid gap-y-6">
             <div class="space-y-6">
               <!-- Environmental Site Assessment (ESA) for the Property? -->
               <RadioListSimple
@@ -180,6 +187,8 @@
             </div>
           </fieldset>
 
+          <hr class="form-full relative top-4" />
+
           <!-- Geotechnical Report(s) & Peer Review(s) -->
           <div class="form-full mt-6">
             <h3 class="text-lg leading-6 font-medium text-gray-900">
@@ -187,7 +196,7 @@
             </h3>
           </div>
 
-          <fieldset class="form-full grid grid-cols-1 gap-x-12 gap-y-6">
+          <fieldset class="form-full grid gap-y-6">
             <div class="space-y-6">
               <!-- Geotechnical Report (GR) for the Property -->
               <RadioListSimple
@@ -219,6 +228,8 @@
             </div>
           </fieldset>
 
+          <hr class="form-full relative top-4" />
+
           <!-- Appraisal Report(s) & Peer Review(s) -->
           <div class="form-full mt-6">
             <h3 class="text-lg leading-6 font-medium text-gray-900">
@@ -226,7 +237,7 @@
             </h3>
           </div>
 
-          <fieldset class="form-full grid grid-cols-1 gap-x-12 gap-y-6">
+          <fieldset class="form-full grid gap-y-6">
             <div class="space-y-6">
               <!-- Appraisal Report (AR) for the Property -->
               <RadioListSimple
@@ -258,11 +269,16 @@
             </div>
           </fieldset>
 
-          <fieldset class="form-full grid grid-cols-1 gap-x-12 gap-y-6">
+          <hr class="form-full relative top-4" />
+
+          <!-- Survey(s) -->
+          <div class="form-full mt-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Survey(s)
+            </h3>
+          </div>
+          <fieldset class="form-full grid gap-y-6">
             <div class="space-y-6">
-              <h3 class="text-lg leading-6 font-medium text-gray-900">
-                Survey(s)
-              </h3>
               <!-- Current Survey for the Property -->
               <RadioListSimple
                 title="Current Survey for the Property"
@@ -284,7 +300,7 @@
             </div>
           </fieldset>
 
-          <fieldset class="form-full grid grid-cols-1 gap-x-12 gap-y-6 py-6">
+          <fieldset class="form-full grid gap-y-6">
             <div class="space-y-6">
               <h3 class="text-lg leading-6 font-medium text-gray-900">
                 Insurance
@@ -308,7 +324,7 @@
             </div>
           </fieldset>
 
-          <fieldset class="form-full grid grid-cols-1 gap-x-12 gap-y-6 py-6">
+          <fieldset class="form-full grid gap-y-6">
             <div class="space-y-6">
               <h3 class="text-lg leading-6 font-medium text-gray-900">
                 Property Taxes
@@ -332,7 +348,7 @@
             </div>
           </fieldset>
 
-          <fieldset class="form-full grid grid-cols-1 gap-x-12 gap-y-6 py-6">
+          <fieldset class="form-full grid gap-y-6">
             <div class="space-y-6">
               <h3 class="text-lg leading-6 font-medium text-gray-900">
                 Project Budget/Proforma
@@ -362,6 +378,11 @@
               <TextInput label="Any Preferred Brokers/Brokerages" />
             </div>
           </div>
+        </Form>
+
+        <!-- Commercial Mortgage App < $3M -->
+        <Form title="Commercial Mortgage App < $3M" description=" ">
+          <!--  -->
         </Form>
       </div>
     </div>
