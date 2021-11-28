@@ -1014,11 +1014,39 @@
             <div class="todo">
               Down Payment and/or Capital Previously Contributed to Property
             </div>
-            <!-- LEFT -->
+            <!-- Is Borrower providing a Down Payment and/or Capital Previously Contributed to Property	 yes no -->
+            <RadioListSimple
+              title="Is Borrower providing a Down Payment and/or Capital Previously Contributed to Property?"
+              :items="yesNoOptions"
+              itemsName="borrower-providing-down-payment-and-or-capital-previously-contributed-to-property"
+            />
+            <!-- Amount of Down Payment and/or Capital Previously Contributed to Property -->
+            <MoneyInput
+              label="Amount of Down Payment and/or Capital Previously Contributed to Property"
+            />
+            <!-- Description of Down Payment and/or Capital Previously Contributed to Property (previousDownPaymentOptions)	 -->
+            <RadioListSimple
+              title="Description of Down Payment and/or Capital Previously Contributed to Property"
+              :items="previousDownPaymentOptions"
+              itemsName="description-of-down-payment-and-or-capital-previously-contributed-to-property"
+            />
+            <!-- If No - Has Borrower already committed cash to Property (yes/no) -->
+            <RadioListSimple
+              title="If No - Has Borrower already committed cash to Property"
+              :items="yesNoOptions"
+              itemsName="borrower-already-committed-cash-to-property"
+            />
+            <!-- Availability of Down Payment and/or Capital Previously Contributed to Property (downPaymentAvailabilityOptions) -->
+            <RadioListSimple
+              title="Availability of Down Payment and/or Capital Previously Contributed to Property"
+              :items="downPaymentAvailabilityOptions"
+              itemsName="availability-of-down-payment-and-or-capital-previously-contributed-to-property"
+            />
           </Fieldset>
 
           <Fieldset title="Current Mortgage(s)">
             <div class="todo">Current Mortgage(s)</div>
+            <!-- LEFT -->
           </Fieldset>
 
           <Fieldset title="Environmental Report(s)">
@@ -1515,8 +1543,6 @@ const mortgageDealTypeOptions = [
   { id: "mortgage-deal-tyoe-bridge", label: "Bridge" },
 ];
 
-// #endregion
-
 const mortgageChargeOptions = [
   { id: "mortgage-charge-first", value: "1st" },
   { id: "mortgage-charge-second", value: "2nd" },
@@ -1538,7 +1564,30 @@ const mortgageTermTypes = [
   { id: "mortgage-term-type-60m", label: "60 month" },
   { id: "mortgage-term-type-120m", label: "120 month" },
   { id: "mortgage-term-type-other", label: "Other" },
-]
+];
+// #endregion
+
+const previousDownPaymentOptions = [
+  { id: "previous-down-payment-cash", label: "Cash" },
+  {
+    id: "previous-down-payment-available-following-sale-property",
+    label: "Available Following Sale of Property",
+  },
+  {
+    id: "previous-down-payment-accumulated-equity",
+    label: "Accumulated Equity",
+  },
+  { id: "previous-down-payment-other", label: "Other" },
+];
+
+const downPaymentAvailabilityOptions = [
+  { id: "down-payment-immediately", label: "Available Immediately" },
+  {
+    id: "down-payment-following-sale",
+    label: "Available Following Sale of Other Property",
+  },
+  { id: "down-payment-other", label: "Other" },
+];
 
 export default {
   components: {
@@ -1611,6 +1660,8 @@ export default {
       mortgageChargeOptions,
       mortgageRequestTypes,
       mortgageTermTypes,
+      previousDownPaymentOptions,
+      downPaymentAvailabilityOptions,
     };
   },
   data() {
