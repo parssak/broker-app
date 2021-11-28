@@ -37,116 +37,95 @@
       <div class="space-y-6 sm:px-6 lg:px-0 lg:col-span-9">
         <!-- Initial Broker Questions -->
         <Form title="Initial Broker Questions" description=" ">
-          <div class="form-full">
-            <RadioListSimple
-              title="Mortgage Deal Type"
-              :items="mortgageTypes"
-              itemsName="mortgages"
-            />
-          </div>
+          <RadioListSimple
+            title="Mortgage Deal Type"
+            :items="mortgageTypes"
+            itemsName="mortgages"
+          />
         </Form>
 
         <!-- Add to Ledgers Questions -->
         <Form title="Add to Ledgers Questions" description=" ">
-          <div class="form-full">
-            <CheckListSimple
-              title="Mortgage Deal Type"
-              :items="mortgageTypes"
-            />
-          </div>
+          <CheckListSimple title="Mortgage Deal Type" :items="mortgageTypes" />
         </Form>
 
         <!-- Mortgage Lending Criteria < $3M -->
         <Form title="Mortgage Lending Criteria < $3M" description=" ">
-          <div class="form-full w-2/3">
-            <Input label="Property Location(s)" />
+          <Input label="Property Location(s)" class="md:w-2/3" />
+
+          <fieldset class="grid grid-cols-2 gap-y-6">
+            <CheckListSimple
+              title="Term Lengths"
+              :items="termLengths"
+              description="Select all that apply"
+            />
+            <CheckListSimple
+              title="Charges Offered"
+              :items="chargeTypes"
+              description="Select all that apply"
+            />
+          </fieldset>
+
+          <SelectInput label="Property Style" :items="propertyStyles" />
+          <Input type="number" label="Minimum Square Footage" />
+          <Input type="number" label="Maximum Square Footage" />
+          <div class="grid md:grid-cols-2 gap-6">
+            <RadioListSimple
+              itemsName="location"
+              title="Location"
+              :items="locations"
+            />
+            <RadioListSimple
+              itemsName="air"
+              title="Air-Conditioning"
+              :items="acOptions"
+            />
+            <div class="space-y-6">
+              <RadioListSimple
+                itemsName="water"
+                title="Water"
+                :items="waterOptions"
+              />
+              <RadioListSimple
+                itemsName="sewage"
+                title="Sewage"
+                :items="sewageOptions"
+              />
+            </div>
+            <RadioListSimple
+              itemsName="heating"
+              title="Heating"
+              :items="heatOptions"
+            />
           </div>
 
-          <fieldset class="form-full grid grid-cols-2 gap-y-6">
-            <div class="w-full space-y-6">
-              <CheckListSimple
-                title="Term Lengths"
-                :items="termLengths"
-                description="Select all that apply"
-              />
-            </div>
-            <div class="w-full space-y-6">
-              <CheckListSimple
-                title="Charges Offered"
-                :items="chargeTypes"
-                description="Select all that apply"
-              />
-            </div>
-          </fieldset>
+          <CheckListSimple
+            title="Loan Types Offered"
+            :items="loanTypes"
+            description="Select all that apply"
+          />
+          <CheckListSimple
+            title="Allowable Loan Purposes"
+            :items="allowableLoanPurposes"
+            description="Select all that apply"
+          />
 
-          <fieldset class="form-full grid gap-y-6">
-            <div class="space-y-6">
-              <SelectInput label="Property Style" :items="propertyStyles" />
-              <Input type="number" label="Minimum Square Footage" />
-              <Input type="number" label="Maximum Square Footage" />
-              <div class="grid md:grid-cols-2 gap-6">
-                <RadioListSimple
-                  itemsName="location"
-                  title="Location"
-                  :items="locations"
-                />
-                <RadioListSimple
-                  itemsName="air"
-                  title="Air-Conditioning"
-                  :items="acOptions"
-                />
-                <div class="space-y-6">
-                  <RadioListSimple
-                    itemsName="water"
-                    title="Water"
-                    :items="waterOptions"
-                  />
-                  <RadioListSimple
-                    itemsName="sewage"
-                    title="Sewage"
-                    :items="sewageOptions"
-                  />
-                </div>
-                <RadioListSimple
-                  itemsName="heating"
-                  title="Heating"
-                  :items="heatOptions"
-                />
-              </div>
-            </div>
+          <MoneyInput label="Minimum Loan Amount" />
+          <MoneyInput label="Maximum Loan Amount" />
 
-            <fieldset class="space-y-6">
-              <CheckListSimple
-                title="Loan Types Offered"
-                :items="loanTypes"
-                description="Select all that apply"
-              />
-              <CheckListSimple
-                title="Allowable Loan Purposes"
-                :items="allowableLoanPurposes"
-                description="Select all that apply"
-              />
-              <MoneyInput label="Minimum Loan Amount" />
-              <MoneyInput label="Maximum Loan Amount" />
-              <Input type="number" label="Maximum LTV (Loan-To-Value)" />
+          <Input type="number" label="Maximum LTV (Loan-To-Value)" />
 
-              <SwitchWithLabel label="Collateral/Blanket Charges" />
-              <SwitchWithLabel
-                label="Non-Resident Corporation - Borrowers(s)"
-              />
-              <SwitchWithLabel
-                label="Non-Citizen/Permanent Resident - Any Directors & Officers:"
-              />
+          <SwitchWithLabel label="Collateral/Blanket Charges" />
+          <SwitchWithLabel label="Non-Resident Corporation - Borrowers(s)" />
+          <SwitchWithLabel
+            label="Non-Citizen/Permanent Resident - Any Directors & Officers:"
+          />
 
-              <Input type="number" label="Maximum GDS" />
-              <Input type="number" label="Maximum TDS" />
-            </fieldset>
-          </fieldset>
+          <Input type="number" label="Maximum GDS" />
+          <Input type="number" label="Maximum TDS" />
 
-          <fieldset class="form-full space-y-6">
-            <CheckListSimple title="Bankruptcy" :items="bankruptcyOptions" />
-            <CheckListSimple title="Consumer" :items="consumerOptions" />
-          </fieldset>
+          <CheckListSimple title="Bankruptcy" :items="bankruptcyOptions" />
+          <CheckListSimple title="Consumer" :items="consumerOptions" />
 
           <Fieldset
             title="Environmental Report(s), Reliance Letter(s) & Peer Review(s)"
@@ -232,11 +211,8 @@
             />
           </Fieldset>
 
-          <hr class="form-full relative top-4" />
-
           <!-- Survey(s) -->
-          <div class="form-full"></div>
-          <fieldset class="form-full grid gap-y-6">
+          <Fieldset>
             <RadioListSimple
               title="Current Survey for the Property"
               :items="surveyOptions"
@@ -248,9 +224,9 @@
               :items="marketOptions"
               itemsName="market"
             />
-          </fieldset>
+          </Fieldset>
 
-          <fieldset class="form-full grid gap-y-6">
+          <Fieldset>
             <RadioListSimple
               title="Insurance Policies for the Property"
               :items="insuranceOptions"
@@ -262,9 +238,9 @@
               :items="drawingOptions"
               itemsName="drawing"
             />
-          </fieldset>
+          </Fieldset>
 
-          <fieldset class="form-full grid gap-y-6">
+          <Fieldset>
             <RadioListSimple
               title="Property Taxes current (paid) for the Property"
               :items="propertyTaxOptions"
@@ -275,9 +251,9 @@
               :items="titleSearchOptions"
               itemsName="title-search"
             />
-          </fieldset>
+          </Fieldset>
 
-          <fieldset class="form-full grid gap-y-6">
+          <Fieldset>
             <RadioListSimple
               title="Budget or Financial Proforma for the Property"
               :items="projectBudgetOptions"
@@ -288,19 +264,15 @@
               :items="titleInsuranceOptions"
               itemsName="title-insurance"
             />
-          </fieldset>
+          </Fieldset>
 
-          <div class="form-full">
-            <div class="w-2/3 space-y-6">
-              <Input label="Any Brokers/Brokerages Not Allowed" />
-              <Input label="Any Preferred Brokers/Brokerages" />
-            </div>
-          </div>
+          <Input label="Any Brokers/Brokerages Not Allowed" class="md:w-2/3" />
+          <Input label="Any Preferred Brokers/Brokerages" class="md:w-2/3" />
         </Form>
 
         <!-- Commercial Mortgage App < $3M -->
         <Form title="Commercial Mortgage App < $3M" description=" ">
-          <div class="grid md:grid-cols-2 form-full gap-y-6 gap-x-12">
+          <div class="grid md:grid-cols-2 gap-y-6 gap-x-12">
             <Input label="Name of Project" class="md:w-2/3" />
             <Input
               label="Date of Mortgage Application"
@@ -309,7 +281,7 @@
             />
           </div>
 
-          <Fieldset title="Borrowers" class="form-full">
+          <Fieldset title="Borrowers">
             <SwitchWithLabel
               label="Is there more than 1 borrower?"
               @change="onMultiBorrowerChange"
@@ -388,382 +360,307 @@
             </div>
           </Fieldset>
 
-          <!-- Banking Information -->
-          <div class="form-full">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Banking Information
-            </h3>
-            <fieldset class="form-full space-y-6">
-              <legend class="sr-only">Banking Information</legend>
-              <div
-                v-for="(b, index) in borrowers"
-                :key="index"
-                class="space-y-6"
-              >
-                <h3 class="text-lg leading-6">
-                  Banking Information for
-                  {{ b.name || `Borrower ${index + 1}` }}
-                </h3>
-                <Input
-                  label="Bank Name"
-                  class="md:w-2/3"
-                  @change="
-                    (event) =>
-                      this.onBorrowerFieldChange(
-                        event.target.value,
-                        'bankName',
-                        index
-                      )
-                  "
-                />
-                <Input
-                  label="Bank Address"
-                  class="md:w-2/3"
-                  @change="
-                    (event) =>
-                      this.onBorrowerFieldChange(
-                        event.target.value,
-                        'bankAddress',
-                        index
-                      )
-                  "
-                />
-                <!-- Number of years with bank -->
-                <Input
-                  label="Number of years with bank"
-                  class="md:w-2/3"
-                  type="number"
-                  @change="
-                    (event) =>
-                      this.onBorrowerFieldChange(
-                        event.target.value,
-                        'bankYears',
-                        index
-                      )
-                  "
-                />
-                <!-- Primary Contact with Bank -->
-                <Input
-                  label="Name of Primary Contact with Bank"
-                  class="md:w-2/3"
-                  @change="
-                    (event) =>
-                      this.onBorrowerFieldChange(
-                        event.target.value,
-                        'bankContact',
-                        index
-                      )
-                  "
-                />
-                <Input
-                  label="Primary Contact's Email Address"
-                  type="email"
-                  class="md:w-2/3"
-                  @change="
-                    (event) =>
-                      this.onBorrowerFieldChange(
-                        event.target.value,
-                        'bankEmail',
-                        index
-                      )
-                  "
-                />
-                <Input
-                  label="Primary Contact's Mobile Telephone Number"
-                  type="email"
-                  class="md:w-2/3"
-                  @change="
-                    (event) =>
-                      this.onBorrowerFieldChange(
-                        event.target.value,
-                        'bankPhone',
-                        index
-                      )
-                  "
-                />
-                <Input
-                  label="Bank Account Number"
-                  class="md:w-2/3"
-                  @change="
-                    (event) =>
-                      this.onBorrowerFieldChange(
-                        event.target.value,
-                        'bankAccount',
-                        index
-                      )
-                  "
-                />
+          <Fieldset title="Banking Information">
+            <div v-for="(b, index) in borrowers" :key="index" class="space-y-6">
+              <h3 class="text-lg leading-6">
+                Banking Information for
+                {{ b.name || `Borrower ${index + 1}` }}
+              </h3>
+              <Input
+                label="Bank Name"
+                class="md:w-2/3"
+                @change="
+                  (event) =>
+                    this.onBorrowerFieldChange(
+                      event.target.value,
+                      'bankName',
+                      index
+                    )
+                "
+              />
+              <Input
+                label="Bank Address"
+                class="md:w-2/3"
+                @change="
+                  (event) =>
+                    this.onBorrowerFieldChange(
+                      event.target.value,
+                      'bankAddress',
+                      index
+                    )
+                "
+              />
+              <!-- Number of years with bank -->
+              <Input
+                label="Number of years with bank"
+                class="md:w-2/3"
+                type="number"
+                @change="
+                  (event) =>
+                    this.onBorrowerFieldChange(
+                      event.target.value,
+                      'bankYears',
+                      index
+                    )
+                "
+              />
+              <!-- Primary Contact with Bank -->
+              <Input
+                label="Name of Primary Contact with Bank"
+                class="md:w-2/3"
+                @change="
+                  (event) =>
+                    this.onBorrowerFieldChange(
+                      event.target.value,
+                      'bankContact',
+                      index
+                    )
+                "
+              />
+              <Input
+                label="Primary Contact's Email Address"
+                type="email"
+                class="md:w-2/3"
+                @change="
+                  (event) =>
+                    this.onBorrowerFieldChange(
+                      event.target.value,
+                      'bankEmail',
+                      index
+                    )
+                "
+              />
+              <Input
+                label="Primary Contact's Mobile Telephone Number"
+                type="email"
+                class="md:w-2/3"
+                @change="
+                  (event) =>
+                    this.onBorrowerFieldChange(
+                      event.target.value,
+                      'bankPhone',
+                      index
+                    )
+                "
+              />
+              <Input
+                label="Bank Account Number"
+                class="md:w-2/3"
+                @change="
+                  (event) =>
+                    this.onBorrowerFieldChange(
+                      event.target.value,
+                      'bankAccount',
+                      index
+                    )
+                "
+              />
 
-                <RadioListSimple
-                  title="Preferred Method of Contacting the Primary Contact"
-                  :items="bankContactMethods"
-                  itemsName="bank-contact-method"
-                />
+              <RadioListSimple
+                title="Preferred Method of Contacting the Primary Contact"
+                :items="bankContactMethods"
+                itemsName="bank-contact-method"
+              />
 
-                <div class="todo">Additional Bank Account</div>
-              </div>
-            </fieldset>
-          </div>
+              <div class="todo">Additional Bank Account</div>
+            </div>
+          </Fieldset>
 
-          <!-- Officers, Directors, & Shareholders -->
-          <div class="form-full">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Officers, Directors, & Shareholders
-            </h3>
-            <fieldset class="form-full space-y-6">
-              <legend class="sr-only">
-                Officers, Directors, & Shareholders
-              </legend>
-              <div
-                v-for="(b, index) in borrowers"
-                :key="index"
-                class="space-y-6"
-              >
-                <h3 class="text-lg leading-6">
-                  Officers, Directors, & Shareholders for
-                  {{ b.name || `Borrower ${index + 1}` }}
-                </h3>
+          <Fieldset title="Officers, Directors, & Shareholders">
+            <div v-for="(b, index) in borrowers" :key="index" class="space-y-6">
+              <h3 class="text-lg leading-6">
+                Officers, Directors, & Shareholders for
+                {{ b.name || `Borrower ${index + 1}` }}
+              </h3>
 
-                <RadioListSimple
-                  title="Individual Role"
-                  :items="roles"
-                  itemsName="role"
-                  @change="
-                    (event) =>
-                      this.onIndividualFieldChange(
-                        event.target.value,
-                        'role',
-                        index
-                      )
-                  "
-                />
+              <RadioListSimple
+                title="Individual Role"
+                :items="roles"
+                itemsName="role"
+                @change="
+                  (event) =>
+                    this.onIndividualFieldChange(
+                      event.target.value,
+                      'role',
+                      index
+                    )
+                "
+              />
 
-                <Input
-                  label="Name"
-                  class="md:w-2/3"
-                  @change="
-                    (event) =>
-                      this.onIndividualFieldChange(
-                        event.target.value,
-                        'name',
-                        index
-                      )
-                  "
-                />
+              <Input
+                label="Name"
+                class="md:w-2/3"
+                @change="
+                  (event) =>
+                    this.onIndividualFieldChange(
+                      event.target.value,
+                      'name',
+                      index
+                    )
+                "
+              />
 
-                <!-- Residency -->
-                <RadioListSimple
-                  title="Residency"
-                  :items="residencyOptions"
-                  itemsName="residency"
-                  @change="
-                    (event) =>
-                      this.onIndividualFieldChange(
-                        event.target.value,
-                        'residency',
-                        index
-                      )
-                  "
-                />
+              <!-- Residency -->
+              <RadioListSimple
+                title="Residency"
+                :items="residencyOptions"
+                itemsName="residency"
+                @change="
+                  (event) =>
+                    this.onIndividualFieldChange(
+                      event.target.value,
+                      'residency',
+                      index
+                    )
+                "
+              />
 
-                <!-- Salutations -->
-                <RadioListSimple
-                  title="Salutations"
-                  :items="salutations"
-                  itemsName="salutation"
-                  @change="
-                    (event) =>
-                      this.onIndividualFieldChange(
-                        event.target.value,
-                        'salutation',
-                        index
-                      )
-                  "
-                />
+              <!-- Salutations -->
+              <RadioListSimple
+                title="Salutations"
+                :items="salutations"
+                itemsName="salutation"
+                @change="
+                  (event) =>
+                    this.onIndividualFieldChange(
+                      event.target.value,
+                      'salutation',
+                      index
+                    )
+                "
+              />
 
-                <!-- dob -->
-                <Input
-                  label="Date of Birth"
-                  class="md:w-2/3"
-                  type="date"
-                  @change="
-                    (event) =>
-                      this.onIndividualFieldChange(
-                        event.target.value,
-                        'dob',
-                        index
-                      )
-                  "
-                />
+              <!-- dob -->
+              <Input
+                label="Date of Birth"
+                class="md:w-2/3"
+                type="date"
+                @change="
+                  (event) =>
+                    this.onIndividualFieldChange(
+                      event.target.value,
+                      'dob',
+                      index
+                    )
+                "
+              />
 
-                <!-- Credit Score -->
-                <Input
-                  label="Credit Score"
-                  class="md:w-2/3"
-                  type="number"
-                  @change="
-                    (event) =>
-                      this.onIndividualFieldChange(
-                        event.target.value,
-                        'creditScore',
-                        index
-                      )
-                  "
-                />
+              <!-- Credit Score -->
+              <Input
+                label="Credit Score"
+                class="md:w-2/3"
+                type="number"
+                @change="
+                  (event) =>
+                    this.onIndividualFieldChange(
+                      event.target.value,
+                      'creditScore',
+                      index
+                    )
+                "
+              />
 
-                <!-- Source of Credit Score -->
-                <RadioListSimple
-                  title="Source of Credit Score"
-                  :items="creditScoreSources"
-                  itemsName="credit-score-source"
-                  @change="
-                    (event) =>
-                      this.onIndividualFieldChange(
-                        event.target.value,
-                        'creditScoreSource',
-                        index
-                      )
-                  "
-                />
-              </div>
-            </fieldset>
-          </div>
+              <!-- Source of Credit Score -->
+              <RadioListSimple
+                title="Source of Credit Score"
+                :items="creditScoreSources"
+                itemsName="credit-score-source"
+                @change="
+                  (event) =>
+                    this.onIndividualFieldChange(
+                      event.target.value,
+                      'creditScoreSource',
+                      index
+                    )
+                "
+              />
+            </div>
+          </Fieldset>
 
-          <!-- Employment Information -->
-          <div class="form-full">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Employment Information
-            </h3>
-          </div>
+          <Fieldset title="Employment Information">
+            <div class="todo">Employment Information</div>
+          </Fieldset>
 
-          <!-- Net Worth Statements -->
-          <div class="form-full">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Net Worth Statements
-            </h3>
-          </div>
+          <Fieldset title="Net Worth Statements">
+            <div class="todo">Net Worth Statements</div>
+          </Fieldset>
 
-          <!-- Information Regarding the Property Requiring a Mortgage -->
-          <div class="form-full">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
+          <Fieldset
+            title="Information Regarding the Property Requiring a Mortgage"
+          >
+            <div class="todo">
               Information Regarding the Property Requiring a Mortgage
-            </h3>
-          </div>
+            </div>
+          </Fieldset>
 
-          <!-- Taxes and Expenses -->
-          <div class="form-full">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Taxes and Expenses
-            </h3>
-          </div>
+          <Fieldset title="Taxes and Expenses">
+            <div class="todo">Taxes and Expenses</div>
+          </Fieldset>
 
-          <!-- Mortgage Requested -->
-          <div class="form-full">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Mortgage Requested
-            </h3>
-          </div>
+          <Fieldset title="Mortgage Requested">
+            <div class="todo">Mortgage Requested</div>
+          </Fieldset>
 
-          <!-- Down Payment and/or Capital Previously Contributed to Property -->
-          <div class="form-full">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
+          <Fieldset
+            title="Down Payment and/or Capital Previously Contributed to Property"
+          >
+            <div class="todo">
               Down Payment and/or Capital Previously Contributed to Property
-            </h3>
-          </div>
+            </div>
+          </Fieldset>
 
-          <!-- Current Mortgage(s) -->
-          <div class="form-full">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Current Mortgage(s)
-            </h3>
-          </div>
+          <Fieldset title="Current Mortgage(s)">
+            <div class="todo">Current Mortgage(s)</div>
+          </Fieldset>
 
-          <!-- Environmental Report(s) -->
-          <div class="form-full">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Environmental Report(s)
-            </h3>
-          </div>
+          <Fieldset title="Environmental Report(s)">
+            <div class="todo">Environmental Report(s)</div>
+          </Fieldset>
 
-          <!-- Geotechnical Report(s) -->
-          <div class="form-full">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Geotechnical Report(s)
-            </h3>
-          </div>
+          <Fieldset title="Geotechnical Report(s)">
+            <div class="todo">Geotechnical Report(s)</div>
+          </Fieldset>
 
-          <!-- Appraisal Report(s) -->
-          <div class="form-full">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Appraisal Report(s)
-            </h3>
-          </div>
+          <Fieldset title="Appraisal Report(s)">
+            <div class="todo">Appraisal Report(s)</div>
+          </Fieldset>
 
-          <!-- Survey(s) -->
-          <div class="form-full">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Survey(s)
-            </h3>
-          </div>
+          <Fieldset title="Survey(s)">
+            <div class="todo">Survey(s)</div>
+          </Fieldset>
 
-          <!-- Market Research and Analysis -->
-          <div class="form-full">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Market Research and Analysis
-            </h3>
-          </div>
+          <Fieldset title="Market Research and Analysis">
+            <div class="todo">Market Research and Analysis</div>
+          </Fieldset>
 
-          <!-- Insurance -->
-          <div class="form-full">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Insurance
-            </h3>
-          </div>
+          <Fieldset title="Insurance">
+            <div class="todo">Insurance</div>
+          </Fieldset>
 
-          <!-- Project Drawings -->
-          <div class="form-full">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Project Drawings
-            </h3>
-          </div>
+          <Fieldset title="Project Drawings">
+            <div class="todo">Project Drawings</div>
+          </Fieldset>
 
-          <!-- Title Searches -->
-          <div class="form-full">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Title Searches
-            </h3>
-          </div>
+          <Fieldset title="Title Searches">
+            <div class="todo">Title Searches</div>
+          </Fieldset>
 
-          <!-- Property Taxes -->
-          <div class="form-full">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Property Taxes
-            </h3>
-          </div>
+          <Fieldset title="Property Taxes">
+            <div class="todo">Property Taxes</div>
+          </Fieldset>
 
-          <!-- Project Budget/Proforma -->
-          <div class="form-full">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Project Budget/Proforma
-            </h3>
-          </div>
+          <Fieldset title="Project Budget/Proforma">
+            <div class="todo">Project Budget/Proforma</div>
+          </Fieldset>
 
-          <!-- Title Insurance -->
-          <div class="form-full">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Title Insurance
-            </h3>
-          </div>
+          <Fieldset title="Title Insurance">
+            <div class="todo">Title Insurance</div>
+          </Fieldset>
 
-          <!-- Deal Documents -->
-          <div class="form-full">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Deal Documents
-            </h3>
-          </div>
-          <div class="form-full">
+          <Fieldset title="Deal Documents">
+            <div class="todo">Deal Documents</div>
             <FileInput class="w-full" label="Deal Documents" />
-          </div>
+          </Fieldset>
         </Form>
       </div>
     </div>

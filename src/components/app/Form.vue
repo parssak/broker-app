@@ -1,6 +1,6 @@
 <template>
   <form action="#" method="POST">
-    <div class="shadow sm:rounded-md sm:overflow-hidden">
+    <div class="shadow rounded-md overflow-hidden">
       <div class="bg-white py-6 px-4 space-y-6 sm:p-6">
         <div>
           <h3 class="text-lg leading-6 font-medium text-gray-900">
@@ -11,7 +11,7 @@
           </p>
         </div>
 
-        <div class="grid grid-cols-3 gap-6">
+        <div class="grid gap-6">
           <slot></slot>
         </div>
       </div>
@@ -46,7 +46,7 @@
 
 <style>
 .form-full {
-  grid-column: span 3 / span 3;
+  /* grid-column: span 3 / span 3; */
 }
 </style>
 
