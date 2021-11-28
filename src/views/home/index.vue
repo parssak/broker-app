@@ -235,104 +235,59 @@
           <hr class="form-full relative top-4" />
 
           <!-- Survey(s) -->
-          <div class="form-full">
-            <!-- <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Survey(s)
-            </h3> -->
-          </div>
+          <div class="form-full"></div>
           <fieldset class="form-full grid gap-y-6">
-            <div class="space-y-6">
-              <!-- Current Survey for the Property -->
-              <RadioListSimple
-                title="Current Survey for the Property"
-                :items="surveyOptions"
-                itemsName="survey"
-              />
-            </div>
+            <RadioListSimple
+              title="Current Survey for the Property"
+              :items="surveyOptions"
+              itemsName="survey"
+            />
 
-            <div class="space-y-6">
-              <!-- <h3 class="text-lg leading-6 font-medium text-gray-900">
-                Market Research & Analysis
-              </h3> -->
-              <!-- Market Research & Analysis of the Property -->
-              <RadioListSimple
-                title="Market Research & Analysis of the Property"
-                :items="marketOptions"
-                itemsName="market"
-              />
-            </div>
+            <RadioListSimple
+              title="Market Research & Analysis of the Property"
+              :items="marketOptions"
+              itemsName="market"
+            />
           </fieldset>
 
           <fieldset class="form-full grid gap-y-6">
-            <div class="space-y-6">
-              <!-- <h3 class="text-lg leading-6 font-medium text-gray-900">
-                Insurance
-              </h3> -->
-              <RadioListSimple
-                title="Insurance Policies for the Property"
-                :items="insuranceOptions"
-                itemsName="insurance"
-              />
-            </div>
+            <RadioListSimple
+              title="Insurance Policies for the Property"
+              :items="insuranceOptions"
+              itemsName="insurance"
+            />
 
-            <div class="space-y-6">
-              <!-- <h3 class="text-lg leading-6 font-medium text-gray-900">
-                Project Drawings
-              </h3> -->
-              <RadioListSimple
-                title="Project Drawings for the Property"
-                :items="drawingOptions"
-                itemsName="drawing"
-              />
-            </div>
+            <RadioListSimple
+              title="Project Drawings for the Property"
+              :items="drawingOptions"
+              itemsName="drawing"
+            />
           </fieldset>
 
           <fieldset class="form-full grid gap-y-6">
-            <div class="space-y-6">
-              <!-- <h3 class="text-lg leading-6 font-medium text-gray-900">
-                Property Taxes
-              </h3> -->
-              <RadioListSimple
-                title="Property Taxes current (paid) for the Property"
-                :items="propertyTaxOptions"
-                itemsName="property-tax"
-              />
-            </div>
-
-            <div class="space-y-6">
-              <!-- <h3 class="text-lg leading-6 font-medium text-gray-900">
-                Title Searches
-              </h3> -->
-              <RadioListSimple
-                title="Title Searches for the Property"
-                :items="titleSearchOptions"
-                itemsName="title-search"
-              />
-            </div>
+            <RadioListSimple
+              title="Property Taxes current (paid) for the Property"
+              :items="propertyTaxOptions"
+              itemsName="property-tax"
+            />
+            <RadioListSimple
+              title="Title Searches for the Property"
+              :items="titleSearchOptions"
+              itemsName="title-search"
+            />
           </fieldset>
 
           <fieldset class="form-full grid gap-y-6">
-            <div class="space-y-6">
-              <!-- <h3 class="text-lg leading-6 font-medium text-gray-900">
-                Project Budget/Proforma
-              </h3> -->
-              <RadioListSimple
-                title="Budget or Financial Proforma for the Property"
-                :items="projectBudgetOptions"
-                itemsName="project-budget"
-              />
-            </div>
-
-            <div class="space-y-6">
-              <!-- <h3 class="text-lg leading-6 font-medium text-gray-900">
-                Title Insurance
-              </h3> -->
-              <RadioListSimple
-                title="Title Insurance for the Property"
-                :items="titleInsuranceOptions"
-                itemsName="title-insurance"
-              />
-            </div>
+            <RadioListSimple
+              title="Budget or Financial Proforma for the Property"
+              :items="projectBudgetOptions"
+              itemsName="project-budget"
+            />
+            <RadioListSimple
+              title="Title Insurance for the Property"
+              :items="titleInsuranceOptions"
+              itemsName="title-insurance"
+            />
           </fieldset>
 
           <div class="form-full">
