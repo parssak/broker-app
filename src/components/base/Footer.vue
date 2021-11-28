@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-white" aria-labelledby="footer-heading">
+  <footer class="bg-accent" aria-labelledby="footer-heading">
     <h2 id="footer-heading" class="sr-only">Footer</h2>
     <div class="max-w-7xl mx-auto py-12 pb-8 px-4 sm:px-6 lg:px-8">
       <div class="grid md:grid-cols-2 gap-8">
@@ -8,7 +8,7 @@
         </router-link>
         <div class="grid sm:grid-cols-2 gap-8">
           <div>
-            <h3 class="mb-3 footer-heading">Navigation</h3>
+            <h3 class="mb-3  footer-heading">Navigation</h3>
             <div class="space-y-1">
               <router-link
                 v-for="route in navigation"
@@ -55,7 +55,7 @@
           md:flex md:items-center md:justify-between
         "
       >
-        <p class="text-base text-gray-400">
+        <p class="text-base text-white">
           &copy; Copyright 2021 Company Name
         </p>
       </div>
