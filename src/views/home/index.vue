@@ -824,7 +824,10 @@
             <MoneyInput label="Total Monthly Income" class="md:w-2/3" />
           </Fieldset>
 
-          <Fieldset title="Net Worth Statements">
+          <Fieldset
+            title="Net Worth Statements"
+            description="All Parties (Borrowers, Officers, Directors and Other Persons) Named Above MUST complete a Personal Financial Net Worth Statement"
+          >
             <div class="todo">Net Worth Statements</div>
           </Fieldset>
 

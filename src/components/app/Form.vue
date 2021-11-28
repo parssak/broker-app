@@ -44,12 +44,6 @@
   </form>
 </template>
 
-<style>
-.form-full {
-  /* grid-column: span 3 / span 3; */
-}
-</style>
-
 <script>
 export default {
   props: {
