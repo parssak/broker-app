@@ -272,10 +272,10 @@
           <hr class="form-full relative top-4" />
 
           <!-- Survey(s) -->
-          <div class="form-full mt-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
+          <div class="form-full">
+            <!-- <h3 class="text-lg leading-6 font-medium text-gray-900">
               Survey(s)
-            </h3>
+            </h3> -->
           </div>
           <fieldset class="form-full grid gap-y-6">
             <div class="space-y-6">
@@ -288,9 +288,9 @@
             </div>
 
             <div class="space-y-6">
-              <h3 class="text-lg leading-6 font-medium text-gray-900">
+              <!-- <h3 class="text-lg leading-6 font-medium text-gray-900">
                 Market Research & Analysis
-              </h3>
+              </h3> -->
               <!-- Market Research & Analysis of the Property -->
               <RadioListSimple
                 title="Market Research & Analysis of the Property"
@@ -302,9 +302,9 @@
 
           <fieldset class="form-full grid gap-y-6">
             <div class="space-y-6">
-              <h3 class="text-lg leading-6 font-medium text-gray-900">
+              <!-- <h3 class="text-lg leading-6 font-medium text-gray-900">
                 Insurance
-              </h3>
+              </h3> -->
               <RadioListSimple
                 title="Insurance Policies for the Property"
                 :items="insuranceOptions"
@@ -313,9 +313,9 @@
             </div>
 
             <div class="space-y-6">
-              <h3 class="text-lg leading-6 font-medium text-gray-900">
+              <!-- <h3 class="text-lg leading-6 font-medium text-gray-900">
                 Project Drawings
-              </h3>
+              </h3> -->
               <RadioListSimple
                 title="Project Drawings for the Property"
                 :items="drawingOptions"
@@ -326,9 +326,9 @@
 
           <fieldset class="form-full grid gap-y-6">
             <div class="space-y-6">
-              <h3 class="text-lg leading-6 font-medium text-gray-900">
+              <!-- <h3 class="text-lg leading-6 font-medium text-gray-900">
                 Property Taxes
-              </h3>
+              </h3> -->
               <RadioListSimple
                 title="Property Taxes current (paid) for the Property"
                 :items="propertyTaxOptions"
@@ -337,9 +337,9 @@
             </div>
 
             <div class="space-y-6">
-              <h3 class="text-lg leading-6 font-medium text-gray-900">
+              <!-- <h3 class="text-lg leading-6 font-medium text-gray-900">
                 Title Searches
-              </h3>
+              </h3> -->
               <RadioListSimple
                 title="Title Searches for the Property"
                 :items="titleSearchOptions"
@@ -350,9 +350,9 @@
 
           <fieldset class="form-full grid gap-y-6">
             <div class="space-y-6">
-              <h3 class="text-lg leading-6 font-medium text-gray-900">
+              <!-- <h3 class="text-lg leading-6 font-medium text-gray-900">
                 Project Budget/Proforma
-              </h3>
+              </h3> -->
               <RadioListSimple
                 title="Budget or Financial Proforma for the Property"
                 :items="projectBudgetOptions"
@@ -361,9 +361,9 @@
             </div>
 
             <div class="space-y-6">
-              <h3 class="text-lg leading-6 font-medium text-gray-900">
+              <!-- <h3 class="text-lg leading-6 font-medium text-gray-900">
                 Title Insurance
-              </h3>
+              </h3> -->
               <RadioListSimple
                 title="Title Insurance for the Property"
                 :items="titleInsuranceOptions"
@@ -402,6 +402,149 @@
             <h3 class="text-lg leading-6 font-medium text-gray-900">
               Banking Information
             </h3>
+          </div>
+
+          <!-- Officers, Directors, & Shareholders -->
+          <div class="form-full">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Officers, Directors, & Shareholders
+            </h3>
+          </div>
+
+          <!-- Employment Information -->
+          <div class="form-full">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Employment Information
+            </h3>
+          </div>
+
+          <!-- Net Worth Statements -->
+          <div class="form-full">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Net Worth Statements
+            </h3>
+          </div>
+
+          <!-- Information Regarding the Property Requiring a Mortgage -->
+          <div class="form-full">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Information Regarding the Property Requiring a Mortgage
+            </h3>
+          </div>
+
+          <!-- Taxes and Expenses -->
+          <div class="form-full">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Taxes and Expenses
+            </h3>
+          </div>
+
+          <!-- Mortgage Requested -->
+          <div class="form-full">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Mortgage Requested
+            </h3>
+          </div>
+
+          <!-- Down Payment and/or Capital Previously Contributed to Property -->
+          <div class="form-full">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Down Payment and/or Capital Previously Contributed to Property
+            </h3>
+          </div>
+
+          <!-- Current Mortgage(s) -->
+          <div class="form-full">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Current Mortgage(s)
+            </h3>
+          </div>
+
+          <!-- Environmental Report(s) -->
+          <div class="form-full">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Environmental Report(s)
+            </h3>
+          </div>
+
+          <!-- Geotechnical Report(s) -->
+          <div class="form-full">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Geotechnical Report(s)
+            </h3>
+          </div>
+
+          <!-- Appraisal Report(s) -->
+          <div class="form-full">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Appraisal Report(s)
+            </h3>
+          </div>
+
+          <!-- Survey(s) -->
+          <div class="form-full">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Survey(s)
+            </h3>
+          </div>
+
+          <!-- Market Research and Analysis -->
+          <div class="form-full">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Market Research and Analysis
+            </h3>
+          </div>
+
+          <!-- Insurance -->
+          <div class="form-full">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Insurance
+            </h3>
+          </div>
+
+          <!-- Project Drawings -->
+          <div class="form-full">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Project Drawings
+            </h3>
+          </div>
+
+          <!-- Title Searches -->
+          <div class="form-full">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Title Searches
+            </h3>
+          </div>
+
+          <!-- Property Taxes -->
+          <div class="form-full">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Property Taxes
+            </h3>
+          </div>
+
+          <!-- Project Budget/Proforma -->
+          <div class="form-full">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Project Budget/Proforma
+            </h3>
+          </div>
+
+          <!-- Title Insurance -->
+          <div class="form-full">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Title Insurance
+            </h3>
+          </div>
+
+          <!-- Deal Documents -->
+          <div class="form-full">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Deal Documents
+            </h3>
+          </div>
+          <div class="form-full">
+            <FileInput class="w-full" label="Deal Documents" />
           </div>
         </Form>
       </div>

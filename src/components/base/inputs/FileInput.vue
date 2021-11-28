@@ -1,5 +1,5 @@
 <template>
-  <label class="block text-sm font-medium text-gray-700"> Cover photo </label>
+  <label class="block text-sm font-medium text-gray-700"> {{ label }} </label>
   <div
     class="
       mt-1
@@ -63,6 +63,12 @@
 <script>
 export default {
   name: "FileInput",
+  props: {
+    label: {
+      type: String,
+      default: "File upload",
+    },
+  },
   data() {
     return {
       file: null,
