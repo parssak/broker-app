@@ -13,25 +13,24 @@
             : 'space-y-4'
         "
       >
-        <div v-for="item in items" :key="item.id" class="flex items-center">
-          <input
-            :id="item.id"
-            :name="itemsName"
-            type="radio"
-            :checked="item.id === 'email'"
-            class="
-              focus:ring-indigo-500
-              h-4
-              w-4
-              text-indigo-600
-              border-gray-300
-            "
-          />
-          <label
-            :for="item.id"
-            class="ml-3 block text-sm font-medium text-gray-700"
-          >
-            {{ item.label }}
+        <div v-for="item in items" :key="item.id">
+          <label class="flex items-center">
+            <input
+              :id="item.id"
+              :name="itemsName"
+              type="radio"
+              :checked="item.id === 'email'"
+              class="
+                focus:ring-indigo-500
+                h-4
+                w-4
+                text-indigo-600
+                border-gray-300
+              "
+            />
+            <span class="ml-3 block text-sm font-medium text-gray-700">
+              {{ item.label }}
+            </span>
           </label>
         </div>
       </div>
