@@ -36,7 +36,6 @@
 
       <div class="space-y-6 sm:px-6 lg:px-0 lg:col-span-9">
         <Steps />
-        <!-- Initial Broker Questions -->
         <Form title="Initial Broker Questions" description=" ">
           <RadioListSimple
             title="Mortgage Deal Type"
@@ -45,12 +44,10 @@
           />
         </Form>
 
-        <!-- Add to Ledgers Questions -->
         <Form title="Add to Ledgers Questions" description=" ">
           <CheckListSimple title="Mortgage Deal Type" :items="mortgageTypes" />
         </Form>
 
-        <!-- Mortgage Lending Criteria < $3M -->
         <Form title="Mortgage Lending Criteria < $3M" description=" ">
           <Input label="Property Location(s)" class="md:w-2/3" />
 
@@ -153,19 +150,19 @@
               :items="esaOptions"
               itemsName="esa"
             />
-            <!-- Peer Review of ESA -->
+
             <RadioListSimple
               title="Peer Review of ESA"
               :items="esaReviewOptions"
               itemsName="esa-review"
             />
-            <!-- Environmental Reliance Letter (ERL) for the Property? -->
+
             <RadioListSimple
               title="Environmental Reliance Letter (ERL) for the Property?"
               :items="erlOptions"
               itemsName="erl"
             />
-            <!-- Peer Review of ERL -->
+
             <RadioListSimple
               title="Peer Review of ERL"
               :items="erlReviewOptions"
@@ -180,21 +177,18 @@
               itemsName="gr"
             />
 
-            <!-- Peer Review of GR -->
             <RadioListSimple
               title="Peer Review of GR"
               :items="grReviewOptions"
               itemsName="gr-review"
             />
 
-            <!-- Geotechnical Reliance Letter (GRL) for the Property -->
             <RadioListSimple
               title="Geotechnical Reliance Letter (GRL) for the Property"
               :items="grlOptions"
               itemsName="grl"
             />
 
-            <!-- Peer Review of GRL -->
             <RadioListSimple
               title="Peer Review of GRL"
               :items="grlReviewOptions"
@@ -203,25 +197,24 @@
           </Fieldset>
 
           <Fieldset title="Appraisal Report(s) & Peer Review(s)">
-            <!-- Appraisal Report (AR) for the Property -->
             <RadioListSimple
               title="Appraisal Report (AR) for the Property"
               :items="arOptions"
               itemsName="ar"
             />
-            <!-- Peer Review of AR -->
+
             <RadioListSimple
               title="Peer Review of AR"
               :items="arReviewOptions"
               itemsName="ar-review"
             />
-            <!-- Appraisal Reliance Letter (ARL) for the Property -->
+
             <RadioListSimple
               title="Appraisal Reliance Letter (ARL) for the Property"
               :items="arlOptions"
               itemsName="arl"
             />
-            <!-- Peer Review of ARL -->
+
             <RadioListSimple
               title="Peer Review of ARL"
               :items="arlReviewOptions"
@@ -229,7 +222,6 @@
             />
           </Fieldset>
 
-          <!-- Survey(s) -->
           <Fieldset>
             <RadioListSimple
               title="Current Survey for the Property"
@@ -288,7 +280,6 @@
           <Input label="Any Preferred Brokers/Brokerages" class="md:w-2/3" />
         </Form>
 
-        <!-- Commercial Mortgage App < $3M -->
         <Form title="Commercial Mortgage App < $3M" description=" ">
           <div class="grid md:grid-cols-2 gap-y-6 gap-x-12">
             <Input label="Name of Project" class="md:w-2/3" />
@@ -408,7 +399,7 @@
                     )
                 "
               />
-              <!-- Number of years with bank -->
+
               <Input
                 label="Number of years with bank"
                 class="md:w-2/3"
@@ -422,7 +413,7 @@
                     )
                 "
               />
-              <!-- Primary Contact with Bank -->
+
               <Input
                 label="Name of Primary Contact with Bank"
                 class="md:w-2/3"
@@ -479,8 +470,6 @@
                 :items="bankContactMethods"
                 itemsName="bank-contact-method"
               />
-
-              <div class="todo">Additional Bank Account</div>
             </div>
           </Fieldset>
 
@@ -514,7 +503,6 @@
                 "
               />
 
-              <!-- Residency -->
               <RadioListSimple
                 title="Residency"
                 :items="residencyOptions"
@@ -529,7 +517,6 @@
                 "
               />
 
-              <!-- Salutations -->
               <RadioListSimple
                 title="Salutations"
                 :items="salutations"
@@ -544,7 +531,6 @@
                 "
               />
 
-              <!-- dob -->
               <Input
                 label="Date of Birth"
                 class="md:w-2/3"
@@ -559,7 +545,6 @@
                 "
               />
 
-              <!-- Credit Score -->
               <Input
                 label="Credit Score"
                 class="md:w-2/3"
@@ -574,7 +559,6 @@
                 "
               />
 
-              <!-- Source of Credit Score -->
               <RadioListSimple
                 title="Source of Credit Score"
                 :items="creditScoreSources"
@@ -589,7 +573,6 @@
                 "
               />
 
-              <!-- If shareholder, what percentage of shares of Borrower 1 are held? -->
               <Input
                 label="What percentage of shares of Borrower are held?"
                 v-if="b.role === 'role-shareholder'"
@@ -605,7 +588,6 @@
                 "
               />
 
-              <!-- Is Individual Current Address also their Mailing Address?  -->
               <RadioListSimple
                 title="Is Individual Current Address also their Mailing Address?"
                 :items="yesNoOptions"
@@ -635,7 +617,6 @@
                 />
               </div>
 
-              <!-- Email Address -->
               <Input
                 label="Email Address"
                 type="email"
@@ -650,7 +631,6 @@
                 "
               />
 
-              <!-- Preferred Method of Contacting Individual -->
               <RadioListSimple
                 title="Preferred Method of Contacting Individual"
                 :items="individualContactMethods"
@@ -689,7 +669,6 @@
                 Employment Information for {{ person.name }}
               </h3>
 
-              <!-- Current Employer -->
               <Input
                 label="Current Employer"
                 class="md:w-2/3"
@@ -703,7 +682,6 @@
                 "
               />
 
-              <!-- Employment Status -->
               <RadioListSimple
                 title="Employment Status"
                 :items="employmentStatusOptions"
@@ -738,7 +716,7 @@
                       )
                   "
                 />
-                <!-- Type of Business -->
+
                 <Input
                   label="Type of Business"
                   class="md:w-2/3"
@@ -798,7 +776,7 @@
                       )
                   "
                 />
-                <!-- num years in self employed business -->
+
                 <Input
                   label="Number of Years in Self-Employed Business"
                   class="md:w-2/3"
@@ -815,13 +793,11 @@
               </div>
 
               <div v-else>
-                <!-- Other income type -->
                 <CheckboxListSimple
                   title="Other Income Types"
                   :items="otherIncomeTypes"
                 />
 
-                <!-- total monthly -->
                 <MoneyInput
                   label="Total Monthly Income"
                   class="md:w-2/3"
@@ -868,24 +844,20 @@
           <Fieldset
             title="Information Regarding the Property Requiring a Mortgage"
           >
-            <!-- Value of Property -->
             <MoneyInput label="Value of Property" class="md:w-2/3" />
 
-            <!-- How was Value of Property Determined -->
             <RadioListSimple
               title="How was Value of Property Determined"
               :items="valueOfPropertyDeterminedOptions"
               itemsName="value-of-property-determined"
             />
 
-            <!-- Mortgage Loan Purpose -->
             <RadioListSimple
               title="Mortgage Loan Purpose"
               :items="mortgageLoanPurposeOptions"
               itemsName="mortgage-loan-purpose"
             />
 
-            <!-- Property Style -->
             <RadioListSimple
               title="Property Style"
               :items="propertyStyleOptions"
@@ -1024,13 +996,13 @@
               :items="mortgageTermTypes"
               itemsName="mortgage-request-type"
             />
-            <!-- blended amortization yes no -->
+
             <RadioListSimple
               title="Blended Amortization"
               :items="yesNoOptions"
               itemsName="blended-amortization"
             />
-            <!-- Existing  Mortgage or Mortgages To Be Paid From Proceeds yes no -->
+
             <RadioListSimple
               title="Existing Mortgage or Mortgages To Be Paid From Proceeds"
               :items="yesNoOptions"
@@ -1073,7 +1045,6 @@
           </Fieldset>
 
           <Fieldset title="Current Mortgage(s)">
-            <div class="todo">Current Mortgage(s)</div>
             <RadioListSimple
               title="Are there any Existing Mortgage(s) over the Property?"
               :items="yesNoOptions"
@@ -1173,8 +1144,6 @@
           </Fieldset>
 
           <Fieldset title="Environmental Report(s)">
-            <div class="todo">Environmental Report(s)</div>
-            <!-- Do you have an environmental site assessment (ESA) for the Property? YES/NO	 -->
             <RadioListSimple
               title="Do you have an environmental site assessment (ESA) for the Property?"
               :items="yesNoOptions"
@@ -1188,8 +1157,6 @@
           </Fieldset>
 
           <Fieldset title="Geotechnical Report(s)">
-            <div class="todo">Geotechnical Report(s)</div>
-            <!-- Do you have a geotechnical report (GR) for the Property? YES/NO	 -->
             <RadioListSimple
               title="Do you have a geotechnical report (GR) for the Property?"
               :items="yesNoOptions"
@@ -1203,8 +1170,6 @@
           </Fieldset>
 
           <Fieldset title="Appraisal Report(s)">
-            <div class="todo">Appraisal Report(s)</div>
-            <!-- Do you have a appraisal report (AR) for the Property? YES/NO -->
             <RadioListSimple
               title="Do you have a appraisal report (AR) for the Property?"
               :items="yesNoOptions"
@@ -1216,7 +1181,6 @@
             <Input label="Who authored the AR?" class="md:w-2/3" />
             <FileInput label="Upload copy of the current AR" />
 
-            <!-- Do you have an appraisal reliance letter (ARL) for the Property? YES/NO -->
             <RadioListSimple
               title="Do you have an appraisal reliance letter (ARL) for the Property?"
               :items="yesNoOptions"
@@ -1230,8 +1194,6 @@
           </Fieldset>
 
           <Fieldset title="Survey(s)">
-            <div class="todo">Survey(s)</div>
-            <!-- Do you have a current survey for the Property? YES/NO -->
             <RadioListSimple
               title="Do you have a current survey for the Property?"
               :items="yesNoOptions"
@@ -1245,8 +1207,6 @@
           </Fieldset>
 
           <Fieldset title="Market Research and Analysis">
-            <div class="todo">Market Research and Analysis</div>
-            <!-- Do you have a market research and analysis for the Property? YES/NO -->
             <RadioListSimple
               title="Do you have a market research and analysis for the Property?"
               :items="yesNoOptions"
@@ -1264,57 +1224,49 @@
           </Fieldset>
 
           <Fieldset title="Insurance">
-            <div class="todo">Insurance</div>
-            <!-- Do you have 1 or more insurance policies for the Property? YES/NO -->
             <RadioListSimple
               title="Do you have 1 or more insurance policies for the Property?"
               :items="yesNoOptions"
               itemsName="do-you-have-1-or-more-insurance-policies-for-the-property"
             />
-            <!-- How many insurance policies do you have? -->
+
             <Input
               label="How many insurance policies do you have?"
               type="number"
               class="md:w-2/3"
             />
-            <!-- name of the insurance provider(s) -->
+
             <Input label="Name of the insurance provider(s)" class="md:w-2/3" />
             <FileInput label="Upload copy of the current insurance policies" />
           </Fieldset>
 
           <Fieldset title="Project Drawings">
-            <div class="todo">Project Drawings</div>
-            <!-- Do you have project drawings for the Property? YES/NO -->
             <RadioListSimple
               title="Do you have project drawings for the Property?"
               :items="yesNoOptions"
               itemsName="do-you-have-project-drawings-for-the-property"
             />
             <p>If yes, provide the following information</p>
-            <!-- Upload a copy of the Project Drawings for the Property -->
+
             <FileInput
               label="Upload a copy of the Project Drawings for the Property"
             />
           </Fieldset>
 
           <Fieldset title="Title Searches">
-            <div class="todo">Title Searches</div>
-            <!-- Do you have title searches for the Property? YES/NO -->
             <RadioListSimple
               title="Do you have title searches for the Property?"
               :items="yesNoOptions"
               itemsName="do-you-have-title-searches-for-the-property"
             />
             <p>If yes, provide the following information</p>
-            <!-- Upload a copy of the Title Searches for the Property -->
+
             <FileInput
               label="Upload a copy of the Title Searches for the Property"
             />
           </Fieldset>
 
           <Fieldset title="Property Taxes">
-            <div class="todo">Property Taxes</div>
-            <!-- Are the property taxes current (paid) for the Property? YES/NO -->
             <RadioListSimple
               title="Are the property taxes current (paid) for the Property?"
               :items="yesNoOptions"
@@ -1330,18 +1282,37 @@
               label="Upload a copy of proof that Property Taxes have been paid"
             />
           </Fieldset>
-          <!-- LEFT -->
 
           <Fieldset title="Project Budget/Proforma">
-            <div class="todo">Project Budget/Proforma</div>
+            <RadioListSimple
+              title="Do you have a budget or financial proforma for the Property?"
+              :items="yesNoOptions"
+              itemsName="do-you-have-a-budget-or-financial-proforma-for-the-property"
+            />
+            <p>If yes, provide the following information</p>
+            <FileInput
+              label="Upload a copy of the budget or financial proforma for the Property	"
+            />
           </Fieldset>
 
           <Fieldset title="Title Insurance">
-            <div class="todo">Title Insurance</div>
+            <RadioListSimple
+              title="Do you have a Title Insurance for the Property?"
+              :items="yesNoOptions"
+              itemsName="do-you-have-a-title-insurance-for-the-property"
+            />
+            <p>If no</p>
+            <Input
+              label="If no -Explain why you don't have a Title Insurance for the Property"
+              class="md:w-2/3"
+            />
+            <p>If yes, provide the following information</p>
+            <FileInput
+              label="Upload a copy of the Title Insurance for the Property"
+            />
           </Fieldset>
 
           <Fieldset title="Deal Documents">
-            <div class="todo">Deal Documents</div>
             <FileInput class="w-full" label="Deal Documents" />
           </Fieldset>
         </Form>
