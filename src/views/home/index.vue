@@ -1186,7 +1186,6 @@
             <Input label="Who authored the ESA?" class="md:w-2/3" />
             <FileInput label="Upload copy of the current ESA" />
           </Fieldset>
-          <!-- LEFT -->
 
           <Fieldset title="Geotechnical Report(s)">
             <div class="todo">Geotechnical Report(s)</div>
@@ -1308,12 +1307,30 @@
             />
             <p>If yes, provide the following information</p>
             <!-- Upload a copy of the Title Searches for the Property -->
-            <FileInput label="Upload a copy of the Title Searches for the Property" />
+            <FileInput
+              label="Upload a copy of the Title Searches for the Property"
+            />
           </Fieldset>
 
           <Fieldset title="Property Taxes">
             <div class="todo">Property Taxes</div>
+            <!-- Are the property taxes current (paid) for the Property? YES/NO -->
+            <RadioListSimple
+              title="Are the property taxes current (paid) for the Property?"
+              :items="yesNoOptions"
+              itemsName="are-the-property-taxes-current-paid-for-the-property"
+            />
+            <p>If no</p>
+            <Input
+              label="Explain why the property taxes are have not been paid"
+              class="md:w-2/3"
+            />
+            <p>If yes, provide the following information</p>
+            <FileInput
+              label="Upload a copy of proof that Property Taxes have been paid"
+            />
           </Fieldset>
+          <!-- LEFT -->
 
           <Fieldset title="Project Budget/Proforma">
             <div class="todo">Project Budget/Proforma</div>
