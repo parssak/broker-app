@@ -1081,7 +1081,7 @@
             />
             <CheckListSimple
               title="If yes, identify existing mortgages with respect to the Property (choose all that apply)"
-              :items="existingMortgageOptions"
+              :items="mortgageOptions"
             />
             <!-- Anticipated Improvement Value -->
             <MoneyInput
@@ -1116,6 +1116,82 @@
             <Input label="Name of Insurer" class="md:w-2/3" />
             <!-- insurance policy # -->
             <Input label="Insurance Policy #" type="number" class="md:w-2/3" />
+            <!-- name of current 1st mortgage lender -->
+            <Input
+              label="Name of Current 1st Mortgage Lender"
+              class="md:w-2/3"
+            />
+            <!-- existing 1st mortgage rate -->
+            <Input
+              label="Existing 1st Mortgage Rate"
+              type="number"
+              class="md:w-2/3"
+            />
+            <!-- 1st mortgage current outstanding amount -->
+            <MoneyInput
+              label="1st Mortgage Current Outstanding Amount"
+              class="md:w-2/3"
+            />
+            <!-- 1st mortgage current payment amount -->
+            <MoneyInput
+              label="1st Mortgage Current Payment Amount"
+              class="md:w-2/3"
+            />
+            <!-- 1st mortgage ltv -->
+            <Input label="1st Mortgage LTV" type="number" class="md:w-2/3" />
+            <!-- 1st mortgage maturity date -->
+            <Input
+              label="1st Mortgage Maturity Date"
+              type="date"
+              class="md:w-2/3"
+            />
+            <!-- mortgage payment frequency -->
+            <RadioListSimple
+              title="Mortgage Payment Frequency"
+              :items="mortgagePaymentFrequencyOptions"
+              itemsName="mortgage-payment-frequency"
+            />
+            <!-- mortgage rate type -->
+            <RadioListSimple
+              title="Mortgage Rate Type"
+              :items="mortgageRateTypeOptions"
+              itemsName="mortgage-rate-type"
+            />
+            <!-- initial amount of mortgage -->
+            <MoneyInput label="Initial Amount of Mortgage" class="md:w-2/3" />
+            <!-- mortgage term type -->
+            <RadioListSimple
+              title="Mortgage Term Type"
+              :items="mortgageTermTypes"
+              itemsName="mortgage-term-type"
+            />
+            <!-- blended amortization yes no -->
+            <RadioListSimple
+              title="Blended Amortization"
+              :items="yesNoOptions"
+              itemsName="blended-amortization"
+            />
+            <!-- mortgage to be paid from proceeds -->
+            <RadioListSimple
+              title="Mortgage to be paid from proceeds"
+              :items="yesNoOptions"
+              itemsName="mortgage-to-be-paid-from-proceeds"
+            />
+            <!-- is property insured -->
+            <RadioListSimple
+              title="Is Property Insured?"
+              :items="yesNoOptions"
+              itemsName="property-insured"
+            />
+            <!-- name of insurer -->
+            <Input label="Name of Insurer" class="md:w-2/3" />
+            <!-- insurance policy number -->
+            <Input label="Insurance Policy #" type="number" class="md:w-2/3" />
+            <!-- total monthly mortgage payments for all properties -->
+            <MoneyInput
+              label="Total Monthly Mortgage Payments for All Properties"
+              class="md:w-2/3"
+            />
           </Fieldset>
           <!-- LEFT -->
 
@@ -1662,12 +1738,37 @@ const downPaymentAvailabilityOptions = [
 ];
 // #endregion
 
-const existingMortgageOptions = [
+const mortgageOptions = [
   { id: "existing-mortgage-1st", label: "1st" },
   { id: "existing-mortgage-2nd", label: "2nd" },
   { id: "existing-mortgage-3rd", label: "3rd" },
   { id: "existing-mortgage-heloc", label: "HELOC" },
   { id: "existing-mortgage-other", label: "Other" },
+];
+
+const mortgagePaymentFrequencyOptions = [
+  { id: "mortgage-payment-frequency-weekly", label: "Weekly" },
+  {
+    id: "mortgage-payment-frequency-every-2-weeks",
+    label: "Every 2 Weeks",
+  },
+  { id: "mortgage-payment-frequency-monthly", label: "Monthly" },
+];
+
+const mortgageRateTypeOptions = [
+  { id: "mortgage-rate-type-fixed", label: "Fixed" },
+  { id: "mortgage-rate-type-variable", label: "Variable" },
+  { id: "mortgage-rate-type-interest-only", label: "Interest Only" },
+];
+
+const mortgageTermTypeOptions = [
+  { id: "mortgage-term-type-12m", label: "12 month" },
+  { id: "mortgage-term-type-18m", label: "18 month" },
+  { id: "mortgage-term-type-24m", label: "24 month" },
+  { id: "mortgage-term-type-36m", label: "36 month" },
+  { id: "mortgage-term-type-60m", label: "60 month" },
+  { id: "mortgage-term-type-120m", label: "120 month" },
+  { id: "mortgage-term-type-other", label: "Other" },
 ];
 
 export default {
@@ -1747,7 +1848,10 @@ export default {
       downPaymentAvailabilityOptions,
 
       //
-      existingMortgageOptions,
+      mortgageOptions,
+      mortgagePaymentFrequencyOptions,
+      mortgageRateTypeOptions,
+      mortgageTermTypeOptions,
     };
   },
   data() {
@@ -1794,18 +1898,12 @@ export default {
           this.borrowers.push({ ...defaultBorrower });
         }
       } else if (count < this.borrowers.length) {
-        // Hide all borrowers instead of splicing in case we
-        // want to keep the information.
-        //
-        // If we opt to have the information removed, we can
-        // just splice the array instead.
-        //
-        // e.g. this.borrowers.splice(count, this.borrowers.length - count);
-        this.borrowers.forEach((borrower, index) => {
-          if (index >= count) {
-            borrower.hidden = true;
-          }
-        });
+        this.borrowers.splice(count, this.borrowers.length - count);
+        // this.borrowers.forEach((borrower, index) => {
+        //   if (index >= count) {
+        //     borrower.hidden = true;
+        //   }
+        // });
       }
     },
   },

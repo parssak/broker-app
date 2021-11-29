@@ -15,7 +15,7 @@
             <span class="sr-only">Company Name</span>
             <div class="flex items-center">
               <img
-                class="h-9 w-auto"
+                class="h-7 w-auto"
                 src="@/assets/logo.svg"
                 alt="Company Name"
               />
