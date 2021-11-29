@@ -1174,36 +1174,141 @@
 
           <Fieldset title="Environmental Report(s)">
             <div class="todo">Environmental Report(s)</div>
-            
+            <!-- Do you have an environmental site assessment (ESA) for the Property? YES/NO	 -->
+            <RadioListSimple
+              title="Do you have an environmental site assessment (ESA) for the Property?"
+              :items="yesNoOptions"
+              itemsName="do-you-have-an-environmental-site-assessment-esa-for-the-property"
+            />
+            <p>If no</p>
+            <Input label="Explain why there is no ESA" class="md:w-2/3" />
+            <p>If yes, provide the following information</p>
+            <Input label="Who authored the ESA?" class="md:w-2/3" />
+            <FileInput label="Upload copy of the current ESA" />
           </Fieldset>
           <!-- LEFT -->
 
           <Fieldset title="Geotechnical Report(s)">
             <div class="todo">Geotechnical Report(s)</div>
+            <!-- Do you have a geotechnical report (GR) for the Property? YES/NO	 -->
+            <RadioListSimple
+              title="Do you have a geotechnical report (GR) for the Property?"
+              :items="yesNoOptions"
+              itemsName="do-you-have-a-geotechnical-report-gr-for-the-property"
+            />
+            <p>If no</p>
+            <Input label="Explain why there is no GR" class="md:w-2/3" />
+            <p>If yes, provide the following information</p>
+            <Input label="Who authored the GR?" class="md:w-2/3" />
+            <FileInput label="Upload copy of the current GR" />
           </Fieldset>
 
           <Fieldset title="Appraisal Report(s)">
             <div class="todo">Appraisal Report(s)</div>
+            <!-- Do you have a appraisal report (AR) for the Property? YES/NO -->
+            <RadioListSimple
+              title="Do you have a appraisal report (AR) for the Property?"
+              :items="yesNoOptions"
+              itemsName="do-you-have-a-appraisal-report-ar-for-the-property"
+            />
+            <p>If no</p>
+            <Input label="Explain why there is no AR" class="md:w-2/3" />
+            <p>If yes, provide the following information</p>
+            <Input label="Who authored the AR?" class="md:w-2/3" />
+            <FileInput label="Upload copy of the current AR" />
+
+            <!-- Do you have an appraisal reliance letter (ARL) for the Property? YES/NO -->
+            <RadioListSimple
+              title="Do you have an appraisal reliance letter (ARL) for the Property?"
+              :items="yesNoOptions"
+              itemsName="do-you-have-an-appraisal-reliance-letter-arl-for-the-property"
+            />
+            <p>If no</p>
+            <Input label="Explain why there is no ARL" class="md:w-2/3" />
+            <p>If yes, provide the following information</p>
+            <Input label="Who authored the ARL?" class="md:w-2/3" />
+            <FileInput label="Upload copy of the current ARL" />
           </Fieldset>
 
           <Fieldset title="Survey(s)">
             <div class="todo">Survey(s)</div>
+            <!-- Do you have a current survey for the Property? YES/NO -->
+            <RadioListSimple
+              title="Do you have a current survey for the Property?"
+              :items="yesNoOptions"
+              itemsName="do-you-have-a-current-survey-for-the-property"
+            />
+            <p>If no</p>
+            <Input label="Explain why there is no survey" class="md:w-2/3" />
+            <p>If yes, provide the following information</p>
+            <Input label="Who authored the survey?" class="md:w-2/3" />
+            <FileInput label="Upload copy of the current survey" />
           </Fieldset>
 
           <Fieldset title="Market Research and Analysis">
             <div class="todo">Market Research and Analysis</div>
+            <!-- Do you have a market research and analysis for the Property? YES/NO -->
+            <RadioListSimple
+              title="Do you have a market research and analysis for the Property?"
+              :items="yesNoOptions"
+              itemsName="do-you-have-a-market-research-and-analysis-for-the-property"
+            />
+            <p>If no</p>
+            <Input
+              label="Explain why there is no Market Research and Analysis for the property"
+              class="md:w-2/3"
+            />
+            <p>If yes, provide the following information</p>
+            <FileInput
+              label="Upload copy of the current Market Research and Analysis for the Property"
+            />
           </Fieldset>
 
           <Fieldset title="Insurance">
             <div class="todo">Insurance</div>
+            <!-- Do you have 1 or more insurance policies for the Property? YES/NO -->
+            <RadioListSimple
+              title="Do you have 1 or more insurance policies for the Property?"
+              :items="yesNoOptions"
+              itemsName="do-you-have-1-or-more-insurance-policies-for-the-property"
+            />
+            <!-- How many insurance policies do you have? -->
+            <Input
+              label="How many insurance policies do you have?"
+              type="number"
+              class="md:w-2/3"
+            />
+            <!-- name of the insurance provider(s) -->
+            <Input label="Name of the insurance provider(s)" class="md:w-2/3" />
+            <FileInput label="Upload copy of the current insurance policies" />
           </Fieldset>
 
           <Fieldset title="Project Drawings">
             <div class="todo">Project Drawings</div>
+            <!-- Do you have project drawings for the Property? YES/NO -->
+            <RadioListSimple
+              title="Do you have project drawings for the Property?"
+              :items="yesNoOptions"
+              itemsName="do-you-have-project-drawings-for-the-property"
+            />
+            <p>If yes, provide the following information</p>
+            <!-- Upload a copy of the Project Drawings for the Property -->
+            <FileInput
+              label="Upload a copy of the Project Drawings for the Property"
+            />
           </Fieldset>
 
           <Fieldset title="Title Searches">
             <div class="todo">Title Searches</div>
+            <!-- Do you have title searches for the Property? YES/NO -->
+            <RadioListSimple
+              title="Do you have title searches for the Property?"
+              :items="yesNoOptions"
+              itemsName="do-you-have-title-searches-for-the-property"
+            />
+            <p>If yes, provide the following information</p>
+            <!-- Upload a copy of the Title Searches for the Property -->
+            <FileInput label="Upload a copy of the Title Searches for the Property" />
           </Fieldset>
 
           <Fieldset title="Property Taxes">
