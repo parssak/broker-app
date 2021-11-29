@@ -505,7 +505,7 @@
 
               <RadioListSimple
                 title="Residency"
-                :items="residencyOptions"
+                :items="residencyTypes"
                 itemsName="residency"
                 @change="
                   (event) =>
@@ -519,7 +519,7 @@
 
               <RadioListSimple
                 title="Salutations"
-                :items="salutations"
+                :items="salutationTypes"
                 itemsName="salutation"
                 @change="
                   (event) =>
@@ -561,7 +561,7 @@
 
               <RadioListSimple
                 title="Source of Credit Score"
-                :items="creditScoreSources"
+                :items="creditScoreOptions"
                 itemsName="credit-score-source"
                 @change="
                   (event) =>
@@ -1630,6 +1630,7 @@ const salutationTypes = [
   { id: "salutation-ms", label: "Ms" },
   { id: "salutation-dr", label: "Dr" },
 ];
+
 
 const defaultIndividual = {
   name: "",
