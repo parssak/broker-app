@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="md:w-2/3">
     <label :for="label" class="block text-sm font-medium text-gray-700">{{
       label
     }}</label>

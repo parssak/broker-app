@@ -49,7 +49,7 @@
         </Form>
 
         <Form title="Mortgage Lending Criteria < $3M" description=" ">
-          <Input label="Property Location(s)" class="md:w-2/3" />
+          <Input label="Property Location(s)" />
 
           <fieldset class="grid grid-cols-2 gap-y-6">
             <CheckListSimple
@@ -64,21 +64,9 @@
             />
           </fieldset>
 
-          <SelectInput
-            label="Property Style"
-            :items="propertyStyles"
-            class="md:w-2/3"
-          />
-          <Input
-            type="number"
-            label="Minimum Square Footage"
-            class="md:w-2/3"
-          />
-          <Input
-            type="number"
-            label="Maximum Square Footage"
-            class="md:w-2/3"
-          />
+          <SelectInput label="Property Style" :items="propertyStyles" />
+          <Input type="number" label="Minimum Square Footage" />
+          <Input type="number" label="Maximum Square Footage" />
           <div class="grid md:grid-cols-2 gap-6">
             <RadioListSimple
               itemsName="location"
@@ -121,14 +109,10 @@
             description="Select all that apply"
           />
 
-          <MoneyInput label="Minimum Loan Amount" class="md:w-2/3" />
-          <MoneyInput label="Maximum Loan Amount" class="md:w-2/3" />
+          <MoneyInput label="Minimum Loan Amount" />
+          <MoneyInput label="Maximum Loan Amount" />
 
-          <Input
-            type="number"
-            label="Maximum LTV (Loan-To-Value)"
-            class="md:w-2/3"
-          />
+          <Input type="number" label="Maximum LTV (Loan-To-Value)" />
 
           <SwitchWithLabel label="Collateral/Blanket Charges" />
           <SwitchWithLabel label="Non-Resident Corporation - Borrowers(s)" />
@@ -136,8 +120,8 @@
             label="Non-Citizen/Permanent Resident - Any Directors & Officers:"
           />
 
-          <Input type="number" label="Maximum GDS" class="md:w-2/3" />
-          <Input type="number" label="Maximum TDS" class="md:w-2/3" />
+          <Input type="number" label="Maximum GDS" />
+          <Input type="number" label="Maximum TDS" />
 
           <CheckListSimple title="Bankruptcy" :items="bankruptcyOptions" />
           <CheckListSimple title="Consumer" :items="consumerOptions" />
@@ -276,18 +260,14 @@
             />
           </Fieldset>
 
-          <Input label="Any Brokers/Brokerages Not Allowed" class="md:w-2/3" />
-          <Input label="Any Preferred Brokers/Brokerages" class="md:w-2/3" />
+          <Input label="Any Brokers/Brokerages Not Allowed" />
+          <Input label="Any Preferred Brokers/Brokerages" />
         </Form>
 
         <Form title="Commercial Mortgage App < $3M" description=" ">
           <div class="grid md:grid-cols-2 gap-y-6 gap-x-12">
-            <Input label="Name of Project" class="md:w-2/3" />
-            <Input
-              label="Date of Mortgage Application"
-              type="date"
-              class="md:w-2/3"
-            />
+            <Input label="Name of Project" />
+            <Input label="Date of Mortgage Application" type="date" />
           </div>
 
           <Fieldset title="Borrowers">
@@ -297,7 +277,6 @@
             />
             <Input
               label="Number of borrowers"
-              class="md:w-2/3"
               type="number"
               v-if="multiBorrower"
               :min="1"
@@ -313,7 +292,6 @@
               <h3 class="text-lg leading-6">Borrower {{ index + 1 }}</h3>
               <Input
                 label="Name"
-                class="md:w-2/3"
                 @change="
                   (event) =>
                     this.onBorrowerFieldChange(
@@ -325,29 +303,16 @@
               />
               <Input
                 label="Incorporation Jurisdiction of Borrower"
-                class="md:w-2/3"
                 placeholder="TODO: Make this Country & Province/State dropdowns"
               />
-              <Input label="Address of Borrower" class="md:w-2/3" />
-              <Input
-                label="Name of Primary Contact with Borrower"
-                class="md:w-2/3"
-              />
-              <Input
-                label="Primary Contact's Email Address"
-                type="email"
-                class="md:w-2/3"
-              />
+              <Input label="Address of Borrower" />
+              <Input label="Name of Primary Contact with Borrower" />
+              <Input label="Primary Contact's Email Address" type="email" />
               <Input
                 label="Primary Contact's Mobile Telephone Number"
                 type="email"
-                class="md:w-2/3"
               />
-              <Input
-                label="Credit Score of Borrower"
-                class="md:w-2/3"
-                type="number"
-              />
+              <Input label="Credit Score of Borrower" type="number" />
               <RadioListSimple
                 title="Source of Credit Score of Borrower"
                 :items="creditScoreOptions"
@@ -377,7 +342,6 @@
               </h3>
               <Input
                 label="Bank Name"
-                class="md:w-2/3"
                 @change="
                   (event) =>
                     this.onBorrowerFieldChange(
@@ -389,7 +353,6 @@
               />
               <Input
                 label="Bank Address"
-                class="md:w-2/3"
                 @change="
                   (event) =>
                     this.onBorrowerFieldChange(
@@ -402,7 +365,6 @@
 
               <Input
                 label="Number of years with bank"
-                class="md:w-2/3"
                 type="number"
                 @change="
                   (event) =>
@@ -416,7 +378,6 @@
 
               <Input
                 label="Name of Primary Contact with Bank"
-                class="md:w-2/3"
                 @change="
                   (event) =>
                     this.onBorrowerFieldChange(
@@ -429,7 +390,6 @@
               <Input
                 label="Primary Contact's Email Address"
                 type="email"
-                class="md:w-2/3"
                 @change="
                   (event) =>
                     this.onBorrowerFieldChange(
@@ -442,7 +402,6 @@
               <Input
                 label="Primary Contact's Mobile Telephone Number"
                 type="email"
-                class="md:w-2/3"
                 @change="
                   (event) =>
                     this.onBorrowerFieldChange(
@@ -454,7 +413,6 @@
               />
               <Input
                 label="Bank Account Number"
-                class="md:w-2/3"
                 @change="
                   (event) =>
                     this.onBorrowerFieldChange(
@@ -492,7 +450,6 @@
 
               <Input
                 label="Name"
-                class="md:w-2/3"
                 @change="
                   (event) =>
                     this.onIndividualFieldChange(
@@ -533,7 +490,6 @@
 
               <Input
                 label="Date of Birth"
-                class="md:w-2/3"
                 type="date"
                 @change="
                   (event) =>
@@ -547,7 +503,6 @@
 
               <Input
                 label="Credit Score"
-                class="md:w-2/3"
                 type="number"
                 @change="
                   (event) =>
@@ -576,7 +531,6 @@
               <Input
                 label="What percentage of shares of Borrower are held?"
                 v-if="b.role === 'role-shareholder'"
-                class="md:w-2/3"
                 type="number"
                 @change="
                   (event) =>
@@ -605,7 +559,6 @@
               <div v-if="b.mailingAddress === 'no'">
                 <Input
                   label="Mailing Address"
-                  class="md:w-2/3"
                   @change="
                     (event) =>
                       this.onIndividualFieldChange(
@@ -620,7 +573,6 @@
               <Input
                 label="Email Address"
                 type="email"
-                class="md:w-2/3"
                 @change="
                   (event) =>
                     this.onIndividualFieldChange(
@@ -671,7 +623,6 @@
 
               <Input
                 label="Current Employer"
-                class="md:w-2/3"
                 @change="
                   (event) =>
                     this.onEmploymentFieldChange(
@@ -705,7 +656,6 @@
               >
                 <Input
                   label="Employment Start Date"
-                  class="md:w-2/3"
                   type="date"
                   @change="
                     (event) =>
@@ -719,7 +669,6 @@
 
                 <Input
                   label="Type of Business"
-                  class="md:w-2/3"
                   @change="
                     (event) =>
                       this.onEmploymentFieldChange(
@@ -732,7 +681,6 @@
 
                 <MoneyInput
                   label="Annual Income"
-                  class="md:w-2/3"
                   @change="
                     (event) =>
                       this.onEmploymentFieldChange(
@@ -766,7 +714,6 @@
               >
                 <Input
                   label="Type of Self-Employed Business"
-                  class="md:w-2/3"
                   @change="
                     (event) =>
                       this.onEmploymentFieldChange(
@@ -779,7 +726,6 @@
 
                 <Input
                   label="Number of Years in Self-Employed Business"
-                  class="md:w-2/3"
                   type="number"
                   @change="
                     (event) =>
@@ -800,7 +746,6 @@
 
                 <MoneyInput
                   label="Total Monthly Income"
-                  class="md:w-2/3"
                   @change="
                     (event) =>
                       this.onEmploymentFieldChange(
@@ -813,7 +758,7 @@
               </div>
             </div>
 
-            <MoneyInput label="Total Monthly Income" class="md:w-2/3" />
+            <MoneyInput label="Total Monthly Income" />
           </Fieldset>
 
           <Fieldset
@@ -828,15 +773,11 @@
             <SwitchInput
               label="Do you have a copy of the NOA for each Borrower for the past 2 years?"
             />
-            <Input
-              label="If NO, please provide an explanation"
-              class="md:w-2/3"
-            />
+            <Input label="If NO, please provide an explanation" />
             <FileInput
               label="Upload the Most Recent NOA Received from CRA for each Borrower"
             />
             <MoneyInput
-              class="md:w-2/3"
               label="According to the most recent NOA, what was the net income/loss shown?"
             />
           </Fieldset>
@@ -844,7 +785,7 @@
           <Fieldset
             title="Information Regarding the Property Requiring a Mortgage"
           >
-            <MoneyInput label="Value of Property" class="md:w-2/3" />
+            <MoneyInput label="Value of Property" />
 
             <RadioListSimple
               title="How was Value of Property Determined"
@@ -887,20 +828,10 @@
               />
             </div>
             <SwitchInput label="Does the Property have any rental income?" />
-            <MoneyInput
-              label="Total Current Monthly Rental Income"
-              class="md:w-2/3"
-            />
-            <MoneyInput
-              label="Total Current Monthly Expenses"
-              class="md:w-2/3"
-            />
-            <Input type="number" label="Age of Property" class="md:w-2/3" />
-            <Input
-              type="number"
-              label="Lot Size (Square Footage)"
-              class="md:w-2/3"
-            />
+            <MoneyInput label="Total Current Monthly Rental Income" />
+            <MoneyInput label="Total Current Monthly Expenses" />
+            <Input type="number" label="Age of Property" />
+            <Input type="number" label="Lot Size (Square Footage)" />
             <RadioListSimple
               title="Property Tenure"
               :items="propertyTenureOptions"
@@ -921,11 +852,7 @@
               :items="mortgageDealTypeOptions"
               itemsName="mortgage-deal-type"
             />
-            <Input
-              type="number"
-              label="Number of Parking Spots"
-              class="md:w-2/3"
-            />
+            <Input type="number" label="Number of Parking Spots" />
           </Fieldset>
 
           <Fieldset title="Taxes and Expenses">
@@ -976,16 +903,13 @@
           </Fieldset>
 
           <Fieldset title="Mortgage Requested">
-            <MoneyInput
-              label="Amount of Mortgage Loan Requested"
-              class="md:w-2/3"
-            />
+            <MoneyInput label="Amount of Mortgage Loan Requested" />
             <RadioListSimple
               title="Mortgage Charge"
               :items="mortgageChargeOptions"
               itemsName="mortgage-charge"
             />
-            <Input type="date" label="Closing Date" class="md:w-2/3" />
+            <Input type="date" label="Closing Date" />
             <RadioListSimple
               title="Mortgage Type"
               :items="mortgageRequestTypes"
@@ -1025,7 +949,6 @@
             />
             <MoneyInput
               label="Amount of Down Payment and/or Capital Previously Contributed to Property"
-              class="md:w-2/3"
             />
             <RadioListSimple
               title="Description of Down Payment and/or Capital Previously Contributed to Property"
@@ -1054,55 +977,28 @@
               title="If yes, identify existing mortgages with respect to the Property (choose all that apply)"
               :items="mortgageOptions"
             />
-            <MoneyInput
-              label="Anticipated Improvement Value"
-              class="md:w-2/3"
-            />
-            <MoneyInput
-              label="Anticipated Property Value Post-Improvements"
-              class="md:w-2/3"
-            />
+            <MoneyInput label="Anticipated Improvement Value" />
+            <MoneyInput label="Anticipated Property Value Post-Improvements" />
             <MoneyInput
               label="Down Payment or Capital Contributed to Property"
-              class="md:w-2/3"
             />
             <p>Use information from above to populate these cells</p>
-            <MoneyInput label="1st Mortgage Amount" class="md:w-2/3" />
+            <MoneyInput label="1st Mortgage Amount" />
             <RadioListSimple
               title="1st Mortgage is Insured?"
               :items="yesNoOptions"
               itemsName="1st-mortgage-is-insured"
             />
             <p>If existing 1st mortgage</p>
-            <Input
-              label="1st Mortgage as a % of Property Value"
-              class="md:w-2/3"
-            />
-            <Input label="Name of Insurer" class="md:w-2/3" />
-            <Input label="Insurance Policy #" type="number" class="md:w-2/3" />
-            <Input
-              label="Name of Current 1st Mortgage Lender"
-              class="md:w-2/3"
-            />
-            <Input
-              label="Existing 1st Mortgage Rate"
-              type="number"
-              class="md:w-2/3"
-            />
-            <MoneyInput
-              label="1st Mortgage Current Outstanding Amount"
-              class="md:w-2/3"
-            />
-            <MoneyInput
-              label="1st Mortgage Current Payment Amount"
-              class="md:w-2/3"
-            />
-            <Input label="1st Mortgage LTV" type="number" class="md:w-2/3" />
-            <Input
-              label="1st Mortgage Maturity Date"
-              type="date"
-              class="md:w-2/3"
-            />
+            <Input label="1st Mortgage as a % of Property Value" />
+            <Input label="Name of Insurer" />
+            <Input label="Insurance Policy #" type="number" />
+            <Input label="Name of Current 1st Mortgage Lender" />
+            <Input label="Existing 1st Mortgage Rate" type="number" />
+            <MoneyInput label="1st Mortgage Current Outstanding Amount" />
+            <MoneyInput label="1st Mortgage Current Payment Amount" />
+            <Input label="1st Mortgage LTV" type="number" />
+            <Input label="1st Mortgage Maturity Date" type="date" />
             <RadioListSimple
               title="Mortgage Payment Frequency"
               :items="mortgagePaymentFrequencyOptions"
@@ -1113,7 +1009,7 @@
               :items="mortgageRateTypeOptions"
               itemsName="mortgage-rate-type"
             />
-            <MoneyInput label="Initial Amount of Mortgage" class="md:w-2/3" />
+            <MoneyInput label="Initial Amount of Mortgage" />
             <RadioListSimple
               title="Mortgage Term Type"
               :items="mortgageTermTypes"
@@ -1134,11 +1030,10 @@
               :items="yesNoOptions"
               itemsName="property-insured"
             />
-            <Input label="Name of Insurer" class="md:w-2/3" />
-            <Input label="Insurance Policy #" type="number" class="md:w-2/3" />
+            <Input label="Name of Insurer" />
+            <Input label="Insurance Policy #" type="number" />
             <MoneyInput
               label="Total Monthly Mortgage Payments for All Properties"
-              class="md:w-2/3"
             />
             <p>Repeat for 2nd, 3rd, and HELOCs (if any)</p>
           </Fieldset>
@@ -1150,9 +1045,9 @@
               itemsName="do-you-have-an-environmental-site-assessment-esa-for-the-property"
             />
             <p>If no</p>
-            <Input label="Explain why there is no ESA" class="md:w-2/3" />
+            <Input label="Explain why there is no ESA" />
             <p>If yes, provide the following information</p>
-            <Input label="Who authored the ESA?" class="md:w-2/3" />
+            <Input label="Who authored the ESA?" />
             <FileInput label="Upload copy of the current ESA" />
           </Fieldset>
 
@@ -1163,9 +1058,9 @@
               itemsName="do-you-have-a-geotechnical-report-gr-for-the-property"
             />
             <p>If no</p>
-            <Input label="Explain why there is no GR" class="md:w-2/3" />
+            <Input label="Explain why there is no GR" />
             <p>If yes, provide the following information</p>
-            <Input label="Who authored the GR?" class="md:w-2/3" />
+            <Input label="Who authored the GR?" />
             <FileInput label="Upload copy of the current GR" />
           </Fieldset>
 
@@ -1176,9 +1071,9 @@
               itemsName="do-you-have-a-appraisal-report-ar-for-the-property"
             />
             <p>If no</p>
-            <Input label="Explain why there is no AR" class="md:w-2/3" />
+            <Input label="Explain why there is no AR" />
             <p>If yes, provide the following information</p>
-            <Input label="Who authored the AR?" class="md:w-2/3" />
+            <Input label="Who authored the AR?" />
             <FileInput label="Upload copy of the current AR" />
 
             <RadioListSimple
@@ -1187,9 +1082,9 @@
               itemsName="do-you-have-an-appraisal-reliance-letter-arl-for-the-property"
             />
             <p>If no</p>
-            <Input label="Explain why there is no ARL" class="md:w-2/3" />
+            <Input label="Explain why there is no ARL" />
             <p>If yes, provide the following information</p>
-            <Input label="Who authored the ARL?" class="md:w-2/3" />
+            <Input label="Who authored the ARL?" />
             <FileInput label="Upload copy of the current ARL" />
           </Fieldset>
 
@@ -1200,9 +1095,9 @@
               itemsName="do-you-have-a-current-survey-for-the-property"
             />
             <p>If no</p>
-            <Input label="Explain why there is no survey" class="md:w-2/3" />
+            <Input label="Explain why there is no survey" />
             <p>If yes, provide the following information</p>
-            <Input label="Who authored the survey?" class="md:w-2/3" />
+            <Input label="Who authored the survey?" />
             <FileInput label="Upload copy of the current survey" />
           </Fieldset>
 
@@ -1215,7 +1110,6 @@
             <p>If no</p>
             <Input
               label="Explain why there is no Market Research and Analysis for the property"
-              class="md:w-2/3"
             />
             <p>If yes, provide the following information</p>
             <FileInput
@@ -1233,10 +1127,9 @@
             <Input
               label="How many insurance policies do you have?"
               type="number"
-              class="md:w-2/3"
             />
 
-            <Input label="Name of the insurance provider(s)" class="md:w-2/3" />
+            <Input label="Name of the insurance provider(s)" />
             <FileInput label="Upload copy of the current insurance policies" />
           </Fieldset>
 
@@ -1275,7 +1168,6 @@
             <p>If no</p>
             <Input
               label="Explain why the property taxes are have not been paid"
-              class="md:w-2/3"
             />
             <p>If yes, provide the following information</p>
             <FileInput
@@ -1304,7 +1196,6 @@
             <p>If no</p>
             <Input
               label="If no -Explain why you don't have a Title Insurance for the Property"
-              class="md:w-2/3"
             />
             <p>If yes, provide the following information</p>
             <FileInput
@@ -1630,7 +1521,6 @@ const salutationTypes = [
   { id: "salutation-ms", label: "Ms" },
   { id: "salutation-dr", label: "Dr" },
 ];
-
 
 const defaultIndividual = {
   name: "",

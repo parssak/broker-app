@@ -1,5 +1,5 @@
 <template>
-  <Listbox as="div" v-model="selected">
+  <Listbox as="div" v-model="selected" class="md:w-2/3">
     <ListboxLabel class="block text-sm font-medium text-gray-700">
       {{ label }}
     </ListboxLabel>

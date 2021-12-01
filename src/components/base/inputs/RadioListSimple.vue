@@ -71,10 +71,5 @@ export default {
       default: false,
     },
   },
-  // methods: {
-  //   onChange(event) {
-  //     this.$emit("change", event);
-  //   },
-  // },
 };
 </script>
