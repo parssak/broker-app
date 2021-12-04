@@ -1,8 +1,18 @@
 <template>
   <Form
-    title="Initial Broker Questions"
-    id="initial-broker-questions"
+    :title="steps[0].name"
+    :id="steps[0].id"
     @submit="handleSubmit"
+    :class="steps[0].status !== 'current' && 'hidden'"
+  >
+    <div class="todo">add fields</div>
+  </Form>
+
+  <Form
+    :title="steps[1].name"
+    :id="steps[1].id"
+    @submit="handleSubmit"
+    :class="steps[1].status !== 'current' && 'hidden'"
   >
     <RadioListSimple
       title="Mortgage Deal Type"
@@ -13,20 +23,17 @@
 
   <Form title="Mortgage Lending Criteria < $3M">
     <Input label="Property Location(s)" />
-
-    <fieldset class="grid grid-cols-2 gap-y-6">
-      <CheckListSimple
-        title="Term Lengths"
-        :items="termLengths"
-        description="Select all that apply"
-      />
-      <CheckListSimple
-        title="Charges Offered"
-        :items="chargeTypes"
-        description="Select all that apply"
-      />
-    </fieldset>
-
+    <CheckListSimple
+      title="Term Lengths"
+      :items="termLengths"
+      description="Select all that apply"
+      :columns="2"
+    />
+    <CheckListSimple
+      title="Charges Offered"
+      :items="chargeTypes"
+      description="Select all that apply"
+    />
     <SelectInput label="Property Style" :items="propertyStyles" />
     <Input type="number" label="Minimum Square Footage" />
     <Input type="number" label="Maximum Square Footage" />
@@ -130,19 +137,16 @@
         :items="providedOptions"
         itemsName="gr"
       />
-
       <RadioListSimple
         title="Peer Review of GR"
         :items="providedOptions"
         itemsName="gr-review"
       />
-
       <RadioListSimple
         title="Geotechnical Reliance Letter (GRL) for the Property"
         :items="providedOptions"
         itemsName="grl"
       />
-
       <RadioListSimple
         title="Peer Review of GRL"
         :items="providedOptions"
@@ -236,6 +240,7 @@
 </template>
 
 <script>
+import SelectInput from "@/components/base/inputs/SelectInput.vue";
 import SwitchWithLabel from "@/components/base/inputs/SwitchWithLabel.vue";
 import MoneyInput from "@/components/base/inputs/MoneyInput.vue";
 import RadioListSimple from "@/components/base/inputs/RadioListSimple.vue";
@@ -254,10 +259,19 @@ export default {
     CheckListSimple,
     MoneyInput,
     SwitchWithLabel,
+    SelectInput,
+  },
+  props: {
+    steps: {
+      type: Array,
+    },
   },
   setup() {
     return {
       mortgageTypes: data.mortgageTypes,
+      chargeTypes: data.chargeTypes,
+      propertyStyles: data.propertyStyles,
+      termLengths: data.termLengths,
       mortgageOptions: data.mortgageOptions,
       waterOptions: data.waterOptions,
       sewageOptions: data.sewageOptions,

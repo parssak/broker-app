@@ -3,7 +3,11 @@
     <nav class="flex justify-center" aria-label="Progress">
       <ol role="list" class="space-y-6">
         <li v-for="step in steps" :key="step.name">
-          <a v-if="step.status === 'complete'" :href="step.href" class="group">
+          <button
+            v-if="step.status === 'complete'"
+            @click="setActiveStep(step.id)"
+            class="group"
+          >
             <span class="flex items-start">
               <span
                 class="
@@ -37,10 +41,10 @@
                 >{{ step.name }}</span
               >
             </span>
-          </a>
-          <a
+          </button>
+          <button
             v-else-if="step.status === 'current'"
-            :href="step.href"
+            @click="setActiveStep(step.id)"
             class="flex items-start"
             aria-current="step"
           >
@@ -62,8 +66,8 @@
             <span class="ml-3 text-sm font-medium text-indigo-600">{{
               step.name
             }}</span>
-          </a>
-          <a v-else :href="step.href" class="group">
+          </button>
+          <button v-else @click="setActiveStep(step.id)" class="group">
             <div class="flex items-start">
               <div
                 class="
@@ -99,7 +103,7 @@
                 {{ step.name }}
               </p>
             </div>
-          </a>
+          </button>
         </li>
       </ol>
     </nav>
@@ -110,10 +114,10 @@
 import { CheckCircleIcon } from "@heroicons/vue/solid";
 
 const defaultSteps = [
-  { name: "Create account", href: "#", status: "complete" },
-  { name: "Profile information", href: "#", status: "current" },
-  { name: "Theme", href: "#", status: "upcoming" },
-  { name: "Preview", href: "#", status: "upcoming" },
+  { name: "Create account", id: "#", status: "complete" },
+  { name: "Profile information", id: "#", status: "current" },
+  { name: "Theme", id: "#", status: "upcoming" },
+  { name: "Preview", id: "#", status: "upcoming" },
 ];
 
 export default {
@@ -124,6 +128,26 @@ export default {
     steps: {
       type: Array,
       default: () => defaultSteps,
+    },
+  },
+  methods: {
+    setActiveStep(id) {
+      const currentIndex = this.steps.findIndex(
+        (step) => step.status === "current"
+      );
+      const newIndex = this.steps.findIndex((step) => step.id === id);
+      if (currentIndex === newIndex) return;
+
+      const newSteps = this.steps.map((step, index) => {
+        if (index === currentIndex) {
+          return { ...step, status: "complete" };
+        } else if (index === this.steps.findIndex((step) => step.id === id)) {
+          return { ...step, status: "current" };
+        } else {
+          return { ...step, status: "upcoming" };
+        }
+      });
+      this.$emit("change", newSteps);
     },
   },
 };
