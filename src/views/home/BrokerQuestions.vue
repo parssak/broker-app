@@ -21,7 +21,12 @@
     />
   </Form>
 
-  <Form title="Mortgage Lending Criteria < $3M">
+  <Form
+    :title="steps[2]?.name"
+    :id="steps[2]?.id"
+    @submit="handleSubmit"
+    :class="steps[2]?.status !== 'current' && 'hidden'"
+  >
     <Input label="Property Location(s)" />
     <CheckListSimple
       title="Term Lengths"
@@ -84,6 +89,7 @@
       :items="allowableLoanPurposes"
       description="Select all that apply"
       :columns="2"
+      columnsBreakpoint="md"
     />
 
     <MoneyInput label="Minimum Loan Amount" />
@@ -265,6 +271,9 @@ export default {
     steps: {
       type: Array,
     },
+    onStepsChange: {
+      type: Function,
+    },
   },
   setup() {
     return {
@@ -273,6 +282,8 @@ export default {
       propertyStyles: data.propertyStyles,
       termLengths: data.termLengths,
       mortgageOptions: data.mortgageOptions,
+      locations: data.locations,
+      acOptions: data.acOptions,
       waterOptions: data.waterOptions,
       sewageOptions: data.sewageOptions,
       heatOptions: data.heatOptions,
@@ -282,6 +293,63 @@ export default {
       consumerOptions: data.consumerOptions,
       providedOptions: data.providedOptions,
     };
+  },
+  methods: {
+    handleSubmit(e) {
+      e.preventDefault();
+      const id = e.target?.id;
+      const currentIdx = this.steps.findIndex((step) => step.id === id);
+      const newSteps = this.steps.map((step, index) => {
+        if (index <= currentIdx) {
+          return {
+            ...step,
+            status: "complete",
+          };
+        }
+        if (index === currentIdx + 1) {
+          return {
+            ...step,
+            status: "current",
+          };
+        }
+        return step;
+      });
+      if (
+        id === "initial-questions" &&
+        (!newSteps[2]?.id.startsWith("commercial-") ||
+          !newSteps[2]?.id.startsWith("residential"))
+      ) {
+        console.debug(newSteps[2]?.id.startsWith("commercial-"));
+        // check which option was selected
+        const chosenType = [
+          ...document
+            .querySelector("#initial-questions")
+            .getElementsByTagName("input"),
+        ].find((e) => e.checked)?.id;
+        // insert as 3rd step
+
+        if (chosenType === "commercial-less-3") {
+          newSteps.splice(2, 0, {
+            id: "commercial-less-3",
+            name: "Mortgage Lending Criteria < $3M",
+            status: "current",
+          });
+        } else if (chosenType === "commercial-greater-3") {
+          newSteps.splice(2, 0, {
+            id: "commercial-greater-3",
+            name: "Mortgage Lending Criteria > $3M",
+            status: "current",
+          });
+        } else if (chosenType === "residential") {
+          newSteps.splice(2, 0, {
+            id: "residential",
+            name: "Residential",
+            status: "current",
+          });
+        }
+      }
+      this.onStepsChange(newSteps);
+    },
   },
 };
 </script>

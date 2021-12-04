@@ -35,7 +35,7 @@
                   ml-3
                   text-sm
                   font-medium
-                  text-gray-500
+                  text-left text-gray-500
                   group-hover:text-gray-900
                 "
                 >{{ step.name }}</span
@@ -63,7 +63,7 @@
               <span class="absolute h-4 w-4 rounded-full bg-indigo-200" />
               <span class="relative block w-2 h-2 bg-indigo-600 rounded-full" />
             </span>
-            <span class="ml-3 text-sm font-medium text-indigo-600">{{
+            <span class="text-left ml-3 text-sm font-medium text-indigo-600">{{
               step.name
             }}</span>
           </button>
@@ -96,7 +96,7 @@
                   ml-3
                   text-sm
                   font-medium
-                  text-gray-500
+                  text-left text-gray-500
                   group-hover:text-gray-900
                 "
               >
@@ -139,13 +139,9 @@ export default {
       if (currentIndex === newIndex) return;
 
       const newSteps = this.steps.map((step, index) => {
-        if (index === currentIndex) {
-          return { ...step, status: "complete" };
-        } else if (index === this.steps.findIndex((step) => step.id === id)) {
-          return { ...step, status: "current" };
-        } else {
-          return { ...step, status: "upcoming" };
-        }
+        if (index < newIndex) return { ...step, status: "complete" };
+        if (index > newIndex) return { ...step, status: "upcoming" };
+        return { ...step, status: "current" };
       });
       this.$emit("change", newSteps);
     },

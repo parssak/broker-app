@@ -1,16 +1,14 @@
 <template>
-  <Container class="bg-gray-100">
+  <Container class="bg-gray-100 relative">
     <div class="lg:grid lg:grid-cols-12 lg:gap-x-5">
-      <aside
-        class="py-6 px-2 sm:px-6 lg:py-0 lg:px-0 lg:col-span-3 relative w-full"
-      >
-        <nav class="space-y-1 top-30 w-full lg:w-64 lg:fixed">
+      <aside class="px-2 sm:px-6 lg:px-0 lg:col-span-3 w-full">
+        <nav class="space-y-1 top-16 w-full lg:w-64 lg:sticky">
           <StepsBulletText :steps="steps" @change="onStepsChange" />
         </nav>
       </aside>
 
       <div class="sm:px-6 lg:px-0 lg:col-span-9">
-        <BrokerQuestions :steps="steps" />
+        <BrokerQuestions :steps="steps" :onStepsChange="onStepsChange" />
         <!-- <BorrowerQuestions /> -->
 
         <!-- <Form title="Commercial Mortgage App < $3M">
@@ -1008,11 +1006,11 @@ const mortgageTypes = [
 ];
 
 const brokerSteps = [
-  { name: "Profile", id: "profile", status: "complete" },
+  { name: "Profile", id: "profile", status: "current" },
   {
     name: "Initial Broker Questions",
     id: "initial-questions",
-    status: "current",
+    status: "upcoming",
   },
 ];
 

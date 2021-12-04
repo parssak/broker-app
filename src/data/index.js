@@ -30,13 +30,13 @@ export const navigation = getNavigation(MASTER_ROUTES);
 // Form fields
 
 export const mortgageTypes = [
-  { id: "residential", label: "Residential" },
+  // { id: "residential", label: "Residential" }, // ! Removed as no info provided
   {
     id: "commercial-less-3",
     label: "Commercial &/or Construction (Less than $3 million total value)",
   },
   {
-    id: "commerial-more-3",
+    id: "commercial-greater-3",
     label: "Commercial &/or Construction (More than $3 million total value)",
   },
 ];

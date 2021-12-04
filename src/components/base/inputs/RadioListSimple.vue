@@ -7,12 +7,13 @@
     <fieldset class="mt-4">
       <legend class="sr-only">{{ legend }}</legend>
       <div :class="horizontal ? 'flex items-center space-x-8' : 'space-y-4'">
-        <div v-for="item in items" :key="item.id" class="w-full">
+        <div v-for="(item, idx) in items" :key="item.id" class="w-full">
           <label class="flex items-center">
             <input
               :id="item.id"
               :name="itemsName"
               type="radio"
+              :checked="idx === 0"
               class="
                 focus:ring-indigo-500
                 h-4

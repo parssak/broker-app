@@ -6,7 +6,12 @@
     </p>
     <fieldset class="mt-4">
       <legend class="sr-only">{{ legend }}</legend>
-      <div class="grid gap-4" :class="`grid-cols-${columns}`">
+      <div
+        class="grid gap-4"
+        :class="`${
+          columnsBreakpoint ? `${columnsBreakpoint}:` : ''
+        }grid-cols-${columns}`"
+      >
         <div v-for="item in items" :key="item.id" class="flex items-start">
           <label class="flex items-start">
             <div class="flex items-center h-5">
@@ -66,6 +71,10 @@ export default {
     columns: {
       type: Number,
       default: 1,
+    },
+    columnsBreakpoint: {
+      type: String,
+      default: "",
     },
   },
   methods: {

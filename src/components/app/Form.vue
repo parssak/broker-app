@@ -11,7 +11,7 @@
           </p>
         </div>
 
-        <div class="grid gap-6">
+        <div class="flex flex-col space-y-6">
           <slot></slot>
         </div>
       </div>
@@ -37,7 +37,7 @@
             focus:ring-indigo-500
           "
         >
-          Save
+          Next
         </button>
       </div>
     </div>
