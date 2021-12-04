@@ -5,7 +5,8 @@
         class="py-6 px-2 sm:px-6 lg:py-0 lg:px-0 lg:col-span-3 relative w-full"
       >
         <nav class="space-y-1 top-30 w-full lg:w-64 lg:fixed">
-          <a
+          <StepsBulletText />
+          <!-- <a
             v-for="item in navigation"
             :key="item.name"
             :href="item.href"
@@ -30,13 +31,17 @@
             <span class="truncate">
               {{ item.name }}
             </span>
-          </a>
+          </a> -->
         </nav>
       </aside>
 
       <div class="space-y-6 sm:px-6 lg:px-0 lg:col-span-9">
-        <Steps />
-        <Form title="Initial Broker Questions" description=" ">
+        <Form
+          title="Initial Broker Questions"
+          description=" "
+          @submit="handleSubmit"
+          id="initial-broker-questions"
+        >
           <RadioListSimple
             title="Mortgage Deal Type"
             :items="mortgageTypes"
@@ -67,35 +72,36 @@
           <SelectInput label="Property Style" :items="propertyStyles" />
           <Input type="number" label="Minimum Square Footage" />
           <Input type="number" label="Maximum Square Footage" />
-          <div class="grid md:grid-cols-2 gap-6">
-            <RadioListSimple
-              itemsName="location"
-              title="Location"
-              :items="locations"
-            />
-            <RadioListSimple
-              itemsName="air"
-              title="Air-Conditioning"
-              :items="acOptions"
-            />
-            <div class="space-y-6">
-              <RadioListSimple
-                itemsName="water"
-                title="Water"
-                :items="waterOptions"
-              />
-              <RadioListSimple
-                itemsName="sewage"
-                title="Sewage"
-                :items="sewageOptions"
-              />
-            </div>
-            <RadioListSimple
-              itemsName="heating"
-              title="Heating"
-              :items="heatOptions"
-            />
-          </div>
+          <RadioListSimple
+            itemsName="location"
+            title="Location"
+            :items="locations"
+            :horizontal="true"
+          />
+          <RadioListSimple
+            itemsName="air"
+            title="Air-Conditioning"
+            :items="acOptions"
+            :horizontal="true"
+          />
+          <RadioListSimple
+            itemsName="water"
+            title="Water"
+            :items="waterOptions"
+            :horizontal="true"
+          />
+          <RadioListSimple
+            itemsName="sewage"
+            title="Sewage"
+            :items="sewageOptions"
+            :horizontal="true"
+          />
+          <RadioListSimple
+            itemsName="heating"
+            title="Heating"
+            :items="heatOptions"
+            :horizontal="true"
+          />
 
           <CheckListSimple
             title="Loan Types Offered"
@@ -107,6 +113,7 @@
             title="Allowable Loan Purposes"
             :items="allowableLoanPurposes"
             description="Select all that apply"
+            :columns="2"
           />
 
           <MoneyInput label="Minimum Loan Amount" />
@@ -1213,7 +1220,7 @@
 </template>
 
 <script>
-import Steps from "../../components/app/Steps.vue";
+import StepsBulletText from "../../components/app/StepsBulletText.vue";
 import Header from "../../components/base/Header.vue";
 import Fieldset from "../../components/app/Fieldset.vue";
 import NumberInput from "../../components/base/inputs/NumberInput.vue";
@@ -1748,7 +1755,7 @@ export default {
     NumberInput,
     Fieldset,
     Header,
-    Steps,
+    StepsBulletText,
   },
   setup() {
     return {
@@ -1825,6 +1832,11 @@ export default {
     };
   },
   methods: {
+    handleSubmit(e) {
+      e.preventDefault();
+      const id = e.target?.id;
+      console.log("Form submitted", id);
+    },
     onBorrowerFieldChange(value, field, index) {
       if (this.borrowers.length <= index) {
         return;
