@@ -314,38 +314,43 @@ export default {
         }
         return step;
       });
-      if (
-        id === "initial-questions" &&
-        (!newSteps[2]?.id.startsWith("commercial-") ||
-          !newSteps[2]?.id.startsWith("residential"))
-      ) {
-        console.debug(newSteps[2]?.id.startsWith("commercial-"));
-        // check which option was selected
+      if (id === "initial-questions") {
         const chosenType = [
           ...document
             .querySelector("#initial-questions")
             .getElementsByTagName("input"),
         ].find((e) => e.checked)?.id;
-        // insert as 3rd step
 
         if (chosenType === "commercial-less-3") {
-          newSteps.splice(2, 0, {
-            id: "commercial-less-3",
-            name: "Mortgage Lending Criteria < $3M",
-            status: "current",
-          });
+          if (newSteps[2]?.id.startsWith("commercial-")) {
+            newSteps[2] = {
+              ...newSteps[2],
+              id: "commercial-less-3",
+              status: "current",
+              name: "Mortgage Lending Criteria < $3M",
+            };
+          } else {
+            newSteps.splice(2, 0, {
+              id: "commercial-less-3",
+              status: "current",
+              name: "Mortgage Lending Criteria < $3M",
+            });
+          }
         } else if (chosenType === "commercial-greater-3") {
-          newSteps.splice(2, 0, {
-            id: "commercial-greater-3",
-            name: "Mortgage Lending Criteria > $3M",
-            status: "current",
-          });
-        } else if (chosenType === "residential") {
-          newSteps.splice(2, 0, {
-            id: "residential",
-            name: "Residential",
-            status: "current",
-          });
+          if (newSteps[2]?.id.startsWith("commercial-")) {
+            newSteps[2] = {
+              ...newSteps[2],
+              id: "commercial-greater-3",
+              status: "current",
+              name: "Mortgage Lending Criteria > $3M",
+            };
+          } else {
+            newSteps.splice(2, 0, {
+              id: "commercial-greater-3",
+              status: "current",
+              name: "Mortgage Lending Criteria > $3M",
+            });
+          }
         }
       }
       this.onStepsChange(newSteps);
