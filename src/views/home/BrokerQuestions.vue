@@ -276,6 +276,14 @@ export default {
     },
   },
   setup() {
+    // prevent any click of enter key from submitting any form
+    const handleKeyDown = (e) => {
+      if (e.keyCode === 13) {
+        e.preventDefault();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+
     return {
       mortgageTypes: data.mortgageTypes,
       chargeTypes: data.chargeTypes,

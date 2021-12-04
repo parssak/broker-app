@@ -22,6 +22,7 @@
         "
         :placeholder="placeholder"
         @change="onChange"
+        @submit.prevent
       />
     </div>
   </div>
@@ -58,7 +59,6 @@ export default {
   },
   methods: {
     onChange(e) {
-      // this.$emit("change", e.target.value);
       this.value = e.target.value;
     },
   },
