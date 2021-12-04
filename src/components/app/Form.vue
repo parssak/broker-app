@@ -53,8 +53,7 @@ export default {
     },
     description: {
       type: String,
-      default:
-        "This information will be displayed publicly so be careful what you share.",
+      default: " ",
     },
   },
 };

@@ -6,272 +6,14 @@
       >
         <nav class="space-y-1 top-30 w-full lg:w-64 lg:fixed">
           <StepsBulletText />
-          <!-- <a
-            v-for="item in navigation"
-            :key="item.name"
-            :href="item.href"
-            :class="[
-              item.current
-                ? 'bg-gray-50 text-accent hover:text-accent hover:bg-white'
-                : 'text-gray-900 hover:text-gray-900 hover:bg-gray-50',
-              'group rounded-md px-3 py-2 flex items-center text-sm font-medium',
-            ]"
-            :aria-current="item.current ? 'page' : undefined"
-          >
-            <component
-              :is="item.icon"
-              :class="[
-                item.current
-                  ? 'text-accent group-hover:text-accent'
-                  : 'text-gray-400 group-hover:text-gray-500',
-                'flex-shrink-0 -ml-1 mr-3 h-6 w-6',
-              ]"
-              aria-hidden="true"
-            />
-            <span class="truncate">
-              {{ item.name }}
-            </span>
-          </a> -->
         </nav>
       </aside>
 
       <div class="space-y-6 sm:px-6 lg:px-0 lg:col-span-9">
-        <Form
-          title="Initial Broker Questions"
-          description=" "
-          @submit="handleSubmit"
-          id="initial-broker-questions"
-        >
-          <RadioListSimple
-            title="Mortgage Deal Type"
-            :items="mortgageTypes"
-            itemsName="mortgages"
-          />
-        </Form>
+        <BrokerQuestions />
+        <!-- <BorrowerQuestions /> -->
 
-        <Form title="Add to Ledgers Questions" description=" ">
-          <CheckListSimple title="Mortgage Deal Type" :items="mortgageTypes" />
-        </Form>
-
-        <Form title="Mortgage Lending Criteria < $3M" description=" ">
-          <Input label="Property Location(s)" />
-
-          <fieldset class="grid grid-cols-2 gap-y-6">
-            <CheckListSimple
-              title="Term Lengths"
-              :items="termLengths"
-              description="Select all that apply"
-            />
-            <CheckListSimple
-              title="Charges Offered"
-              :items="chargeTypes"
-              description="Select all that apply"
-            />
-          </fieldset>
-
-          <SelectInput label="Property Style" :items="propertyStyles" />
-          <Input type="number" label="Minimum Square Footage" />
-          <Input type="number" label="Maximum Square Footage" />
-          <RadioListSimple
-            itemsName="location"
-            title="Location"
-            :items="locations"
-            :horizontal="true"
-          />
-          <RadioListSimple
-            itemsName="air"
-            title="Air-Conditioning"
-            :items="acOptions"
-            :horizontal="true"
-          />
-          <RadioListSimple
-            itemsName="water"
-            title="Water"
-            :items="waterOptions"
-            :horizontal="true"
-          />
-          <RadioListSimple
-            itemsName="sewage"
-            title="Sewage"
-            :items="sewageOptions"
-            :horizontal="true"
-          />
-          <RadioListSimple
-            itemsName="heating"
-            title="Heating"
-            :items="heatOptions"
-            :horizontal="true"
-          />
-
-          <CheckListSimple
-            title="Loan Types Offered"
-            :items="loanTypes"
-            description="Select all that apply"
-          />
-
-          <CheckListSimple
-            title="Allowable Loan Purposes"
-            :items="allowableLoanPurposes"
-            description="Select all that apply"
-            :columns="2"
-          />
-
-          <MoneyInput label="Minimum Loan Amount" />
-          <MoneyInput label="Maximum Loan Amount" />
-
-          <Input type="number" label="Maximum LTV (Loan-To-Value)" />
-
-          <SwitchWithLabel label="Collateral/Blanket Charges" />
-          <SwitchWithLabel label="Non-Resident Corporation - Borrowers(s)" />
-          <SwitchWithLabel
-            label="Non-Citizen/Permanent Resident - Any Directors & Officers:"
-          />
-
-          <Input type="number" label="Maximum GDS" />
-          <Input type="number" label="Maximum TDS" />
-
-          <CheckListSimple title="Bankruptcy" :items="bankruptcyOptions" />
-          <CheckListSimple title="Consumer" :items="consumerOptions" />
-
-          <Fieldset
-            title="Environmental Report(s), Reliance Letter(s) & Peer Review(s)"
-          >
-            <RadioListSimple
-              title="Environmental Site Assessment (ESA) for the Property?"
-              :items="esaOptions"
-              itemsName="esa"
-            />
-
-            <RadioListSimple
-              title="Peer Review of ESA"
-              :items="esaReviewOptions"
-              itemsName="esa-review"
-            />
-
-            <RadioListSimple
-              title="Environmental Reliance Letter (ERL) for the Property?"
-              :items="erlOptions"
-              itemsName="erl"
-            />
-
-            <RadioListSimple
-              title="Peer Review of ERL"
-              :items="erlReviewOptions"
-              itemsName="erl-review"
-            />
-          </Fieldset>
-
-          <Fieldset title="Geotechnical Report(s) & Peer Review(s)">
-            <RadioListSimple
-              title="Geotechnical Report (GR) for the Property"
-              :items="grOptions"
-              itemsName="gr"
-            />
-
-            <RadioListSimple
-              title="Peer Review of GR"
-              :items="grReviewOptions"
-              itemsName="gr-review"
-            />
-
-            <RadioListSimple
-              title="Geotechnical Reliance Letter (GRL) for the Property"
-              :items="grlOptions"
-              itemsName="grl"
-            />
-
-            <RadioListSimple
-              title="Peer Review of GRL"
-              :items="grlReviewOptions"
-              itemsName="grl-review"
-            />
-          </Fieldset>
-
-          <Fieldset title="Appraisal Report(s) & Peer Review(s)">
-            <RadioListSimple
-              title="Appraisal Report (AR) for the Property"
-              :items="arOptions"
-              itemsName="ar"
-            />
-
-            <RadioListSimple
-              title="Peer Review of AR"
-              :items="arReviewOptions"
-              itemsName="ar-review"
-            />
-
-            <RadioListSimple
-              title="Appraisal Reliance Letter (ARL) for the Property"
-              :items="arlOptions"
-              itemsName="arl"
-            />
-
-            <RadioListSimple
-              title="Peer Review of ARL"
-              :items="arlReviewOptions"
-              itemsName="arl-review"
-            />
-          </Fieldset>
-
-          <Fieldset>
-            <RadioListSimple
-              title="Current Survey for the Property"
-              :items="surveyOptions"
-              itemsName="survey"
-            />
-
-            <RadioListSimple
-              title="Market Research & Analysis of the Property"
-              :items="marketOptions"
-              itemsName="market"
-            />
-          </Fieldset>
-
-          <Fieldset>
-            <RadioListSimple
-              title="Insurance Policies for the Property"
-              :items="insuranceOptions"
-              itemsName="insurance"
-            />
-
-            <RadioListSimple
-              title="Project Drawings for the Property"
-              :items="drawingOptions"
-              itemsName="drawing"
-            />
-          </Fieldset>
-
-          <Fieldset>
-            <RadioListSimple
-              title="Property Taxes current (paid) for the Property"
-              :items="propertyTaxOptions"
-              itemsName="property-tax"
-            />
-            <RadioListSimple
-              title="Title Searches for the Property"
-              :items="titleSearchOptions"
-              itemsName="title-search"
-            />
-          </Fieldset>
-
-          <Fieldset>
-            <RadioListSimple
-              title="Budget or Financial Proforma for the Property"
-              :items="projectBudgetOptions"
-              itemsName="project-budget"
-            />
-            <RadioListSimple
-              title="Title Insurance for the Property"
-              :items="titleInsuranceOptions"
-              itemsName="title-insurance"
-            />
-          </Fieldset>
-
-          <Input label="Any Brokers/Brokerages Not Allowed" />
-          <Input label="Any Preferred Brokers/Brokerages" />
-        </Form>
-
-        <Form title="Commercial Mortgage App < $3M" description=" ">
+        <!-- <Form title="Commercial Mortgage App < $3M">
           <div class="grid md:grid-cols-2 gap-y-6 gap-x-12">
             <Input label="Name of Project" />
             <Input label="Date of Mortgage Application" type="date" />
@@ -1213,13 +955,15 @@
           <Fieldset title="Deal Documents">
             <FileInput class="w-full" label="Deal Documents" />
           </Fieldset>
-        </Form>
+        </Form> -->
       </div>
     </div>
   </Container>
 </template>
 
 <script>
+import BorrowerQuestions from "./BorrowerQuestions.vue";
+import BrokerQuestions from "./BrokerQuestions.vue";
 import StepsBulletText from "../../components/app/StepsBulletText.vue";
 import Header from "../../components/base/Header.vue";
 import Fieldset from "../../components/app/Fieldset.vue";
@@ -1263,195 +1007,195 @@ const mortgageTypes = [
   },
 ];
 
-const chargeTypes = [
-  { id: "charge-1st", label: "1st" },
-  { id: "charge-2nd", label: "2nd" },
-  { id: "charge-3rd", label: "3rd" },
-  { id: "charge-bridge", label: "Bridge" },
-];
+// const chargeTypes = [
+//   { id: "charge-1st", label: "1st" },
+//   { id: "charge-2nd", label: "2nd" },
+//   { id: "charge-3rd", label: "3rd" },
+//   { id: "charge-bridge", label: "Bridge" },
+// ];
 
-const termLengths = [
-  { id: "term-1yr", label: "1 year" },
-  { id: "term-18m", label: "18 months" },
-  { id: "term-3yr", label: "3 years" },
-  { id: "term-5yr", label: "5 years" },
-  { id: "term-10yr", label: "10 years" },
-  { id: "term-25yr", label: "25 years" },
-  { id: "term-30yr", label: "30 years" },
-  { id: "term-other", label: "Other" },
-];
+// const termLengths = [
+//   { id: "term-1yr", label: "1 year" },
+//   { id: "term-18m", label: "18 months" },
+//   { id: "term-3yr", label: "3 years" },
+//   { id: "term-5yr", label: "5 years" },
+//   { id: "term-10yr", label: "10 years" },
+//   { id: "term-25yr", label: "25 years" },
+//   { id: "term-30yr", label: "30 years" },
+//   { id: "term-other", label: "Other" },
+// ];
 
-const propertyStyles = [
-  {
-    id: "industrial-manufacturing-facility",
-    label: "Industrial - Manufacturing Facility",
-  },
-  {
-    id: "industrial-warehouse/distribution-facility",
-    label: "Industrial - Warehouse/Distribution Facility",
-  },
-  {
-    id: "industrial-flex/multi-purpose-facility",
-    label: "Industrial - Flex/Multi-Purpose Facility",
-  },
-  {
-    id: "retail-enclosed shopping mall",
-    label: "Retail - Enclosed Shopping Mall",
-  },
-  {
-    id: "retail-shopping plaza or strip mall",
-    label: "Retail - Shopping Plaza or Strip Mall",
-  },
-  {
-    id: "retail-pad/standalone building",
-    label: "Retail - Pad/Standalone Building",
-  },
-  { id: "office-office building", label: "Office - Office Building" },
-  { id: "office-suite or condominium", label: "Office - Suite or Condominium" },
-  {
-    id: "office-professional suites (dental, medical, legal, etc.)",
-    label: "Office - Professional Suites (Dental, Medical, Legal, etc.)",
-  },
-  {
-    id: "multi-family residential units (mfru) - condominiums,",
-    label: "Multi-Family Residential Units (MFRU) - Condominiums,",
-  },
-  {
-    id: "apartment buildings, commercial/offices",
-    label: "Apartment Buildings, Commercial/Offices",
-  },
-  {
-    id: "multi-dwelling unit (mdu) - townhomes, condominiums,",
-    label: "Multi-Dwelling Unit (MDU) - Townhomes, Condominiums,",
-  },
-  { id: "apartment buildings", label: "Apartment Buildings" },
-  { id: "residential homes/estates", label: "Residential Homes/Estates" },
-  { id: "hotel & lodging", label: "Hotel & Lodging" },
-  { id: "restaurant", label: "Restaurant" },
-  { id: "cottage", label: "Cottage" },
-  { id: "land", label: "Land" },
-];
+// const propertyStyles = [
+//   {
+//     id: "industrial-manufacturing-facility",
+//     label: "Industrial - Manufacturing Facility",
+//   },
+//   {
+//     id: "industrial-warehouse/distribution-facility",
+//     label: "Industrial - Warehouse/Distribution Facility",
+//   },
+//   {
+//     id: "industrial-flex/multi-purpose-facility",
+//     label: "Industrial - Flex/Multi-Purpose Facility",
+//   },
+//   {
+//     id: "retail-enclosed shopping mall",
+//     label: "Retail - Enclosed Shopping Mall",
+//   },
+//   {
+//     id: "retail-shopping plaza or strip mall",
+//     label: "Retail - Shopping Plaza or Strip Mall",
+//   },
+//   {
+//     id: "retail-pad/standalone building",
+//     label: "Retail - Pad/Standalone Building",
+//   },
+//   { id: "office-office building", label: "Office - Office Building" },
+//   { id: "office-suite or condominium", label: "Office - Suite or Condominium" },
+//   {
+//     id: "office-professional suites (dental, medical, legal, etc.)",
+//     label: "Office - Professional Suites (Dental, Medical, Legal, etc.)",
+//   },
+//   {
+//     id: "multi-family residential units (mfru) - condominiums,",
+//     label: "Multi-Family Residential Units (MFRU) - Condominiums,",
+//   },
+//   {
+//     id: "apartment buildings, commercial/offices",
+//     label: "Apartment Buildings, Commercial/Offices",
+//   },
+//   {
+//     id: "multi-dwelling unit (mdu) - townhomes, condominiums,",
+//     label: "Multi-Dwelling Unit (MDU) - Townhomes, Condominiums,",
+//   },
+//   { id: "apartment buildings", label: "Apartment Buildings" },
+//   { id: "residential homes/estates", label: "Residential Homes/Estates" },
+//   { id: "hotel & lodging", label: "Hotel & Lodging" },
+//   { id: "restaurant", label: "Restaurant" },
+//   { id: "cottage", label: "Cottage" },
+//   { id: "land", label: "Land" },
+// ];
 
-const locations = [
-  { id: "urban", label: "Urban" },
-  { id: "rural", label: "Rural" },
-  { id: "either", label: "Either" },
-];
+// const locations = [
+//   { id: "urban", label: "Urban" },
+//   { id: "rural", label: "Rural" },
+//   { id: "either", label: "Either" },
+// ];
 
-const acOptions = [
-  { id: "ac-yes", label: "Yes" },
-  { id: "ac-no", label: "No" },
-  { id: "ac-not-relevant", label: "Not relevant" },
-];
+// const acOptions = [
+//   { id: "ac-yes", label: "Yes" },
+//   { id: "ac-no", label: "No" },
+//   { id: "ac-not-relevant", label: "Not relevant" },
+// ];
 
-const waterOptions = [
-  { id: "water-municipal", label: "Municipal" },
-  { id: "water-well", label: "Well Water" },
-  { id: "water-either", label: "Either" },
-];
+// const waterOptions = [
+//   { id: "water-municipal", label: "Municipal" },
+//   { id: "water-well", label: "Well Water" },
+//   { id: "water-either", label: "Either" },
+// ];
 
-const heatOptions = [
-  { id: "heat-forced-air", label: "Forced Air/Furnace" },
-  { id: "heat-oil", label: "Heating Oil" },
-  { id: "heat-propane", label: "Propane" },
-  { id: "heat-any", label: "Any" },
-];
+// const heatOptions = [
+//   { id: "heat-forced-air", label: "Forced Air/Furnace" },
+//   { id: "heat-oil", label: "Heating Oil" },
+//   { id: "heat-propane", label: "Propane" },
+//   { id: "heat-any", label: "Any" },
+// ];
 
-const sewageOptions = [
-  { id: "sewage-municipal", label: "Municipal" },
-  { id: "sewage-septic", label: "Septic" },
-  { id: "sewage-either", label: "Either" },
-];
+// const sewageOptions = [
+//   { id: "sewage-municipal", label: "Municipal" },
+//   { id: "sewage-septic", label: "Septic" },
+//   { id: "sewage-either", label: "Either" },
+// ];
 
-const loanTypes = [
-  { id: "loan-interest-only", label: "Interest Only" },
-  { id: "loan-amortized", label: "Amortized" },
-  { id: "loan-closed", label: "Closed" },
-  { id: "loan-open", label: "Open" },
-];
+// const loanTypes = [
+//   { id: "loan-interest-only", label: "Interest Only" },
+//   { id: "loan-amortized", label: "Amortized" },
+//   { id: "loan-closed", label: "Closed" },
+//   { id: "loan-open", label: "Open" },
+// ];
 
-const bankruptcyOptions = [
-  {
-    id: "bankruptcy-previous",
-    label: "Previous Bankruptcy",
-    description: "(Any Borrowers/Officers/Directors/Officers)",
-  },
-  {
-    id: "bankruptcy-current",
-    label: "Current Bankruptcy",
-    description: "(Any Borrowers/Officers/Directors/Officers)",
-  },
-];
+// const bankruptcyOptions = [
+//   {
+//     id: "bankruptcy-previous",
+//     label: "Previous Bankruptcy",
+//     description: "(Any Borrowers/Officers/Directors/Officers)",
+//   },
+//   {
+//     id: "bankruptcy-current",
+//     label: "Current Bankruptcy",
+//     description: "(Any Borrowers/Officers/Directors/Officers)",
+//   },
+// ];
 
-const consumerOptions = [
-  {
-    id: "consumer-previous",
-    label: "Previous Consumer Proposal",
-    description: "(Any Borrowers/Officers/Directors/Officers)",
-  },
-  {
-    id: "consumer-current",
-    label: "Current Consumer Proposal",
-    description: "(Any Borrowers/Officers/Directors/Officers)",
-  },
-];
+// const consumerOptions = [
+//   {
+//     id: "consumer-previous",
+//     label: "Previous Consumer Proposal",
+//     description: "(Any Borrowers/Officers/Directors/Officers)",
+//   },
+//   {
+//     id: "consumer-current",
+//     label: "Current Consumer Proposal",
+//     description: "(Any Borrowers/Officers/Directors/Officers)",
+//   },
+// ];
 
-const allowableLoanPurposes = [
-  { id: "loan-purpose-investment", label: "Investment" },
-  { id: "loan-purpose-improvements", label: "Improvements (minor)" },
-  { id: "loan-purpose-renovation", label: "Renovation (major)" },
-  { id: "loan-purpose-purchase-land-only", label: "Purchase Land Only" },
-  {
-    id: "loan-purpose-purchase-land-with-existing-structure",
-    label: "Purchase Land with Existing Structure",
-  },
-  { id: "loan-purpose-construction", label: "Construction" },
-  {
-    id: "loan-purpose-purchase-plus-construction",
-    label: "Purchase + Construction",
-  },
-  { id: "loan-purpose-mortgage-arrears", label: "Mortgage Arrears" },
-  { id: "loan-purpose-other", label: "Other" },
-];
+// const allowableLoanPurposes = [
+//   { id: "loan-purpose-investment", label: "Investment" },
+//   { id: "loan-purpose-improvements", label: "Improvements (minor)" },
+//   { id: "loan-purpose-renovation", label: "Renovation (major)" },
+//   { id: "loan-purpose-purchase-land-only", label: "Purchase Land Only" },
+//   {
+//     id: "loan-purpose-purchase-land-with-existing-structure",
+//     label: "Purchase Land with Existing Structure",
+//   },
+//   { id: "loan-purpose-construction", label: "Construction" },
+//   {
+//     id: "loan-purpose-purchase-plus-construction",
+//     label: "Purchase + Construction",
+//   },
+//   { id: "loan-purpose-mortgage-arrears", label: "Mortgage Arrears" },
+//   { id: "loan-purpose-other", label: "Other" },
+// ];
 
-const getProvidedOptions = (identifier) => {
-  return [
-    { id: `${identifier}-must-be-provided`, label: "Must be provided" },
-    {
-      id: `${identifier}-needed-future`,
-      label: "Will need to be provided in the future",
-    },
-    { id: `${identifier}-either`, label: "Either" },
-  ];
-};
+// const getProvidedOptions = (identifier) => {
+//   return [
+//     { id: `${identifier}-must-be-provided`, label: "Must be provided" },
+//     {
+//       id: `${identifier}-needed-future`,
+//       label: "Will need to be provided in the future",
+//     },
+//     { id: `${identifier}-either`, label: "Either" },
+//   ];
+// };
 
-const esaOptions = getProvidedOptions("esa");
-const esaReviewOptions = getProvidedOptions("esaReview");
-const erlOptions = getProvidedOptions("erl");
-const erlReviewOptions = getProvidedOptions("erlReview");
-const grOptions = getProvidedOptions("gr");
-const grReviewOptions = getProvidedOptions("grReview");
-const grlOptions = getProvidedOptions("grl");
-const grlReviewOptions = getProvidedOptions("grlReview");
-const arOptions = getProvidedOptions("ar");
-const arReviewOptions = getProvidedOptions("arReview");
-const arlOptions = getProvidedOptions("arl");
-const arlReviewOptions = getProvidedOptions("arlReview");
-const surveyOptions = getProvidedOptions("survey");
-const marketOptions = getProvidedOptions("market");
-const insuranceOptions = getProvidedOptions("insurance");
-const drawingOptions = getProvidedOptions("project");
-const propertyTaxOptions = getProvidedOptions("propertyTax");
-const titleSearchOptions = getProvidedOptions("titleSearch");
-const projectBudgetOptions = getProvidedOptions("projectBudget");
-const titleInsuranceOptions = getProvidedOptions("titleInsurance");
+// const esaOptions = getProvidedOptions("esa");
+// const esaReviewOptions = getProvidedOptions("esaReview");
+// const erlOptions = getProvidedOptions("erl");
+// const erlReviewOptions = getProvidedOptions("erlReview");
+// const grOptions = getProvidedOptions("gr");
+// const grReviewOptions = getProvidedOptions("grReview");
+// const grlOptions = getProvidedOptions("grl");
+// const grlReviewOptions = getProvidedOptions("grlReview");
+// const arOptions = getProvidedOptions("ar");
+// const arReviewOptions = getProvidedOptions("arReview");
+// const arlOptions = getProvidedOptions("arl");
+// const arlReviewOptions = getProvidedOptions("arlReview");
+// const surveyOptions = getProvidedOptions("survey");
+// const marketOptions = getProvidedOptions("market");
+// const insuranceOptions = getProvidedOptions("insurance");
+// const drawingOptions = getProvidedOptions("project");
+// const propertyTaxOptions = getProvidedOptions("propertyTax");
+// const titleSearchOptions = getProvidedOptions("titleSearch");
+// const projectBudgetOptions = getProvidedOptions("projectBudget");
+// const titleInsuranceOptions = getProvidedOptions("titleInsurance");
 
 // Commercial Broker Options
 
-const yesNoOptions = [
-  { id: "yes", label: "Yes" },
-  { id: "no", label: "No" },
-];
+// const yesNoOptions = [
+//   { id: "yes", label: "Yes" },
+//   { id: "no", label: "No" },
+// ];
 
 const defaultBorrower = {
   name: "",
@@ -1756,46 +1500,48 @@ export default {
     Fieldset,
     Header,
     StepsBulletText,
+    BrokerQuestions,
+    BorrowerQuestions,
   },
   setup() {
     return {
       navigation,
       mortgageTypes,
-      chargeTypes,
-      termLengths,
-      propertyStyles,
-      locations,
-      acOptions,
-      waterOptions,
-      heatOptions,
-      sewageOptions,
-      loanTypes,
-      allowableLoanPurposes,
-      bankruptcyOptions,
-      consumerOptions,
-      esaOptions,
-      esaReviewOptions,
-      erlOptions,
-      erlReviewOptions,
-      grOptions,
-      grReviewOptions,
-      grlOptions,
-      grlReviewOptions,
-      arOptions,
-      arReviewOptions,
-      arlOptions,
-      arlReviewOptions,
-      surveyOptions,
-      marketOptions,
-      insuranceOptions,
-      drawingOptions,
-      propertyTaxOptions,
-      titleSearchOptions,
-      projectBudgetOptions,
-      titleInsuranceOptions,
+      // chargeTypes,
+      // termLengths,
+      // propertyStyles,
+      // locations,
+      // acOptions,
+      // waterOptions,
+      // heatOptions,
+      // sewageOptions,
+      // loanTypes,
+      // allowableLoanPurposes,
+      // bankruptcyOptions,
+      // consumerOptions,
+      // esaOptions,
+      // esaReviewOptions,
+      // erlOptions,
+      // erlReviewOptions,
+      // grOptions,
+      // grReviewOptions,
+      // grlOptions,
+      // grlReviewOptions,
+      // arOptions,
+      // arReviewOptions,
+      // arlOptions,
+      // arlReviewOptions,
+      // surveyOptions,
+      // marketOptions,
+      // insuranceOptions,
+      // drawingOptions,
+      // propertyTaxOptions,
+      // titleSearchOptions,
+      // projectBudgetOptions,
+      // titleInsuranceOptions,
 
       // Commercial Broker Options
-      yesNoOptions,
+      // yesNoOptions,
       creditScoreOptions,
       contactMethodOptions,
       bankContactMethods,

@@ -13,7 +13,6 @@
               :id="item.id"
               :name="itemsName"
               type="radio"
-              :checked="item.id === 'email'"
               class="
                 focus:ring-indigo-500
                 h-4
