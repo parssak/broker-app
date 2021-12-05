@@ -1,8 +1,8 @@
 <template>
-  <Container class="bg-gray-100 relative">
+  <Container class="bg-gray-100 relative" style="min-height: 80vh">
     <div class="lg:grid lg:grid-cols-12 lg:gap-x-5">
       <aside class="px-2 sm:px-6 lg:px-0 lg:col-span-3 w-full">
-        <nav class="space-y-1 top-16 w-full lg:w-64 lg:sticky">
+        <nav class="space-y-1 top-32 w-full lg:w-64 lg:sticky">
           <StepsBulletText :steps="steps" @change="onStepsChange" />
         </nav>
       </aside>

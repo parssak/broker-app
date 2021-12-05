@@ -19,6 +19,7 @@ footer *, footer * > * {
   @apply text-white;
 }
 
+
 /* h1 {
   @apply text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl;
 }

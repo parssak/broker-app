@@ -28,6 +28,7 @@
     :class="steps[2]?.status !== 'current' && 'hidden'"
   >
     <Input label="Property Location(s)" />
+    <LocationInput />
     <CheckListSimple
       title="Term Lengths"
       :items="termLengths"
@@ -77,25 +78,26 @@
       :horizontal="true"
       class="md:w-2/3"
     />
+    <Fieldset title="Loan" id="loan">
+      <CheckListSimple
+        title="Loan Types Offered"
+        :items="loanTypes"
+        description="Select all that apply"
+      />
 
-    <CheckListSimple
-      title="Loan Types Offered"
-      :items="loanTypes"
-      description="Select all that apply"
-    />
+      <CheckListSimple
+        title="Allowable Loan Purposes"
+        :items="allowableLoanPurposes"
+        description="Select all that apply"
+        :columns="2"
+        columnsBreakpoint="md"
+      />
 
-    <CheckListSimple
-      title="Allowable Loan Purposes"
-      :items="allowableLoanPurposes"
-      description="Select all that apply"
-      :columns="2"
-      columnsBreakpoint="md"
-    />
+      <MoneyInput label="Minimum Loan Amount" />
+      <MoneyInput label="Maximum Loan Amount" />
 
-    <MoneyInput label="Minimum Loan Amount" />
-    <MoneyInput label="Maximum Loan Amount" />
-
-    <Input type="number" label="Maximum LTV (Loan-To-Value)" />
+      <Input type="number" label="Maximum LTV (Loan-To-Value)" />
+    </Fieldset>
 
     <SwitchWithLabel label="Collateral/Blanket Charges" />
     <SwitchWithLabel label="Non-Resident Corporation - Borrowers(s)" />
@@ -246,6 +248,7 @@
 </template>
 
 <script>
+import LocationInput from "../../components/base/inputs/LocationInput.vue";
 import SelectInput from "@/components/base/inputs/SelectInput.vue";
 import SwitchWithLabel from "@/components/base/inputs/SwitchWithLabel.vue";
 import MoneyInput from "@/components/base/inputs/MoneyInput.vue";
@@ -266,6 +269,7 @@ export default {
     MoneyInput,
     SwitchWithLabel,
     SelectInput,
+    LocationInput
   },
   props: {
     steps: {

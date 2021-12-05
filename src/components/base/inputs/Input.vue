@@ -23,6 +23,7 @@
         :placeholder="placeholder"
         @change="onChange"
         @submit.prevent
+        @blur="$emit('blur', $event)"
       />
     </div>
   </div>
