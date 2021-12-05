@@ -1409,11 +1409,6 @@ export default {
         }
       } else if (count < this.borrowers.length) {
         this.borrowers.splice(count, this.borrowers.length - count);
-        // this.borrowers.forEach((borrower, index) => {
-        //   if (index >= count) {
-        //     borrower.hidden = true;
-        //   }
-        // });
       }
     },
   },
