@@ -73,12 +73,18 @@ export default {
       this.choices = [];
     },
     onInputEnter(e) {
-      const inputChoices = e.target.value.split(",");
+      const inputChoices = e.target.value
+        .split(",")
+        .map((choice) => choice.trim())
+        .filter((choice) => choice.length > 0);
       this.choices = Array.from(new Set([...this.choices, ...inputChoices]));
       e.target.value = "";
     },
     onInputUnfocus(e) {
-      const inputChoices = e.target.value.split(",");
+      const inputChoices = e.target.value
+        .split(",")
+        .map((choice) => choice.trim())
+        .filter((choice) => choice.length > 0);
       this.choices = Array.from(new Set([...this.choices, ...inputChoices]));
       e.target.value = "";
     },
