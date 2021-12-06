@@ -4,7 +4,7 @@
     <div class="max-w-7xl mx-auto py-12 pb-8 px-4 sm:px-6 lg:px-8">
       <div class="grid md:grid-cols-2 gap-8">
         <router-link to="/">
-          <img class="h-9 w-auto" src="@/assets/logo.svg" alt="Company Name" />
+          <img class="h-9 w-auto" src="@/assets/logo.svg" alt="Commercial by knnct" />
         </router-link>
         <div class="grid sm:grid-cols-2 gap-8">
           <div>
@@ -56,7 +56,7 @@
         "
       >
         <p class="text-base text-white">
-          &copy; Copyright 2021 Company Name
+          &copy; Copyright 2021 Commercial by knnct
         </p>
       </div>
     </div>
