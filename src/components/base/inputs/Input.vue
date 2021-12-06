@@ -34,7 +34,6 @@ export default {
   props: {
     label: {
       type: String,
-      required: true,
     },
     type: {
       type: String,

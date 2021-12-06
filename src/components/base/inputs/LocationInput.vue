@@ -1,6 +1,6 @@
 <template>
   <RadioListSimple
-    title="Location"
+    title="Property Location(s)"
     itemsName="locations"
     :items="items"
     @change="onRadioChange"

@@ -5,7 +5,15 @@
     @submit="handleSubmit"
     :class="steps[0].status !== 'current' && 'hidden'"
   >
-    <div class="todo">add fields</div>
+    <Input label="Full Name" />
+    <Input label="Email address" type="email" />
+    <Input label="Country" />
+    <Input label="Street address" class="md:w-full" />
+    <div class="grid gap-6 md:grid-cols-3">
+      <Input label="City" class="md:w-full" />
+      <Input label="State / Province" class="md:w-full" />
+      <Input label="ZIP / Postal Code" class="md:w-full" />
+    </div>
   </Form>
 
   <Form
@@ -27,7 +35,6 @@
     @submit="handleSubmit"
     :class="steps[2]?.status !== 'current' && 'hidden'"
   >
-    <Input label="Property Location(s)" />
     <LocationInput />
     <CheckListSimple
       title="Term Lengths"
@@ -269,7 +276,7 @@ export default {
     MoneyInput,
     SwitchWithLabel,
     SelectInput,
-    LocationInput
+    LocationInput,
   },
   props: {
     steps: {
