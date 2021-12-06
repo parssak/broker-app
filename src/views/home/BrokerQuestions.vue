@@ -85,7 +85,11 @@
       :horizontal="true"
       class="md:w-2/3"
     />
-    <Fieldset title="Loan" id="loan">
+
+    <Fieldset
+      :title="steps[2]?.categories[0]?.name"
+      :id="steps[2]?.categories[0]?.id"
+    >
       <CheckListSimple
         title="Loan Types Offered"
         :items="loanTypes"
@@ -114,12 +118,17 @@
 
     <Input type="number" label="Maximum GDS" />
     <Input type="number" label="Maximum TDS" />
-
-    <CheckListSimple title="Bankruptcy" :items="bankruptcyOptions" />
-    <CheckListSimple title="Consumer" :items="consumerOptions" />
+    <Fieldset
+      :title="steps[2]?.categories[1]?.name"
+      :id="steps[2]?.categories[1]?.id"
+    >
+      <CheckListSimple title="Bankruptcy" :items="bankruptcyOptions" />
+      <CheckListSimple title="Consumer" :items="consumerOptions" />
+    </Fieldset>
 
     <Fieldset
       title="Environmental Report(s), Reliance Letter(s) & Peer Review(s)"
+      :id="steps[2]?.categories[2]?.id"
     >
       <RadioListSimple
         title="Environmental Site Assessment (ESA) for the Property?"
@@ -146,7 +155,10 @@
       />
     </Fieldset>
 
-    <Fieldset title="Geotechnical Report(s) & Peer Review(s)">
+    <Fieldset
+      title="Geotechnical Report(s) & Peer Review(s)"
+      :id="steps[2]?.categories[3]?.id"
+    >
       <RadioListSimple
         title="Geotechnical Report (GR) for the Property"
         :items="providedOptions"
@@ -169,7 +181,10 @@
       />
     </Fieldset>
 
-    <Fieldset title="Appraisal Report(s) & Peer Review(s)">
+    <Fieldset
+      title="Appraisal Report(s) & Peer Review(s)"
+      :id="steps[2]?.categories[4]?.id"
+    >
       <RadioListSimple
         title="Appraisal Report (AR) for the Property"
         :items="providedOptions"
@@ -195,7 +210,10 @@
       />
     </Fieldset>
 
-    <Fieldset>
+    <Fieldset
+      :title="steps[2]?.categories[5]?.name"
+      :id="steps[2]?.categories[5]?.id"
+    >
       <RadioListSimple
         title="Current Survey for the Property"
         :items="providedOptions"
@@ -209,7 +227,10 @@
       />
     </Fieldset>
 
-    <Fieldset>
+    <Fieldset
+      :title="steps[2]?.categories[6]?.name"
+      :id="steps[2]?.categories[6]?.id"
+    >
       <RadioListSimple
         title="Insurance Policies for the Property"
         :items="providedOptions"
@@ -223,7 +244,10 @@
       />
     </Fieldset>
 
-    <Fieldset>
+    <Fieldset
+      :title="steps[2]?.categories[7]?.name"
+      :id="steps[2]?.categories[7]?.id"
+    >
       <RadioListSimple
         title="Property Taxes current (paid) for the Property"
         :items="providedOptions"
@@ -236,7 +260,10 @@
       />
     </Fieldset>
 
-    <Fieldset>
+    <Fieldset
+      :title="steps[2]?.categories[7]?.name"
+      :id="steps[2]?.categories[7]?.id"
+    >
       <RadioListSimple
         title="Budget or Financial Proforma for the Property"
         :items="providedOptions"
@@ -340,6 +367,61 @@ export default {
             .getElementsByTagName("input"),
         ].find((e) => e.checked)?.id;
 
+        const subCategories = [
+          {
+            name: "Loan",
+            id: "loan",
+          },
+          {
+            name: "Bankruptcy",
+            id: "bankruptcy",
+          },
+          {
+            name: "Environmental Report(s), Reliance Letter(s) & Peer Review(s)",
+            id: "environmental",
+          },
+          {
+            name: "Geotechnical Report(s) & Peer Review(s)",
+            id: "geotechnical",
+          },
+          {
+            name: "Appraisal Report(s) & Peer Review(s)",
+            id: "appraisal",
+          },
+          {
+            name: "Current Survey for the Property",
+            id: "survey",
+          },
+          // {
+          //   name: "Market Research & Analysis of the Property",
+          //   id: "market",
+          // },
+          {
+            name: "Insurance Policies for the Property",
+            id: "insurance",
+          },
+          {
+            name: "Project Drawings for the Property",
+            id: "drawing",
+          },
+          {
+            name: "Property Taxes current (paid) for the Property",
+            id: "property-tax",
+          },
+          {
+            name: "Title Searches for the Property",
+            id: "title-search",
+          },
+          {
+            name: "Budget or Financial Proforma for the Property",
+            id: "project-budget",
+          },
+          {
+            name: "Title Insurance for the Property",
+            id: "title-insurance",
+          },
+        ];
+
         if (chosenType === "commercial-less-3") {
           if (newSteps[2]?.id.startsWith("commercial-")) {
             newSteps[2] = {
@@ -347,12 +429,14 @@ export default {
               id: "commercial-less-3",
               status: "current",
               name: "Mortgage Lending Criteria < $3M",
+              categories: subCategories,
             };
           } else {
             newSteps.splice(2, 0, {
               id: "commercial-less-3",
               status: "current",
               name: "Mortgage Lending Criteria < $3M",
+              categories: subCategories,
             });
           }
         } else if (chosenType === "commercial-greater-3") {
@@ -362,12 +446,14 @@ export default {
               id: "commercial-greater-3",
               status: "current",
               name: "Mortgage Lending Criteria > $3M",
+              categories: subCategories,
             };
           } else {
             newSteps.splice(2, 0, {
               id: "commercial-greater-3",
               status: "current",
               name: "Mortgage Lending Criteria > $3M",
+              categories: subCategories,
             });
           }
         }

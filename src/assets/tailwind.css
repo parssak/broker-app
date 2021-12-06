@@ -9,6 +9,7 @@
 /* #region - Typography -  */
 * {
   font-family: Inter;
+  scroll-behavior: smooth;
 }
 
 .footer-heading {
@@ -274,4 +275,10 @@ input.unstyled[type="number"] {
 
 /* #endregion */
 
+.anchor {
+    display: block;
+    position: relative;
+    top: calc(-1 * var(--nav-gap));
+    visibility: hidden;
+}
 

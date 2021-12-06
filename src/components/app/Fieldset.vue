@@ -1,4 +1,5 @@
 <template>
+  <a v-if="id" :id="id" class="anchor"></a>
   <hr :class="`relative ${withoutHr && 'hidden'}`" />
   <div :class="!title && !description && '-mt-6'">
     <h3
@@ -32,6 +33,10 @@ export default {
     withoutHr: {
       type: Boolean,
       default: false,
+    },
+    id: {
+      type: String,
+      default: "",
     },
   },
 };

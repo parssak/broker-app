@@ -42,31 +42,54 @@
               >
             </span>
           </button>
-          <button
-            v-else-if="step.status === 'current'"
-            @click="setActiveStep(step.id)"
-            class="flex items-start"
-            aria-current="step"
-          >
-            <span
-              class="
-                flex-shrink-0
-                h-5
-                w-5
-                relative
-                flex
-                items-center
-                justify-center
-              "
-              aria-hidden="true"
+          <div v-else-if="step.status === 'current'" class="space-y-1">
+            <button
+              @click="setActiveStep(step.id)"
+              class="flex items-start"
+              aria-current="step"
             >
-              <span class="absolute h-4 w-4 rounded-full bg-indigo-200" />
-              <span class="relative block w-2 h-2 bg-indigo-600 rounded-full" />
-            </span>
-            <span class="text-left ml-3 text-sm font-medium text-indigo-600">{{
-              step.name
-            }}</span>
-          </button>
+              <span
+                class="
+                  flex-shrink-0
+                  h-5
+                  w-5
+                  relative
+                  flex
+                  items-center
+                  justify-center
+                "
+                aria-hidden="true"
+              >
+                <span class="absolute h-4 w-4 rounded-full bg-indigo-200" />
+                <span
+                  class="relative block w-2 h-2 bg-indigo-600 rounded-full"
+                />
+              </span>
+              <span
+                class="text-left ml-3 text-sm font-medium text-indigo-600"
+                >{{ step.name }}</span
+              >
+            </button>
+            <a
+              v-for="category in step.categories"
+              :key="category.id"
+              :href="`#${category.id}`"
+              class="
+                block
+                text-sm
+                pl-8
+                font-medium
+                text-gray-500
+                hover:text-gray-900
+              "
+              @click="
+                document
+                  .querySelector(`#${category.id}`)
+                  .scrollIntoView({ behavior: 'smooth' })
+              "
+              >{{ category.name }}</a
+            >
+          </div>
           <button v-else @click="setActiveStep(step.id)" class="group">
             <div class="flex items-start">
               <div
