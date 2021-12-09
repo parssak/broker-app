@@ -45,11 +45,11 @@ export const mortgageTypes = [
   // { id: "residential", label: "Residential" }, // ! Removed as no info provided
   {
     id: "commercial-less-3",
-    label: "Commercial &/or Construction (Less than $3 million total value)",
+    label: "Commercial / Construction (Less than $3 million total value)",
   },
   {
     id: "commercial-greater-3",
-    label: "Commercial &/or Construction (More than $3 million total value)",
+    label: "Commercial / Construction (More than $3 million total value)",
   },
 ];
 
