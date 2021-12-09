@@ -1,5 +1,5 @@
 <template>
-  <div class="py-12 px-4 sm:px-6 lg:px-8">
+  <div class="py-12 pr-6">
     <nav class="flex justify-center" aria-label="Progress">
       <ol role="list" class="space-y-6">
         <li v-for="step in steps" :key="step.name">
@@ -71,25 +71,24 @@
                   >{{ step.name }}</span
                 >
               </button>
-              <a
+              <button
                 v-for="category in step.categories"
                 :key="category.id"
                 :href="`#${category.id}`"
-                class="
+                :class="`
                   block
                   text-sm
                   pl-8
+                  pb-0.5
                   font-medium
                   text-gray-500
                   hover:text-gray-900
-                "
-                @click="
-                  document
-                    .querySelector(`#${category.id}`)
-                    .scrollIntoView({ behavior: 'smooth' })
-                "
-                >{{ category.name }}</a
+                  ${category.status === 'current' ? 'text-indigo-500' : ''}
+                  `"
+                @click="setActiveCategory(category.id)"
               >
+                {{ category.label }}
+              </button>
             </div>
             <button v-else @click="setActiveStep(step.id)" class="group">
               <div class="flex items-start">
@@ -173,6 +172,27 @@ export default {
         return { ...step, status: "current" };
       });
       this.$emit("change", newSteps);
+    },
+    setActiveCategory(id) {
+      const stepIndex = this.steps.findIndex(
+        (step) => step.status === "current"
+      );
+      const categoryIndex = this.steps[stepIndex].categories.findIndex(
+        (category) => category.id === id
+      );
+      console.debug(id);
+      const steps = this.steps;
+      steps[stepIndex].categories.forEach((category, index) => {
+        if (index < categoryIndex) return;
+        if (index > categoryIndex)
+          return {
+            ...category,
+            status: category.status === "hidden" ? "hidden" : "upcoming",
+          };
+        return { ...category, status: "current" };
+      });
+      console.log(steps);
+      this.$emit("change", steps);
     },
   },
 };

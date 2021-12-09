@@ -1010,57 +1010,70 @@ const brokerSubCategories = [
     id: "loan",
     name: "Loan Overview",
     label: "Loan Overview",
+    status: "active",
   },
   {
     id: "property",
     name: "Property Type",
     label: "Property Type",
+    status: "upcoming",
   },
   {
     id: "bankruptcy",
     name: "Bankruptcy",
     label: "Bankruptcy",
+    status: "upcoming",
   },
   {
     id: "environmental",
     name: "Environmental Report(s), Reliance Letter(s) & Peer Review(s)",
     label: "Environmental Reports",
+    status: "upcoming",
   },
   {
     id: "geotechnical",
     name: "Geotechnical Report(s) & Peer Review(s)",
+    status: "upcoming",
   },
   {
     id: "appraisal",
     name: "Appraisal Report(s) & Peer Review(s)",
+    status: "upcoming",
   },
   {
     id: "survey",
     name: "Current Survey for the Property",
+    status: "upcoming",
   },
   {
     id: "insurance",
     name: "Insurance Policies for the Property",
+    status: "upcoming",
   },
   {
     id: "drawing",
     name: "Project Drawings for the Property",
+    status: "upcoming",
   },
   {
     id: "property-tax",
     name: "Property Taxes current (paid) for the Property",
+    status: "upcoming",
   },
   {
     id: "title-search",
     name: "Title Searches for the Property",
+    status: "upcoming",
   },
   {
     id: "project-budget",
     name: "Budget or Financial Proforma for the Property",
+    status: "upcoming",
   },
   {
     id: "title-insurance",
     name: "Title Insurance for the Property",
+    status: "upcoming",
   },
 ];
 
@@ -1079,14 +1092,14 @@ const brokerSteps = [
   },
   {
     id: "commercial-less-3",
-    name: "Mortgage Lending Criteria < $3M",
+    name: "Mortgage Criteria < $3M",
     tagline: "Tell us about your preferred lending criteria.",
     status: "hidden",
     categories: brokerSubCategories,
   },
   {
     id: "commercial-greater-3",
-    name: "Mortgage Lending Criteria > $3M",
+    name: "Mortgage Criteria > $3M",
     status: "hidden",
     categories: brokerSubCategories,
   },
