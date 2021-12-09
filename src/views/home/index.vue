@@ -1010,10 +1010,10 @@ const brokerSubCategories = [
     id: "loan",
     name: "Loan Overview",
     label: "Loan Overview",
-    status: "active",
+    status: "current",
   },
   {
-    id: "property",
+    id: "property-type",
     name: "Property Type",
     label: "Property Type",
     status: "upcoming",
@@ -1033,46 +1033,55 @@ const brokerSubCategories = [
   {
     id: "geotechnical",
     name: "Geotechnical Report(s) & Peer Review(s)",
+    label: "Geotechnical Reports",
     status: "upcoming",
   },
   {
     id: "appraisal",
     name: "Appraisal Report(s) & Peer Review(s)",
+    label: "Appraisal Reports",
     status: "upcoming",
   },
   {
     id: "survey",
     name: "Current Survey for the Property",
+    label: "Survey",
     status: "upcoming",
   },
   {
     id: "insurance",
     name: "Insurance Policies for the Property",
+    label: "Insurance",
     status: "upcoming",
   },
   {
     id: "drawing",
     name: "Project Drawings for the Property",
+    label: "Project Drawings",
     status: "upcoming",
   },
   {
     id: "property-tax",
     name: "Property Taxes current (paid) for the Property",
+    label: "Property Taxes",
     status: "upcoming",
   },
   {
     id: "title-search",
     name: "Title Searches for the Property",
+    label: "Title Searches",
     status: "upcoming",
   },
   {
     id: "project-budget",
     name: "Budget or Financial Proforma for the Property",
+    label: "Project Budget",
     status: "upcoming",
   },
   {
     id: "title-insurance",
     name: "Title Insurance for the Property",
+    label: "Title Insurance",
     status: "upcoming",
   },
 ];
