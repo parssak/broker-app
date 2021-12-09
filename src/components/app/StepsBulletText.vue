@@ -180,18 +180,12 @@ export default {
       const categoryIndex = this.steps[stepIndex].categories.findIndex(
         (category) => category.id === id
       );
-      console.debug(id);
       const steps = this.steps;
       steps[stepIndex].categories.forEach((category, index) => {
-        if (index < categoryIndex) return;
-        if (index > categoryIndex)
-          return {
-            ...category,
-            status: category.status === "hidden" ? "hidden" : "upcoming",
-          };
-        return { ...category, status: "current" };
+        if (index < categoryIndex) category.status = "complete";
+        else if (index > categoryIndex) category.status = "upcoming";
+        else category.status = "current";
       });
-      console.log(steps);
       this.$emit("change", steps);
     },
   },
