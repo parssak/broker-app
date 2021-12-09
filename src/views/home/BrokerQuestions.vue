@@ -1,6 +1,6 @@
 <template>
   <h3 :class="'text-lg font-medium mb-5 text-indigo-600'">
-    {{ steps.find((step) => step.status === "current").tagline }}
+    {{ steps.find((step) => step.status === "current")?.tagline }}
   </h3>
   <Form
     :title="steps[0].name"
@@ -454,21 +454,61 @@ export default {
       e.preventDefault();
       const id = e.target?.id;
       const currentIdx = this.steps.findIndex((step) => step.id === id);
-      const newSteps = this.steps.map((step, index) => {
-        if (index <= currentIdx) {
+      let newSteps = this.steps;
+      // check if step has categories
+      const hasCategories = this.steps[currentIdx]?.categories?.length > 0;
+      // sorry for this line of code <3
+      const currentLastCategory = hasCategories
+        ? this.steps[currentIdx]?.categories[
+            this.steps[currentIdx]?.categories?.length - 1
+          ] ?? false
+        : false;
+
+      if (
+        !hasCategories ||
+        (hasCategories && currentLastCategory.status === "current")
+      ) {
+        newSteps = this.steps.map((step, index) => {
+          if (index <= currentIdx) {
+            return {
+              ...step,
+              status: "complete",
+            };
+          }
+          if (index === currentIdx + 1 && step.status !== "hidden") {
+            return {
+              ...step,
+              status: "current",
+            };
+          }
+          return step;
+        });
+      } else {
+        const categories = this.steps[currentIdx].categories;
+        const currentCategoryIdx = categories.findIndex(
+          (category) => category.status === "current"
+        );
+        const nextCategoryIdx = currentCategoryIdx + 1;
+        newSteps[currentIdx].categories = categories.map((category, index) => {
+          if (index < nextCategoryIdx) {
+            return {
+              ...category,
+              status: "complete",
+            };
+          }
+          if (index === nextCategoryIdx) {
+            return {
+              ...category,
+              status: "current",
+            };
+          }
           return {
-            ...step,
-            status: "complete",
+            ...category,
+            status: "upcoming",
           };
-        }
-        if (index === currentIdx + 1 && step.status !== "hidden") {
-          return {
-            ...step,
-            status: "current",
-          };
-        }
-        return step;
-      });
+        });
+      }
+
       if (id === "initial-questions") {
         const choseLess = this.selectedMortgageTypes.some(
           (type) => type === "commercial-less-3"
@@ -487,11 +527,11 @@ export default {
           newSteps[3].status = "hidden";
         }
       }
+
       this.onStepsChange(newSteps);
     },
     onMortgageChange(e) {
       const { id, checked } = e.target;
-      console.log(id, checked);
       if (checked) {
         this.selectedMortgageTypes.push(id);
       } else {
