@@ -33,11 +33,11 @@
               text-white
               hover:text-gray-500
               transition
-              hover:bg-white
+              hover:bg-accent-light
             "
           >
             <span class="sr-only">Open menu</span>
-            <MenuIcon class="h-6 w-6 text-accent" aria-hidden="true" />
+            <MenuIcon class="h-6 w-6 text-white" aria-hidden="true" />
           </PopoverButton>
         </div>
         <PopoverGroup
@@ -83,7 +83,7 @@
             rounded-lg
             shadow-lg
             ring-1 ring-black ring-opacity-5
-            bg-gray-200
+            bg-accent-dark
             divide-y-2 divide-gray-50
           "
         >

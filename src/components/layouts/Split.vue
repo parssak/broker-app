@@ -2,7 +2,7 @@
   <Container :class="dark && 'bg-accent-dark'">
     <div class="grid gap-x-8 gap-y-12 lg:grid-cols-2">
       <section :class="flip && `lg:order-1`" class="lg:py-12">
-        <h2 :class="dark && 'text-white'">{{ title }}</h2>
+        <h2 :class="dark ? 'text-white' : 'text-3xl md:text-4xl font-extrabold tracking-tight text-gray-900 mb-6 md:mb-8'">{{ title }}</h2>
         <p :class="dark && 'text-white'"><span v-html="description"></span></p>
         <slot name="extra-content"></slot>
       </section>
