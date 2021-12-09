@@ -16,10 +16,10 @@
   @apply font-medium uppercase text-white;
 }
 
-footer *, footer * > * {
+footer *,
+footer * > * {
   @apply text-white;
 }
-
 
 /* h1 {
   @apply text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl;
@@ -62,11 +62,9 @@ ul:not(.unstyled) li::before {
   margin-left: -1em;
 }
 
-
 /* #endregion - Typography -  */
 
 /* #region - Inputs - */
-
 
 a.with-underline {
   @apply relative transition w-max hover:text-accent;
@@ -91,7 +89,6 @@ textarea,
 select {
   @apply border-gray-400 focus:border-accent text-lg py-3 px-4 block w-full rounded-md;
 } */
-
 
 .btn {
   @apply w-max inline-flex items-center border border-transparent font-medium shadow-sm transition
@@ -150,7 +147,7 @@ select {
 }
 
 .nav-item-mobile {
-  @apply  mb-1
+  @apply mb-1
                     p-2
                     flex
                     items-center
@@ -194,7 +191,6 @@ nav .router-link-active:not(.no-show-active):not(.nav-item-mobile)::before {
   transform: translateY(2px);
 } */
 
-
 :root {
   --nav-gap: 4.5rem;
 }
@@ -202,7 +198,6 @@ nav .router-link-active:not(.no-show-active):not(.nav-item-mobile)::before {
 .nav-gap {
   margin-bottom: var(--nav-gap);
 }
-
 
 /* #endregion - Nav - */
 
@@ -238,7 +233,6 @@ nav .router-link-active:not(.no-show-active):not(.nav-item-mobile)::before {
 .todo::before {
   content: "[TODO]: ";
 }
-
 
 /* #endregion-  */
 
@@ -277,9 +271,8 @@ input.unstyled[type="number"] {
 /* #endregion */
 
 .anchor {
-    display: block;
-    position: relative;
-    top: calc(-1 * var(--nav-gap));
-    visibility: hidden;
+  display: block;
+  position: relative;
+  top: calc(-1 * var(--nav-gap));
+  visibility: hidden;
 }
-
