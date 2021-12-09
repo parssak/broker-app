@@ -1,12 +1,6 @@
 <template>
-  <h3
-    :class="
-      steps[0].status !== 'current'
-        ? 'hidden'
-        : 'text-lg font-medium mb-5 text-indigo-600'
-    "
-  >
-    {{ steps[0].tagline }}
+  <h3 :class="'text-lg font-medium mb-5 text-indigo-600'">
+    {{ steps.find((step) => step.status === "current").tagline }}
   </h3>
   <Form
     :title="steps[0].name"
@@ -39,15 +33,6 @@
     </div>
   </Form>
 
-  <h3
-    :class="
-      steps[1].status !== 'current'
-        ? 'hidden'
-        : 'text-lg font-medium mb-5 text-indigo-600'
-    "
-  >
-    What type of projects are you willing to fund?
-  </h3>
   <Form
     :title="steps[1].name"
     :id="steps[1].id"
@@ -61,15 +46,7 @@
       @change="onMortgageChange"
     />
   </Form>
-  <h3
-    :class="
-      steps[2]?.status !== 'current'
-        ? 'hidden'
-        : 'text-lg font-medium mb-5 text-indigo-600'
-    "
-  >
-    Tell us about your preferred lending criteria.
-  </h3>
+
   <Form
     :title="steps[2]?.name"
     :id="steps[2]?.id"
@@ -400,7 +377,7 @@ export default {
             status: "complete",
           };
         }
-        if (index === currentIdx + 1) {
+        if (index === currentIdx + 1 && step.status !== "hidden") {
           return {
             ...step,
             status: "current",
@@ -409,28 +386,22 @@ export default {
         return step;
       });
       if (id === "initial-questions") {
-        this.selectedMortgageTypes.forEach((chosenType) => {
-          if (chosenType === "commercial-less-3") {
-            const index = newSteps.findIndex(
-              (step) => step.id === "commercial-less-3"
-            );
-            newSteps[index].status = "current";
-            newSteps[index].categories[0].status = "current";
-          } else if (chosenType === "commercial-greater-3") {
-            if (this.selectedMortgageTypes.length === 1) {
-              const index = newSteps.findIndex(
-                (step) => step.id === "commercial-greater-3"
-              );
-              newSteps[index].status = "current";
-              newSteps[index].categories[0].status = "current";
-            } else {
-              const index = newSteps.findIndex(
-                (step) => step.id === "commercial-greater-3"
-              );
-              newSteps[index].status = "upcoming";
-            }
-          }
-        });
+        const choseLess = this.selectedMortgageTypes.some(
+          (type) => type === "commercial-less-3"
+        );
+        const choseGreater = this.selectedMortgageTypes.some(
+          (type) => type === "commercial-greater-3"
+        );
+        if (choseLess && choseGreater) {
+          newSteps[2].status = "current";
+          newSteps[3].status = "upcoming";
+        } else if (choseGreater && !choseLess) {
+          newSteps[2].status = "hidden";
+          newSteps[3].status = "current";
+        } else if (choseLess) {
+          newSteps[2].status = "current";
+          newSteps[3].status = "hidden";
+        }
       }
       this.onStepsChange(newSteps);
     },
