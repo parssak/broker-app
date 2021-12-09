@@ -1005,12 +1005,90 @@ const mortgageTypes = [
   },
 ];
 
-const brokerSteps = [
-  { name: "Profile", id: "profile", status: "current" },
+const brokerSubCategories = [
   {
-    name: "Initial Broker Questions",
+    id: "loan",
+    name: "Loan Overview",
+    label: "Loan Overview",
+  },
+  {
+    id: "property",
+    name: "Property Type",
+    label: "Property Type",
+  },
+  {
+    id: "bankruptcy",
+    name: "Bankruptcy",
+    label: "Bankruptcy",
+  },
+  {
+    id: "environmental",
+    name: "Environmental Report(s), Reliance Letter(s) & Peer Review(s)",
+    label: "Environmental Reports",
+  },
+  {
+    id: "geotechnical",
+    name: "Geotechnical Report(s) & Peer Review(s)",
+  },
+  {
+    id: "appraisal",
+    name: "Appraisal Report(s) & Peer Review(s)",
+  },
+  {
+    id: "survey",
+    name: "Current Survey for the Property",
+  },
+  {
+    id: "insurance",
+    name: "Insurance Policies for the Property",
+  },
+  {
+    id: "drawing",
+    name: "Project Drawings for the Property",
+  },
+  {
+    id: "property-tax",
+    name: "Property Taxes current (paid) for the Property",
+  },
+  {
+    id: "title-search",
+    name: "Title Searches for the Property",
+  },
+  {
+    id: "project-budget",
+    name: "Budget or Financial Proforma for the Property",
+  },
+  {
+    id: "title-insurance",
+    name: "Title Insurance for the Property",
+  },
+];
+
+const brokerSteps = [
+  {
+    id: "profile",
+    name: "Profile",
+    tagline: "Let's start by building your profile.",
+    status: "current",
+  },
+  {
     id: "initial-questions",
+    name: "Initial Broker Questions",
+    tagline: "What type of projects are you willing to fund?",
     status: "upcoming",
+  },
+  {
+    id: "commercial-less-3",
+    name: "Mortgage Lending Criteria < $3M",
+    tagline: "Tell us about your preferred lending criteria.",
+    status: "current",
+    categories: brokerSubCategories,
+  },
+  {
+    id: "commercial-greater-3",
+    status: "current",
+    name: "Mortgage Lending Criteria > $3M",
+    categories: brokerSubCategories,
   },
 ];
 

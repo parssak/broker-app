@@ -6,7 +6,7 @@
         : 'text-lg font-medium mb-5 text-indigo-600'
     "
   >
-    Let's start by building your profile.
+    {{ steps[0].tagline }}
   </h3>
   <Form
     :title="steps[0].name"
@@ -58,9 +58,9 @@
       title="Mortgage Deal Type"
       :items="mortgageTypes"
       itemsName="mortgages"
+      @change="onMortgageChange"
     />
   </Form>
-
   <h3
     :class="
       steps[2]?.status !== 'current'
@@ -385,6 +385,7 @@ export default {
   data() {
     return {
       selectedCountry: data.countryTypes[0],
+      selectedMortgageTypes: [],
     };
   },
   methods: {
@@ -408,91 +409,36 @@ export default {
         return step;
       });
       if (id === "initial-questions") {
-        const chosenTypes = [
-          ...document
-            .querySelector("#initial-questions")
-            .getElementsByTagName("input"),
-        ]
-          .filter((e) => e.checked)
-          .map((e) => e.id);
-
-        const subCategories = [
-          {
-            name: "Loan Overview",
-            label: "Loan Overview",
-            id: "loan",
-          },
-          {
-            name: "Property Type",
-            label: "Property Type",
-            id: "property",
-          },
-          {
-            name: "Bankruptcy",
-            label: "Bankruptcy",
-            id: "bankruptcy",
-          },
-          {
-            name: "Environmental Report(s), Reliance Letter(s) & Peer Review(s)",
-
-            id: "environmental",
-          },
-          {
-            name: "Geotechnical Report(s) & Peer Review(s)",
-            id: "geotechnical",
-          },
-          {
-            name: "Appraisal Report(s) & Peer Review(s)",
-            id: "appraisal",
-          },
-          {
-            name: "Current Survey for the Property",
-            id: "survey",
-          },
-          {
-            name: "Insurance Policies for the Property",
-            id: "insurance",
-          },
-          {
-            name: "Project Drawings for the Property",
-            id: "drawing",
-          },
-          {
-            name: "Property Taxes current (paid) for the Property",
-            id: "property-tax",
-          },
-          {
-            name: "Title Searches for the Property",
-            id: "title-search",
-          },
-          {
-            name: "Budget or Financial Proforma for the Property",
-            id: "project-budget",
-          },
-          {
-            name: "Title Insurance for the Property",
-            id: "title-insurance",
-          },
-        ];
-        chosenTypes.forEach((chosenType) => {
+        this.selectedMortgageTypes.forEach((chosenType) => {
           if (chosenType === "commercial-less-3") {
-            newSteps.push({
-              id: "commercial-less-3",
-              status: "current",
-              name: "Mortgage Lending Criteria < $3M",
-              categories: subCategories,
-            });
+            // newSteps.push({
+            // id: "commercial-less-3",
+            // status: "current",
+            // name: "Mortgage Lending Criteria < $3M",
+            // categories: subCategories,
+            // });
           } else if (chosenType === "commercial-greater-3") {
-            newSteps.push({
-              id: "commercial-greater-3",
-              status: "current",
-              name: "Mortgage Lending Criteria > $3M",
-              categories: subCategories,
-            });
+            // newSteps.push({
+            // id: "commercial-greater-3",
+            // status: "current",
+            // name: "Mortgage Lending Criteria > $3M",
+            // categories: subCategories,
+            // });
           }
         });
       }
       this.onStepsChange(newSteps);
+    },
+    onMortgageChange(e) {
+      const { id, checked } = e.target;
+      console.log(id, checked);
+      if (checked) {
+        this.selectedMortgageTypes.push(id);
+      } else {
+        this.selectedMortgageTypes = this.selectedMortgageTypes.filter(
+          (mortgageType) => mortgageType !== id
+        );
+      }
     },
   },
 };
