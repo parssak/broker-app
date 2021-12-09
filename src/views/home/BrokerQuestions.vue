@@ -411,19 +411,24 @@ export default {
       if (id === "initial-questions") {
         this.selectedMortgageTypes.forEach((chosenType) => {
           if (chosenType === "commercial-less-3") {
-            // newSteps.push({
-            // id: "commercial-less-3",
-            // status: "current",
-            // name: "Mortgage Lending Criteria < $3M",
-            // categories: subCategories,
-            // });
+            const index = newSteps.findIndex(
+              (step) => step.id === "commercial-less-3"
+            );
+            newSteps[index].status = "current";
+            newSteps[index].categories[0].status = "current";
           } else if (chosenType === "commercial-greater-3") {
-            // newSteps.push({
-            // id: "commercial-greater-3",
-            // status: "current",
-            // name: "Mortgage Lending Criteria > $3M",
-            // categories: subCategories,
-            // });
+            if (this.selectedMortgageTypes.length === 1) {
+              const index = newSteps.findIndex(
+                (step) => step.id === "commercial-greater-3"
+              );
+              newSteps[index].status = "current";
+              newSteps[index].categories[0].status = "current";
+            } else {
+              const index = newSteps.findIndex(
+                (step) => step.id === "commercial-greater-3"
+              );
+              newSteps[index].status = "upcoming";
+            }
           }
         });
       }

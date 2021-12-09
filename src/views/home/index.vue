@@ -1081,13 +1081,13 @@ const brokerSteps = [
     id: "commercial-less-3",
     name: "Mortgage Lending Criteria < $3M",
     tagline: "Tell us about your preferred lending criteria.",
-    status: "current",
+    status: "hidden",
     categories: brokerSubCategories,
   },
   {
     id: "commercial-greater-3",
-    status: "current",
     name: "Mortgage Lending Criteria > $3M",
+    status: "hidden",
     categories: brokerSubCategories,
   },
 ];
