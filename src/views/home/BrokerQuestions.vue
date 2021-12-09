@@ -48,10 +48,10 @@
   </Form>
 
   <Form
-    :title="steps[2]?.name"
-    :id="steps[2]?.id"
+    :title="steps[2].name"
+    :id="steps[2].id"
     @submit="handleSubmit"
-    :class="steps[2]?.status !== 'current' && 'hidden'"
+    :class="steps[2].status !== 'current' && 'hidden'"
   >
     <LocationInput />
     <CheckListSimple
