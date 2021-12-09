@@ -1,12 +1,24 @@
 <template>
+  <h3
+    :class="
+      steps[0].status !== 'current'
+        ? 'hidden'
+        : 'text-lg font-medium mb-5 text-indigo-600'
+    "
+  >
+    Let's start by building your profile.
+  </h3>
   <Form
     :title="steps[0].name"
     :id="steps[0].id"
     @submit="handleSubmit"
     :class="steps[0].status !== 'current' && 'hidden'"
   >
-    <Input label="Full Name" />
-    <Input label="Email address" type="email" />
+    <div class="grid gap-6 md:grid-cols-2">
+      <Input label="First Name" class="md:w-full" />
+      <Input label="Last Name" class="md:w-full" />
+    </div>
+    <Input label="Email address" type="email" class="md:w-full" />
     <Input label="Country" />
     <Input label="Street address" class="md:w-full" />
     <div class="grid gap-6 md:grid-cols-3">
@@ -16,19 +28,37 @@
     </div>
   </Form>
 
+  <h3
+    :class="
+      steps[1].status !== 'current'
+        ? 'hidden'
+        : 'text-lg font-medium mb-5 text-indigo-600'
+    "
+  >
+    What type of projects are you willing to fund?
+  </h3>
   <Form
     :title="steps[1].name"
     :id="steps[1].id"
     @submit="handleSubmit"
     :class="steps[1].status !== 'current' && 'hidden'"
   >
-    <RadioListSimple
+    <CheckListSimple
       title="Mortgage Deal Type"
       :items="mortgageTypes"
       itemsName="mortgages"
     />
   </Form>
 
+  <h3
+    :class="
+      steps[2]?.status !== 'current'
+        ? 'hidden'
+        : 'text-lg font-medium mb-5 text-indigo-600'
+    "
+  >
+    Tell us about your preferred lending criteria.
+  </h3>
   <Form
     :title="steps[2]?.name"
     :id="steps[2]?.id"
@@ -361,23 +391,33 @@ export default {
         return step;
       });
       if (id === "initial-questions") {
-        const chosenType = [
+        const chosenTypes = [
           ...document
             .querySelector("#initial-questions")
             .getElementsByTagName("input"),
-        ].find((e) => e.checked)?.id;
+        ]
+          .filter((e) => e.checked)
+          .map((e) => e.id);
 
         const subCategories = [
           {
-            name: "Loan",
+            name: "Loan Overview",
+            label: "Loan Overview",
             id: "loan",
           },
           {
+            name: "Property Type",
+            label: "Property Type",
+            id: "property",
+          },
+          {
             name: "Bankruptcy",
+            label: "Bankruptcy",
             id: "bankruptcy",
           },
           {
             name: "Environmental Report(s), Reliance Letter(s) & Peer Review(s)",
+
             id: "environmental",
           },
           {
@@ -392,10 +432,6 @@ export default {
             name: "Current Survey for the Property",
             id: "survey",
           },
-          // {
-          //   name: "Market Research & Analysis of the Property",
-          //   id: "market",
-          // },
           {
             name: "Insurance Policies for the Property",
             id: "insurance",
@@ -421,42 +457,23 @@ export default {
             id: "title-insurance",
           },
         ];
-
-        if (chosenType === "commercial-less-3") {
-          if (newSteps[2]?.id.startsWith("commercial-")) {
-            newSteps[2] = {
-              ...newSteps[2],
-              id: "commercial-less-3",
-              status: "current",
-              name: "Mortgage Lending Criteria < $3M",
-              categories: subCategories,
-            };
-          } else {
-            newSteps.splice(2, 0, {
+        chosenTypes.forEach((chosenType) => {
+          if (chosenType === "commercial-less-3") {
+            newSteps.push({
               id: "commercial-less-3",
               status: "current",
               name: "Mortgage Lending Criteria < $3M",
               categories: subCategories,
             });
-          }
-        } else if (chosenType === "commercial-greater-3") {
-          if (newSteps[2]?.id.startsWith("commercial-")) {
-            newSteps[2] = {
-              ...newSteps[2],
-              id: "commercial-greater-3",
-              status: "current",
-              name: "Mortgage Lending Criteria > $3M",
-              categories: subCategories,
-            };
-          } else {
-            newSteps.splice(2, 0, {
+          } else if (chosenType === "commercial-greater-3") {
+            newSteps.push({
               id: "commercial-greater-3",
               status: "current",
               name: "Mortgage Lending Criteria > $3M",
               categories: subCategories,
             });
           }
-        }
+        });
       }
       this.onStepsChange(newSteps);
     },
