@@ -19,12 +19,23 @@
       <Input label="Last Name" class="md:w-full" />
     </div>
     <Input label="Email address" type="email" class="md:w-full" />
-    <Input label="Country" />
+    <SelectInput
+      label="Country"
+      :items="countryTypes"
+      class="md:w-full"
+      v-model="selectedCountry"
+    />
     <Input label="Street address" class="md:w-full" />
     <div class="grid gap-6 md:grid-cols-3">
       <Input label="City" class="md:w-full" />
-      <Input label="State / Province" class="md:w-full" />
-      <Input label="ZIP / Postal Code" class="md:w-full" />
+      <Input
+        :label="selectedCountry.id === 'canada' ? 'Province' : 'State'"
+        class="md:w-full"
+      />
+      <Input
+        :label="selectedCountry.id === 'canada' ? 'Postal Code' : 'ZIP'"
+        class="md:w-full"
+      />
     </div>
   </Form>
 
@@ -344,8 +355,8 @@ export default {
     },
   },
   setup() {
-    // prevent any click of enter key from submitting any form
     const handleKeyDown = (e) => {
+      // enter key
       if (e.keyCode === 13) {
         e.preventDefault();
       }
@@ -353,6 +364,7 @@ export default {
     document.addEventListener("keydown", handleKeyDown);
 
     return {
+      countryTypes: data.countryTypes,
       mortgageTypes: data.mortgageTypes,
       chargeTypes: data.chargeTypes,
       propertyStyles: data.propertyStyles,
@@ -368,6 +380,11 @@ export default {
       bankruptcyOptions: data.bankruptcyOptions,
       consumerOptions: data.consumerOptions,
       providedOptions: data.providedOptions,
+    };
+  },
+  data() {
+    return {
+      selectedCountry: data.countryTypes[0],
     };
   },
   methods: {

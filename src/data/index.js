@@ -29,6 +29,18 @@ export const navigation = getNavigation(MASTER_ROUTES);
 
 // Form fields
 
+export const countryTypes = [
+  // { id: "residential", label: "Residential" }, // ! Removed as no info provided
+  {
+    id: "canada",
+    label: "Canada",
+  },
+  {
+    id: "united-states",
+    label: "United States",
+  },
+];
+
 export const mortgageTypes = [
   // { id: "residential", label: "Residential" }, // ! Removed as no info provided
   {
