@@ -4,11 +4,15 @@
     <div class="max-w-7xl mx-auto py-12 pb-8 px-4 sm:px-6 lg:px-8">
       <div class="grid md:grid-cols-2 gap-8">
         <router-link to="/">
-          <img class="h-9 w-auto" src="@/assets/logo.svg" alt="Commercial by knnct" />
+          <img
+            class="h-9 w-auto"
+            src="@/assets/logo.svg"
+            alt="Commercial by knnct"
+          />
         </router-link>
         <div class="grid sm:grid-cols-2 gap-8">
           <div>
-            <h3 class="mb-3  footer-heading">Navigation</h3>
+            <h3 class="mb-3 footer-heading">Navigation</h3>
             <div class="space-y-1">
               <router-link
                 v-for="route in navigation"
@@ -18,7 +22,7 @@
                   with-underline
                   w-max
                   transition
-                  hover:text-accent
+                  hover:underline hover:text-white
                   capitalize
                 "
                 :to="route.path"
@@ -35,12 +39,22 @@
               </address>
               <a
                 href="tel:+19056379255"
-                class="block with-underline w-max hover:text-accent"
+                class="
+                  block
+                  with-underline
+                  w-max
+                  hover:underline hover:text-white
+                "
                 >Phone: xxx-xxx-xxxx
               </a>
               <a
                 href="mailto:info@teccweb.com"
-                class="block with-underline w-max hover:text-accent"
+                class="
+                  block
+                  with-underline
+                  w-max
+                  hover:underline hover:text-white
+                "
                 >Email: email@email.com</a
               >
             </div>

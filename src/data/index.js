@@ -10,6 +10,12 @@ const MASTER_ROUTES = [
     hidden: false,
   },
   {
+    path: "/form",
+    label: "form",
+    component: () => import("@/views/form"),
+    // hidden: true,
+  },
+  {
     path: "/about",
     label: "about",
     component: () => import("@/views/about"),

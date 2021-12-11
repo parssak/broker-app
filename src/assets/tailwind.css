@@ -9,7 +9,7 @@
 /* #region - Typography -  */
 * {
   font-family: Inter;
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
 }
 
 .footer-heading {
@@ -19,6 +19,10 @@
 footer *,
 footer * > * {
   @apply text-white;
+}
+
+.footer-heading a {
+  @apply hover:text-white;
 }
 
 /* h1 {
@@ -67,8 +71,11 @@ ul:not(.unstyled) li::before {
 /* #region - Inputs - */
 
 a.with-underline {
-  @apply relative transition w-max hover:text-accent;
+  @apply relative transition w-max ; 
+  /* hover:text-accent */
 }
+
+
 
 a.with-underline::before {
   @apply absolute bottom-0 left-0 w-full transition;
@@ -78,7 +85,7 @@ a.with-underline::before {
 }
 
 a.with-underline:hover::before {
-  @apply bg-accent;
+  @apply bg-white;
   transform: translateY(-1px);
 }
 
@@ -169,18 +176,18 @@ select {
 
 nav a:hover {
   @apply text-accent;
-}
+} */
 
 nav .router-link-active:not(.no-show-active) {
   @apply relative;
 }
 
 nav .router-link-active:not(.no-show-active).nav-item-mobile {
-  @apply bg-accent;
+  @apply bg-white;
 }
 
 nav .router-link-active:not(.no-show-active):not(.nav-item-mobile)::before {
-  @apply bg-accent-light;
+  @apply bg-white;
   content: " ";
   position: absolute;
   bottom: 0;
@@ -189,7 +196,7 @@ nav .router-link-active:not(.no-show-active):not(.nav-item-mobile)::before {
   height: 1.5px;
   transition: all 0.2s ease-in-out;
   transform: translateY(2px);
-} */
+}
 
 :root {
   --nav-gap: 4.5rem;
