@@ -1014,11 +1014,18 @@ const brokerSubCategories = [
     tagline: "What is your preferred loan criteria?",
   },
   {
-    id: "property-type",
-    name: "Property Type",
-    label: "Property Type",
+    id: "property-style",
+    name: "Property Style",
+    label: "Property Style",
     status: "upcoming",
-    tagline: "What type of property are you looking to purchase?",
+    tagline: "What style of property are you looking to purchase?",
+  },
+  {
+    id: "property-location",
+    name: "Property Location",
+    label: "Property Location",
+    status: "upcoming",
+    tagline: "What location type are you looking to purchase?",
   },
   {
     id: "bankruptcy",

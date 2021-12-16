@@ -91,26 +91,18 @@
         <Input type="number" label="Maximum LTV (Loan-To-Value)" />
       </div>
 
-      <!-- property-type -->
+      <!-- property-style -->
       <div
         :class="
           steps[2].categories.find((c) => c.status == 'current')?.id ===
-          'property-type'
+          'property-style'
             ? 'space-y-4'
             : 'hidden'
         "
       >
-        <LocationInput />
         <SelectInput label="Property Style" :items="propertyStyles" />
         <Input type="number" label="Minimum Square Footage" />
         <Input type="number" label="Maximum Square Footage" />
-        <RadioListSimple
-          itemsName="location"
-          title="Location"
-          :items="locations"
-          :horizontal="true"
-          class="md:w-2/3"
-        />
         <RadioListSimple
           itemsName="air"
           title="Air-Conditioning"
@@ -136,6 +128,25 @@
           itemsName="heating"
           title="Heating"
           :items="heatOptions"
+          :horizontal="true"
+          class="md:w-2/3"
+        />
+      </div>
+
+      <!-- property-location -->
+      <div
+        :class="
+          steps[2].categories.find((c) => c.status == 'current')?.id ===
+          'property-location'
+            ? 'space-y-4'
+            : 'hidden'
+        "
+      >
+        <LocationInput />
+        <RadioListSimple
+          itemsName="location"
+          title="Location"
+          :items="locations"
           :horizontal="true"
           class="md:w-2/3"
         />
