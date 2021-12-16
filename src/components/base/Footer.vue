@@ -22,7 +22,7 @@
                   with-underline
                   w-max
                   transition
-                  hover:underline hover:text-white
+                  hover:text-white
                   capitalize
                 "
                 :to="route.path"
@@ -39,22 +39,12 @@
               </address>
               <a
                 href="tel:+19056379255"
-                class="
-                  block
-                  with-underline
-                  w-max
-                  hover:underline hover:text-white
-                "
+                class="block with-underline w-max hover:text-white"
                 >Phone: xxx-xxx-xxxx
               </a>
               <a
                 href="mailto:info@teccweb.com"
-                class="
-                  block
-                  with-underline
-                  w-max
-                  hover:underline hover:text-white
-                "
+                class="block with-underline w-max hover:text-white"
                 >Email: email@email.com</a
               >
             </div>

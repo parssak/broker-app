@@ -145,7 +145,6 @@ select {
               capitalize
               transition
               hover:text-accent-lightest
-              hover:underline
               focus:outline-none
               focus:ring-2
               focus:ring-offset-2
