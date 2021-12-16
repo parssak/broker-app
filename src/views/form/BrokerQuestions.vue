@@ -1,6 +1,6 @@
 <template>
   <h3 :class="'text-xl font-medium mb-5 text-indigo-600'">
-    {{ steps.find((step) => step.status === "current")?.tagline }}
+    {{ getCurrentTagline() }}
   </h3>
   <Form
     :title="steps[0].name"
@@ -450,6 +450,19 @@ export default {
     };
   },
   methods: {
+    getCurrentTagline() {
+      const currentStep = this.steps.find((step) => step.status === "current");
+      console.debug("current step", currentStep);
+      if (currentStep && currentStep.categories) {
+        const currentCategory = currentStep.categories.find(
+          (category) => category.status === "current"
+        );
+        if (currentCategory) {
+          return currentCategory.tagline;
+        }
+      }
+      return currentStep?.tagline ?? "";
+    },
     handleSubmit(e) {
       e.preventDefault();
       const id = e.target?.id;
