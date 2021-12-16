@@ -1,5 +1,5 @@
 <template>
-  <h3 :class="'text-lg font-medium mb-5 text-indigo-600'">
+  <h3 :class="'text-xl font-medium mb-5 text-indigo-600'">
     {{ steps.find((step) => step.status === "current")?.tagline }}
   </h3>
   <Form
