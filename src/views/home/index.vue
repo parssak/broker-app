@@ -31,7 +31,7 @@
       </div>
     </div>
     <Container>
-      <div class="grid gap-24 md:grid-cols-2">
+      <div class="grid gap-24 md:grid-cols-2 min-h-full-screen md:min-h-full">
         <div class="pt-12 md:pt-36">
           <h1
             class="
