@@ -1018,14 +1018,14 @@ const brokerSubCategories = [
     name: "Property Style",
     label: "Property Style",
     status: "upcoming",
-    tagline: "What style of property are you looking to purchase?",
+    tagline: "What style of property are you willing to fund?",
   },
   {
     id: "property-location",
     name: "Property Location",
     label: "Property Location",
     status: "upcoming",
-    tagline: "What location type are you looking to purchase?",
+    tagline: "What location type are you willing to fund?",
   },
   {
     id: "bankruptcy",
