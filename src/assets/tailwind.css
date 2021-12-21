@@ -178,7 +178,7 @@ nav .router-link-active:not(.no-show-active) {
 }
 
 nav .router-link-active:not(.no-show-active).nav-item-mobile {
-  @apply bg-white;
+  @apply bg-white text-accent;
 }
 
 nav .router-link-active:not(.no-show-active):not(.nav-item-mobile)::before {
