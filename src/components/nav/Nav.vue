@@ -143,7 +143,7 @@
                   "
                 >
                   <span class="sr-only">Close menu</span>
-                  <XIcon class="h-6 w-6 text-accent" aria-hidden="true" />
+                  >
                 </PopoverButton>
               </div>
             </div>
