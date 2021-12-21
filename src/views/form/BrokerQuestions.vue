@@ -54,7 +54,6 @@
     :class="steps[2].status !== 'current' && 'hidden'"
   >
     <div>
-      <!-- loan -->
       <div
         :class="
           steps[2].categories.find((c) => c.status == 'current')?.id === 'loan'
@@ -68,17 +67,21 @@
           description="Select all that apply"
           :columns="2"
         />
+        <hr />
         <CheckListSimple
           title="Charges Offered"
           :items="chargeTypes"
           description="Select all that apply"
+          :columns="2"
         />
+        <hr />
         <CheckListSimple
           title="Loan Types Offered"
           :items="loanTypes"
           description="Select all that apply"
+          :columns="2"
         />
-
+        <hr />
         <CheckListSimple
           title="Allowable Loan Purposes"
           :items="allowableLoanPurposes"
@@ -86,6 +89,7 @@
           :columns="2"
           columnsBreakpoint="md"
         />
+        <hr />
         <MoneyInput label="Minimum Loan Amount" />
         <MoneyInput label="Maximum Loan Amount" />
         <Input type="number" label="Maximum LTV (Loan-To-Value)" />
@@ -103,6 +107,7 @@
         <SelectInput label="Property Style" :items="propertyStyles" />
         <Input type="number" label="Minimum Square Footage" />
         <Input type="number" label="Maximum Square Footage" />
+        <hr />
         <RadioListSimple
           itemsName="air"
           title="Air-Conditioning"
