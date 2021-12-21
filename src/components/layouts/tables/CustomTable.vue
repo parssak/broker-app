@@ -117,7 +117,7 @@ const defaultHeaders = [
     label: "LTV",
   },
   {
-    label: "Percentage Match",
+    label: "% Match",
   },
   {
     label: " ",

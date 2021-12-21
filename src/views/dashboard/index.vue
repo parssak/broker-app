@@ -1,15 +1,15 @@
 <template>
   <div class="min-h-full-screen">
-    <Header title="dashboard" />
+    <Header title="Received Offers" />
 
-    <Container class="typography">
-      <h2>Recieved Offers</h2>
-      <CustomTable />
+    <Container>
+      <WithAvatarTable />
     </Container>
   </div>
 </template>
 
 <script>
+import WithAvatarTable from "../../components/layouts/tables/WithAvatarTable.vue";
 import CustomTable from "../../components/layouts/tables/CustomTable.vue";
 import Container from "@/components/layouts/Container.vue";
 import Split from "@/components/layouts/Split.vue";
@@ -21,6 +21,7 @@ export default {
     Split,
     Container,
     CustomTable,
+    WithAvatarTable,
   },
 };
 </script>
