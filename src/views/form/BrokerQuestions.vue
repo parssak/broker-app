@@ -171,9 +171,12 @@
         <SwitchWithLabel
           label="Non-Citizen/Permanent Resident - Any Directors & Officers:"
         />
+        <hr />
         <Input type="number" label="Maximum GDS" />
         <Input type="number" label="Maximum TDS" />
+        <hr />
         <CheckListSimple title="Bankruptcy" :items="bankruptcyOptions" />
+        <hr />
         <CheckListSimple title="Consumer" :items="consumerOptions" />
       </div>
 
@@ -191,19 +194,19 @@
           :items="providedOptions"
           itemsName="esa"
         />
-
+        <hr />
         <RadioListSimple
           title="Peer Review of ESA"
           :items="providedOptions"
           itemsName="esa-review"
         />
-
+        <hr />
         <RadioListSimple
           title="Environmental Reliance Letter (ERL) for the Property?"
           :items="providedOptions"
           itemsName="erl"
         />
-
+        <hr />
         <RadioListSimple
           title="Peer Review of ERL"
           :items="providedOptions"
@@ -225,16 +228,19 @@
           :items="providedOptions"
           itemsName="gr"
         />
+        <hr />
         <RadioListSimple
           title="Peer Review of GR"
           :items="providedOptions"
           itemsName="gr-review"
         />
+        <hr />
         <RadioListSimple
           title="Geotechnical Reliance Letter (GRL) for the Property"
           :items="providedOptions"
           itemsName="grl"
         />
+        <hr />
         <RadioListSimple
           title="Peer Review of GRL"
           :items="providedOptions"
@@ -256,18 +262,21 @@
           :items="providedOptions"
           itemsName="ar"
         />
+        <hr />
 
         <RadioListSimple
           title="Peer Review of AR"
           :items="providedOptions"
           itemsName="ar-review"
         />
+        <hr />
 
         <RadioListSimple
           title="Appraisal Reliance Letter (ARL) for the Property"
           :items="providedOptions"
           itemsName="arl"
         />
+        <hr />
 
         <RadioListSimple
           title="Peer Review of ARL"
@@ -290,6 +299,7 @@
           :items="providedOptions"
           itemsName="survey"
         />
+        <hr />
 
         <RadioListSimple
           title="Market Research & Analysis of the Property"
@@ -392,6 +402,7 @@
           :items="providedOptions"
           itemsName="title-insurance"
         />
+        <hr />
         <Input label="Any Brokers/Brokerages Not Allowed" />
         <Input label="Any Preferred Brokers/Brokerages" />
       </div>
