@@ -44,7 +44,12 @@
                       : 'text-gray-500'
                   }`"
                 >
-                  {{ value }}
+                  <div v-if="valueIdx === Object.values(item).length - 1">
+                    <DotsHorizontalIcon class="h-6 w-6 text-accent" />
+                  </div>
+                  <div v-else>
+                    {{ value }}
+                  </div>
                 </td>
               </tr>
             </tbody>
@@ -52,42 +57,60 @@
         </div>
       </div>
     </div>
+    <DotsHorizontalIcon aria-hidden="true"/>
   </div>
 </template>
 
 <script>
+import { DotsHorizontalIcon } from "@heroicons/vue/outline";
+
 const defaultItems = [
   {
+    date: "June 1, 2021",
     name: "Jane Cooper",
-    title: "Regional Paradigm Technician",
-    role: "Admin",
-    email: "jane.cooper@example.com",
+    ltv: "1,000",
+    percentageMatch: "89%",
+    actions: "",
   },
   {
+    date: "May 4, 2021",
     name: "Cody Fisher",
-    title: "Product Directives Officer",
-    role: "Owner",
-    email: "cody.fisher@example.com",
+    ltv: "345",
+    percentageMatch: "53%",
+    actions: "",
+  },
+  {
+    date: "April 1, 2021",
+    name: "John Smith",
+    ltv: "1,000",
+    percentageMatch: "88%",
+    actions: "",
   },
 ];
 
 const defaultHeaders = [
   {
-    label: "Name",
+    label: "Date",
   },
   {
-    label: "Title",
+    label: "Borrower's Name",
   },
   {
-    label: "Email",
+    label: "LTV",
   },
   {
-    label: "Role",
+    label: "Percentage Match",
+  },
+  {
+    label: " ",
   },
 ];
 
 export default {
   props: {
+    components: {
+      DotsHorizontalIcon,
+    },
     items: {
       type: Array,
       default: () => defaultItems,
