@@ -57,7 +57,7 @@
         </div>
       </div>
     </div>
-    <DotsHorizontalIcon aria-hidden="true"/>
+    <DotsHorizontalIcon aria-hidden="true" />
   </div>
 </template>
 
