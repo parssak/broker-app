@@ -40,18 +40,52 @@
             <MenuIcon class="h-6 w-6 text-white" aria-hidden="true" />
           </PopoverButton>
         </div>
-        <PopoverGroup
-          as="nav"
-          class="hidden md:flex space-x-3 lg:space-x-5 xl:space-x-7"
-        >
-          <NavItem
-            v-for="item in navigation"
-            :path="item.path"
-            :key="item.label"
-            :dropdownItems="item.dropdownItems"
-          >
-            {{ item.label }}
-          </NavItem>
+        <PopoverGroup as="nav" class="hidden md:flex">
+          <div class="space-x-3 lg:space-x-5 xl:space-x-7 flex">
+            <NavItem
+              v-for="item in navigation"
+              :path="item.path"
+              :key="item.label"
+              :dropdownItems="item.dropdownItems"
+            >
+              {{ item.label }}
+            </NavItem>
+          </div>
+          <router-link to="/dashboard" class="block ml-4 -my-2">
+            <div
+              class="
+                rounded-md
+                p-2
+                inline-flex
+                items-center
+                justify-center
+                text-white
+                transition
+                hover:bg-accent-light hover:bg-opacity-40
+                cursor-pointer
+                relative
+              "
+            >
+              <span class="sr-only">Open menu</span>
+              <BellIcon class="h-6 w-6 text-white" aria-hidden="true" />
+              <span
+                class="
+                  absolute
+                  font-medium
+                  rounded-full
+                  bg-accent-light
+                  grid
+                  place-items-center
+                  bottom-1/2
+                  left-1/2
+                  text-sm
+                  px-1.5
+                  h-5
+                "
+                >3</span
+              >
+            </div>
+          </router-link>
         </PopoverGroup>
       </div>
     </div>
@@ -143,7 +177,7 @@ import {
   PopoverGroup,
   PopoverPanel,
 } from "@headlessui/vue";
-import { MenuIcon, XIcon } from "@heroicons/vue/outline";
+import { MenuIcon, XIcon, BellIcon } from "@heroicons/vue/outline";
 import { navigation } from "@/data";
 
 export default {
@@ -154,6 +188,7 @@ export default {
     PopoverPanel,
     MenuIcon,
     XIcon,
+    BellIcon,
     NavItem,
   },
   setup() {

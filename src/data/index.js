@@ -27,6 +27,12 @@ const MASTER_ROUTES = [
     component: () => import("@/views/contact"),
     hidden: false,
   },
+  {
+    path: "/dashboard",
+    label: "dashboard",
+    component: () => import("@/views/dashboard"),
+    hidden: true,
+  }
 ];
 
 export const routes = getRoutes(MASTER_ROUTES);
