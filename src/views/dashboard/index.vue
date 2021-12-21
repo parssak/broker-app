@@ -1,10 +1,12 @@
 <template>
-  <Header title="dashboard" />
+  <div class="min-h-full-screen">
+    <Header title="dashboard" />
 
-  <Container class="typography">
-    <h2>Recieved Offers</h2>
-    <CustomTable />
-  </Container>
+    <Container class="typography">
+      <h2>Recieved Offers</h2>
+      <CustomTable />
+    </Container>
+  </div>
 </template>
 
 <script>
